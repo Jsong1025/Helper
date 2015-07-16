@@ -72,7 +72,7 @@
               <li><a href="release.html" title="前往 发布约会">发布约会</a></li>
               <li><a href="#" title="前往 搜索约会">搜索约会</a></li>
               <li><a href="#" title="前往 消息管理">消息管理</a></li>
-              <li><a class="visible-md visible-lg" href="info.jsp" title="前往 个人设置">个人设置</a></li>
+              <li><a class="visible-md visible-lg" href="info.do" title="前往 个人设置">个人设置</a></li>
              <%
              	if(permision < 3){
              %>

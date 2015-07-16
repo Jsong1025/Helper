@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿<%@ page language="java" import="java.util.*,vo.User" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -18,12 +18,31 @@
 
 	<link rel="stylesheet" href="css/info.css" media="screen">
     <link rel="stylesheet" href="css/info2.css" media="screen">
+    <script  type="text/javascript">
+    function submitForm1(){
+    	var form1 = document.getElementById("info1");
+    	form1.submit();
+    }
+    function submitForm2(){
+    	var form2 = document.getElementById("info2");
+    	form2.submit();
+    }
+    function submitForm3(){
+    	var form3 = document.getElementById("info3");
+    	form3.submit();
+    }
+    function submitForm4(){
+    	var form4 = document.getElementById("info4");
+    	form4.submit();
+    }
+    </script>
   </head>
   <body>
 
  <%
     	int permision = 5;
     	String username = "";
+    	User user = null;
     	if(session != null ){
     		// 获取用户名
     		if(session.getAttribute("username") != null){
@@ -38,6 +57,7 @@
     		if(session.getAttribute("permision") != null){
     			permision = (Integer)session.getAttribute("permision");
         	}
+    		user =(User)request.getAttribute("info");
     		
     	} else {
     		response.sendRedirect("index.jsp");
@@ -104,39 +124,49 @@
                 <div id="lab_name" class="panel-info"></div>
               </h4>
             </div>
+            <form id="info1" action="infoUpdate.do?type=1" method = "post">
             <div id="collapseOne" class="panel-collapse collapse">
               <div class="panel-body form-horizontal">
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">真实姓名</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" id="name" name="name" value=" ">
+                      <input type="text" class="form-control" id="name" name="name" value="<%=user.getName() %>">
                     </div>
                   </div>
                     <div class="form-group">
                     <label for="" class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-4">
-                      <input type=radio name=sex value=female >女&nbsp &nbsp <input type=radio name=sex value=male >男
+                      <%
+                      	if(user.getSex() == 'M'){
+                      %>
+                      <input type=radio name=sex value='F' >女&nbsp &nbsp <input type=radio name=sex value='M' checked >男
+                      <%
+                      } else{
+                      %>
+                      <input type=radio name=sex value='F' checked >女&nbsp &nbsp <input type=radio name=sex value='M' >男
+                      <%} %>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">个人介绍</label>
                     <div class="col-sm-7">
-                      <textarea class="form-control" rows="4" id="description" name="description"></textarea>
+                      <textarea class="form-control" rows="4" id="description" name="description"><%=user.getDescription() %></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">居住地</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" placeholder="填写城市名称，多个以”,“隔开 "id="location"  name="location" value="">
+                      <input type="text" class="form-control" placeholder="填写城市名称，多个以”,“隔开 "id="location"  name="location" value="<%=user.getLocation() %>">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button id="btn_uinfo" type="submit" class="btn btn-primary">保存</button>
+                      <button id="btn_uinfo" type="submit" class="btn btn-primary" onclick="submitForm1()">保存</button>
                     </div>
                   </div>
               </div>
             </div>
+            </form>
           </div>
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -147,6 +177,7 @@
               </h4>
               <div class="panel-info"><span class="avatar"><img id="head_s" src="img/头像.jpg" /></span></div>
             </div>
+            <form id="info2" action="infoUpdate.do?type=2" method = "post">
             <div id="collapseTwo" class="panel-collapse collapse">
               <div class="panel-body form-horizontal">
                   <fieldset>
@@ -162,9 +193,15 @@
                         <p class="help-block">支持 JPG、PNG、GIF 格式，不要超过 2M 。</p>
                       </div>
                     </div>
+                    <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button id="btn_mail" type="button" class="btn btn-primary"  onclick="submitForm2()">保存</button>
+                    </div>
+                  </div>
                   </fieldset>
               </div>
             </div>
+            </form>
           </div>
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -175,18 +212,19 @@
               </h4>
               <div id="lab_mail" class="panel-info"></div>
             </div>
+            <form id="info3" action="infoUpdate.do?type=3" method = "post">
             <div id="collapseThree" class="panel-collapse collapse">
               <div class="panel-body form-horizontal">
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">当前用户名</label>
                     <div class="col-sm-4">
-                      <p id="p_mail" class="form-control-static"></p>
+                      <p id="p_mail" class="form-control-static"><%=user.getUsername() %></p>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">新用户名</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" id="mailNew" name="mailNew">
+                      <input type="text" class="form-control" id="mailNew" name="usernameNew">
                     </div>
                   </div>
                   <div class="form-group">
@@ -197,11 +235,12 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button id="btn_mail" type="button" class="btn btn-primary">保存</button>
+                      <button id="btn_mail" type="button" class="btn btn-primary"  onclick="submitForm3()">保存</button>
                     </div>
                   </div>
               </div>
             </div>
+            </form>
           </div>
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -212,6 +251,7 @@
               </h4>
               <div class="panel-info">******</div>
             </div>
+            <form id="info4" action="infoUpdate.do?type=4" method = "post">
             <div id="collapseFour" class="panel-collapse collapse">
               <div class="panel-body form-horizontal">
                   <div class="form-group">
@@ -223,7 +263,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">新密码</label>
                     <div class="col-sm-4">
-                      <input type="password" class="form-control" id="passwdNew">
+                      <input type="password" class="form-control" id="passwordNew">
                     </div>
                   </div>
                   <div class="form-group">
@@ -234,11 +274,12 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button id="btn_passwd" type="button" class="btn btn-primary">保存</button>
+                      <button id="btn_passwd" type="button" class="btn btn-primary" onclick="submitForm4()">保存</button>
                     </div>
                   </div>
               </div>
             </div>
+            </form>
           </div>
          
           
@@ -280,45 +321,6 @@
     <script src="js/zhuye2.js"></script>
     
    
-   
-<script type="text/javascript">
-$('#btn_fd').click(function(){
-	var fd = $('#fd').val();
-	var fdlink = $('#fdlink').val();
-	fd = $.trim(fd);
-	fdlink = $.trim(fdlink);
-	if(fd == '' || fdlink == ''){
-		alert('请填写你的意见和联系方式！');
-		return false;
-	}
-	var d={};
-	d['fd']=fd;
-	d['fdlink']=fdlink;
-	$(this).html('提交中...');
-	$(this).attr("disabled", true);
-	$.ajax({
-		url : '/feedback/',
-		type : 'POST',
-		data : d,
-		cache: false,
-		dataType : 'json',
-		error : function() {
-			alert('系统故障，稍微重试！');
-			$('#btn_fd').attr("disabled", false);
-		},
-		success : function(data) {
-			if(data.error){
-				alert(data.desc);
-			}else{
-				alert('提交成功');
-			}
-			$('#btn_fd').html('提交');
-			$('#btn_fd').attr("disabled", false);
-			$('#btn_fd_cancel').trigger('click');
-		}
-	});
-});
-</script>
     
     
     

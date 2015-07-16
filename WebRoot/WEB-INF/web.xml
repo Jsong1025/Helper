@@ -16,6 +16,16 @@
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>servlet.LogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>InfoListServlet</servlet-name>
+    <servlet-class>servlet.InfoListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InfoUpdateServlet</servlet-name>
+    <servlet-class>servlet.InfoUpdateServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -30,6 +40,14 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InfoListServlet</servlet-name>
+    <url-pattern>/info.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InfoUpdateServlet</servlet-name>
+    <url-pattern>/infoUpdate.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

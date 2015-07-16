@@ -17,12 +17,15 @@ public class User {
 	private String tel;			//电话
 	private String QQ;			//QQ
 	private String email;		//e-mail
+	private String location;	//居住地
+	private String description;	//个人介绍
 	
 	/*
 	 * 有参构造方法
 	 * */
 	public User(int id, String username, String password, String name,
-			char sex, int age, String tel, String QQ, String email) {
+			char sex, int age, String tel, String qQ, String email,
+			String location, String description) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -30,8 +33,10 @@ public class User {
 		this.sex = sex;
 		this.age = age;
 		this.tel = tel;
-		this.QQ = QQ;
+		QQ = qQ;
 		this.email = email;
+		this.location = location;
+		this.description = description;
 	}
 	
 	/*
@@ -115,11 +120,29 @@ public class User {
 		this.email = email;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
-		return "User [QQ=" + QQ + ", age=" + age + ", email=" + email + ", id="
-				+ id + ", name=" + name + ", password=" + password + ", sex="
-				+ sex + ", tel=" + tel + ", username=" + username + "]";
+		return "User [QQ=" + QQ + ", age=" + age + ", description="
+				+ description + ", email=" + email + ", id=" + id
+				+ ", location=" + location + ", name=" + name + ", password="
+				+ password + ", sex=" + sex + ", tel=" + tel + ", username="
+				+ username + "]";
 	}
 	
 }

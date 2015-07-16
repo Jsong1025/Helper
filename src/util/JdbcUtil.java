@@ -3,6 +3,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JdbcUtil {
@@ -13,6 +14,7 @@ public class JdbcUtil {
 			System.out.println("类不存在");
 		}
 	}
+	
 	public static Connection getConnection() throws Exception{
 		Connection conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/helper","root","root");
 		return conn;
