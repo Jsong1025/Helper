@@ -24,7 +24,8 @@ public class RegistServlet extends HttpServlet {
 		if (dao.insertUser(email, password)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("email", email);
-			session.setAttribute("permision", 5);
+			session.setAttribute("permision", 5);	//初始权限值5
+			//消息弹框
 			session.setAttribute("message", "<script type='text/javascript'>alert('注册成功！');</script>");
 			response.sendRedirect("home.jsp");
 		} else {

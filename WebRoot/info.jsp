@@ -78,10 +78,10 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-              <li><a href="/collection/10000/" title="发布约会">发布约会</a></li>
-              <li><a href="/collection/10001/" title="搜索约会">搜索约会</a></li>
-              <li><a href="/collection/10002/" title="消息管理">消息管理</a></li>
-              <li><a href="/collection/10002/" title="个人资料">个人资料</a></li>
+              <li><a href="#" title="发布约会">发布约会</a></li>
+              <li><a href="#" title="搜索约会">搜索约会</a></li>
+              <li><a href="#" title="消息管理">消息管理</a></li>
+              <li><a href="info.do" title="个人资料">个人资料</a></li>
               <%
              	if(permision < 3){
              %>

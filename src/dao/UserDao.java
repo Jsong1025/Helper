@@ -3,16 +3,15 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import util.JdbcUtil;
 import vo.User;
 
 public class UserDao {
-	
+
 	public UserDao() {
 	}
-	
+
 	/**
 	 * 通过用户名查找密码
 	 * 
@@ -23,14 +22,14 @@ public class UserDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = JdbcUtil.getConnection();
 			String sql = "select username,password from t_user where email=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				String username = rs.getString("username");
 				String password = rs.getString("password");
@@ -41,7 +40,7 @@ public class UserDao {
 			}else {
 				return null;
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -53,14 +52,14 @@ public class UserDao {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 添加用户
 	 * */
 	public boolean insertUser(String email, String password) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			conn = JdbcUtil.getConnection();
 			String sql = "insert into t_user(email,password) value (?,?)";
@@ -69,7 +68,7 @@ public class UserDao {
 			pstmt.setString(2, password);
 			pstmt.executeUpdate();
 			return true;
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -79,10 +78,10 @@ public class UserDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 *  根据邮箱查询权限
 	 */
@@ -90,21 +89,21 @@ public class UserDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = JdbcUtil.getConnection();
 			String sql = "select permision from t_user,t_role where email=? and t_user.role=t_role.id;";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				return rs.getInt("permision");
 			}
 			else {
 				return 0;
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -116,7 +115,7 @@ public class UserDao {
 		}
 		return 0;
 	}
-	
+
 	/*
 	 * 根据email查询用户所有信息
 	 * */
@@ -124,14 +123,14 @@ public class UserDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = JdbcUtil.getConnection();
 			String sql = "select * from t_user where email=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				User user = new User();
 				user.setId(rs.getInt("id"));
@@ -149,7 +148,7 @@ public class UserDao {
 			}else {
 				return null;
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -161,14 +160,14 @@ public class UserDao {
 		}
 		return null;
 	}
-	
+
 	/*
 	 * 更新用户所有信息
 	 * */
 	public boolean updateInfoByEmail(User user){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			conn = JdbcUtil.getConnection();
 			String sql = "update t_user set username=?,password=?,name=?,age=?,sex=?,tel=?,QQ=?,location=?,description=? where email=?";
@@ -183,10 +182,10 @@ public class UserDao {
 			pstmt.setString(8, user.getLocation());
 			pstmt.setString(9, user.getDescription());
 			pstmt.setString(10, user.getEmail());
-			
+
 			pstmt.executeUpdate();
 			return true;
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -196,12 +195,11 @@ public class UserDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return false;
 	}
-	
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 	}
 
 }

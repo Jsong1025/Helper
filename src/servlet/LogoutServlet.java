@@ -18,6 +18,8 @@ public class LogoutServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
+		//移除session中内容
 		session.removeAttribute("username");
 		session.removeAttribute("email");
 		session.removeAttribute("permision");
