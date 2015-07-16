@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Helper"
+  id="myeclipse.1436603057582"
+  context-root="/Helper"
+  j2ee-spec="5.0"
+  archive="Helper.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
