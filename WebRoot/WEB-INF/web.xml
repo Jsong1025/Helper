@@ -32,6 +32,21 @@
     <servlet-name>ReleaseServlet</servlet-name>
     <servlet-class>servlet.ReleaseServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AppointmentListServlet</servlet-name>
+    <servlet-class>servlet.AppointmentListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>StoreAdminListServlet</servlet-name>
+    <servlet-class>servlet.StoreAdminListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MealAdminListServlet</servlet-name>
+    <servlet-class>servlet.MealAdminListServlet</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -66,6 +81,18 @@
   <servlet-mapping>
     <servlet-name>ReleaseServlet</servlet-name>
     <url-pattern>/doRelease.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentListServlet</servlet-name>
+    <url-pattern>/appointmentList.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StoreAdminListServlet</servlet-name>
+    <url-pattern>/storeAdminList.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MealAdminListServlet</servlet-name>
+    <url-pattern>/mealAdminList.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

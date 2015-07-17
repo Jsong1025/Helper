@@ -41,10 +41,11 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-              <li><a href="/collection/10000/" title="前往 发布约会">发布约会</a></li>
-              <li><a href="/collection/10001/" title="前往 搜索约会">搜索约会</a></li>
-              <li><a href="/collection/10002/" title="前往 消息管理">消息管理</a></li>
-              <li><a class="visible-md visible-lg" href="F:\项目文档\项目代码\html\网页\index基本资料.html" target="_blank" title="前往 个人设置">个人设置</a></li>
+              <li><a href="login.html" title="前往 发布约会">发布约会</a></li>
+              <li><a href="login.html" title="前往 约会管理">约会管理</a></li>
+              <li><a href="login.html" title="前往 搜索约会">搜索约会</a></li>
+              <li><a href="login.html" title="前往 消息管理">消息管理</a></li>
+              <li><a href="login.html" title="前往 个人设置">个人设置</a></li>
 <li>
 
 <form action="" method="get">

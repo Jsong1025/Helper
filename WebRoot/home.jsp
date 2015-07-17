@@ -70,13 +70,14 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
               <li><a href="release.do" title="前往 发布约会">发布约会</a></li>
+              <li><a href="appointmentList.do" title="前往 约会管理">约会管理</a></li>
               <li><a href="#" title="前往 搜索约会">搜索约会</a></li>
               <li><a href="#" title="前往 消息管理">消息管理</a></li>
               <li><a class="visible-md visible-lg" href="info.do" title="前往 个人设置">个人设置</a></li>
              <%
              	if(permision < 3){
              %>
-              <li><a href="#" title="前往 后台管理">后台管理</a></li>
+              <li><a href="default.html" title="前往 后台管理">后台管理</a></li>
               <% }%>
      
 <li>

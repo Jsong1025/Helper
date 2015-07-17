@@ -93,6 +93,54 @@ public class AppointmentDao {
 		return null;
 	}
 	
+	/*
+	 *	查找用户的所有约会 
+	 */
+	public ArrayList<Appointment> findAllByEmail(String email) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "select * from t_appointment,t_user where (t_appointment.user_id=t_user.id or t_appointment.other_user_id=t_user.id )and email=? ;";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+			while (rs.next()) {
+				Appointment appointment = new Appointment();
+				appointment.setId(Integer.parseInt(rs.getString("id")));
+				appointment.setStartTime(rs.getDate("start_time"));
+				appointment.setEndTime(rs.getDate("end_time"));
+				appointment.setCacel(rs.getString("is_cacel"));
+				appointment.setBreak(rs.getString("is_break"));
+				appointment.setUserId(rs.getInt("user_id"));
+				appointment.setOtherUserId(rs.getInt("other_user_id"));
+				appointment.setPayKey(rs.getString("pay_key"));
+				appointment.setTime(rs.getDate("time"));
+				appointment.setGender(rs.getInt("gender"));
+				appointment.setSubstance(rs.getString("substance"));
+				appointment.setDescription(rs.getString("description"));
+				appointment.setMealId(rs.getInt("meal_id"));
+				
+				appointments.add(appointment);
+			}
+			return appointments;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(rs, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		AppointmentDao dao = new AppointmentDao();
 		ArrayList<Appointment> appointments = dao.findAll();
