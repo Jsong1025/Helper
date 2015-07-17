@@ -113,6 +113,7 @@
 								<div id="lab_name" class="panel-info"></div>
 							</h4>
 						</div>
+						<form action="doRelease.do" method="post">
 						<div id="collapseOne" class="panel-collapse">
 							<div class="panel-body form-horizontal">
 								<div class="form-group">
@@ -135,12 +136,12 @@
 										性别要求
 									</label>
 									<div class="col-sm-7">
-										<input type=radio name=gender value="只限男生">
+										<input type=radio name="gender" value=1>
+										男女不限&nbsp
+										<input type=radio name="gender" value=2>
 										只限男生&nbsp
-										<input type=radio name=gender value="只限女生">
+										<input type=radio name="gender" value=3>
 										只限女生&nbsp
-										<input type=radio name=gender value="男女不限">
-										男女不限
 									</div>
 								</div>
 
@@ -150,7 +151,7 @@
 									</label>
 									<div class="col-sm-7">
 
-										<select>
+										<select name="store">
 											<%
 												for (int i = 0; i < stores.size(); i++) {
 											%>
@@ -160,7 +161,7 @@
 											<%} %>
 										</select>
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<select>
+										<select name="meal">
 											<%
 												for (int i = 0; i < meals.size(); i++) {
 											%>
@@ -178,7 +179,9 @@
 									</label>
 									<div class="col-sm-7">
 										<input type="date" name="time" value="">
+										格式如“2015-1-1”
 									</div>
+									
 								</div>
 
 								<div class="form-group">
@@ -200,6 +203,7 @@
 								</div>
 							</div>
 						</div>
+						</form>
 					</div>
 					<!-- 尾部导航（PC端）-->
 					<footer class="container clearfix   visible-md visible-lg">

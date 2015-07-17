@@ -182,6 +182,13 @@ public class Appointment {
 			this.substance.add(subs[i]);
 		}
 	}
+	
+	public void setSubstance(String[] substance) {
+		this.substance = new ArrayList<String>();
+		for (int i = 0; i < substance.length; i++) {
+			this.substance.add(substance[i]);
+		}
+	}
 
 	public String getDescription() {
 		return description;

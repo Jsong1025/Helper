@@ -20,18 +20,15 @@ public class AppointmentDao {
 		
 		try {
 			conn = JdbcUtil.getConnection();
-			String sql = "insert into t_appointment(start_time,end_time,user_id,other_user_id,pay_key,time,gender,substance,description,meal_id) value(?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into t_appointment(start_time,user_id,time,gender,substance,description,meal_id) value(?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setDate(1,new java.sql.Date(appoint.getStartTime().getTime()));
-			pstmt.setDate(2,new java.sql.Date(appoint.getEndTime().getTime()));
-			pstmt.setInt(3, appoint.getUserId());
-			pstmt.setInt(4, appoint.getOtherUserId());
-			pstmt.setString(5, appoint.getPayKey());
-			pstmt.setDate(6,new java.sql.Date(appoint.getTime().getTime()));
-			pstmt.setInt(7, appoint.getGender());
-			pstmt.setString(8, appoint.getSubstanceToString());
-			pstmt.setString(9, appoint.getDescription());
-			pstmt.setInt(10, appoint.getMealId());
+			pstmt.setInt(2, appoint.getUserId());
+			pstmt.setDate(3,new java.sql.Date(appoint.getTime().getTime()));
+			pstmt.setInt(4, appoint.getGender());
+			pstmt.setString(5, appoint.getSubstanceToString());
+			pstmt.setString(6, appoint.getDescription());
+			pstmt.setInt(7, appoint.getMealId());
 			
 			pstmt.executeUpdate();
 			return true;
