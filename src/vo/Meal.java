@@ -1,77 +1,83 @@
 package vo;
 
+import java.util.Date;
+
 public class Meal {
-	private int id;				//ID
-	private String name;        //�ײ���
-	private String start_time;	//���ʼʱ��
-	private String end_time;   //�����ʱ��
-	private int num;			//����
-	private String priferemential;			//��Ż�
-	private double price;			//�۸�
-	private int store_id;		//�̼Һ�
+	private int id;					//ID
+	private String name;        	//套餐名称
+	private Date startTime;			//开始时间
+	private Date endTime;    		//结束时间
+	private int num;				//数量
+	private String priferemential;	//优惠条件
+	private double price;			//价格
+	private int storeId;			//所属商家ID
 	
-	/*
-	 * 有参构�?方法
+	public Meal() {
+	}
+	
+
+	/* 
+	 * 有参构造方法
 	 * */
-	public Meal(int id, String name, String start_time, String end_time,
-			int num, String priferemential, double price, int store_id) {
+	public Meal(int id, String name, Date startTime, Date endTime, int num,
+			String priferemential, double price, int storeId) {
 		this.id = id;
 		this.name = name;
-		this.start_time = start_time;
-		this.end_time = end_time;
+		this.startTime = startTime;
+		this.endTime = endTime;
 		this.num = num;
 		this.priferemential = priferemential;
 		this.price = price;
-		this.store_id = store_id;
-		
-	}
-	
-	/*
-	 * 无参构�?方法
-	 * */
-	public Meal() {
+		this.storeId = storeId;
 	}
 
-	
-	/* geter() seter()方法 */
-	
+
 	public int getId() {
 		return id;
 	}
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
 	public String getName() {
 		return name;
 	}
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getStart_time() {
-		return start_time;
+
+	public Date getStartTime() {
+		return startTime;
 	}
 
-	public void setStart_time(String start_time) {
-		this.start_time = start_time;
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
-	public String getEnd_time() {
-		return end_time;
+
+	public Date getEndTime() {
+		return endTime;
 	}
 
-	public void setEnd_time(String end_time) {
-		this.end_time = end_time;
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
 	}
 
-	public int getnum() {
+
+	public int getNum() {
 		return num;
 	}
 
-	public void setnum(int num) {
+
+	public void setNum(int num) {
 		this.num = num;
 	}
 
@@ -80,30 +86,38 @@ public class Meal {
 		return priferemential;
 	}
 
+
 	public void setPriferemential(String priferemential) {
 		this.priferemential = priferemential;
 	}
+
 
 	public double getPrice() {
 		return price;
 	}
 
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	public int getStore_id() {
-		return store_id;
+
+	public int getStoreId() {
+		return storeId;
 	}
 
-	public void setStore_id(int store_id) {
-		this.store_id = store_id;
+
+	public void setStoreId(int storeId) {
+		this.storeId = storeId;
 	}
+
 
 	@Override
 	public String toString() {
-		return "User [ id="+ id + ", name=" + name + ", start_time=" + start_time+ ", end_time="
-				+ end_time + ", num=" + num + ", priferemential=" + priferemential + ", price=" + price + ",store_id=" + store_id + "]";
+		return "Meal [endTime=" + endTime + ", id=" + id + ", name=" + name
+				+ ", num=" + num + ", price=" + price + ", priferemential="
+				+ priferemential + ", startTime=" + startTime + ", storeId="
+				+ storeId + "]";
 	}
 	
 }

@@ -10,7 +10,7 @@ public class Appointment {
 	private boolean isBreak;	//违约标志
 	private int userId;   		//发起用户ID
 	private int otherUserId;   	//接受用户ID
-	private char payKey;   		//优惠码
+	private String payKey;   	//优惠码
 	private Date time;   		//时间
 	private int gender;			//性别要求   1.男女不限  2.只限男生 3.只限女生
 	private ArrayList<String> substance;	//约会内容
@@ -27,7 +27,7 @@ public class Appointment {
 	 * 有参数构造方法
 	 */
 	public Appointment(int id, Date startTime, Date endTime, boolean isCacel,
-			boolean isBreak, int userId, int otherUserId, char payKey,
+			boolean isBreak, int userId, int otherUserId, String payKey,
 			Date time, int gender, ArrayList<String> substance,
 			String description, int mealId) {
 		this.id = id;
@@ -76,6 +76,23 @@ public class Appointment {
 	public void setCacel(boolean isCacel) {
 		this.isCacel = isCacel;
 	}
+	
+	public void setCacel(String isCacel) {
+		char flag = isCacel.charAt(0);
+		if (flag == 'N') {
+			this.isCacel = false;
+		} else {
+			this.isCacel = true;
+		}
+	}
+	
+	public void setCacel(char isCacel) {
+		if (isCacel == 'N') {
+			this.isCacel = false;
+		} else {
+			this.isCacel = true;
+		}
+	}
 
 	public boolean isBreak() {
 		return isBreak;
@@ -83,6 +100,23 @@ public class Appointment {
 
 	public void setBreak(boolean isBreak) {
 		this.isBreak = isBreak;
+	}
+	
+	public void setBreak(String isBreak) {
+		char flag = isBreak.charAt(0);
+		if (flag == 'N') {
+			this.isBreak = false;
+		} else {
+			this.isBreak = true;
+		}
+	}
+	
+	public void setBreak(char isBreak) {
+		if (isBreak == 'N') {
+			this.isBreak = false;
+		} else {
+			this.isBreak = true;
+		}
 	}
 
 	public int getUserId() {
@@ -101,11 +135,11 @@ public class Appointment {
 		this.otherUserId = otherUserId;
 	}
 
-	public char getPayKey() {
+	public String getPayKey() {
 		return payKey;
 	}
 
-	public void setPayKey(char payKey) {
+	public void setPayKey(String payKey) {
 		this.payKey = payKey;
 	}
 

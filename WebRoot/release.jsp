@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿<%@ page language="java" import="java.util.*,vo.*" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
@@ -10,9 +10,14 @@
 		<link rel="stylesheet" href="css/info.css" media="screen">
 		<link rel="stylesheet" href="css/info2.css" media="screen">
 
-		<%
+	<%!
     	int permision = 5;
     	String username = "";
+    %>
+    <%
+    	ArrayList<Store> stores = (ArrayList<Store>)request.getAttribute("stores");
+    	ArrayList<Meal> meals = (ArrayList<Meal>)request.getAttribute("meals");
+    
     	if(session != null ){
     		// 获取用户名
     		if(session.getAttribute("username") != null){
@@ -146,21 +151,23 @@
 									<div class="col-sm-7">
 
 										<select>
-											<option value="套餐一">
-												商家一
+											<%
+												for (int i = 0; i < stores.size(); i++) {
+											%>
+											<option value="<%= stores.get(i).getId() %>">
+												<%= stores.get(i).getName() %>
 											</option>
-											<option value="套餐二">
-												商家二
-											</option>
+											<%} %>
 										</select>
 										&nbsp;&nbsp;&nbsp;&nbsp;
 										<select>
-											<option value="套餐一">
-												套餐一
+											<%
+												for (int i = 0; i < meals.size(); i++) {
+											%>
+											<option value="<%= meals.get(i).getId() %>">
+												<%= meals.get(i).getName() %>
 											</option>
-											<option value="套餐二">
-												套餐二
-											</option>
+											<%} %>
 										</select>
 									</div>
 								</div>

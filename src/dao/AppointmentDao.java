@@ -20,15 +20,18 @@ public class AppointmentDao {
 		
 		try {
 			conn = JdbcUtil.getConnection();
-			String sql = "insert into t_appointment(start_time,user_id,time,gender,substance,description,meal_id) value(?,?,?,?,?,?,?)";
+			String sql = "insert into t_appointment(start_time,end_time,user_id,other_user_id,pay_key,time,gender,substance,description,meal_id) value(?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setDate(1,new java.sql.Date(appoint.getStartTime().getTime()));
-			pstmt.setInt(2, appoint.getUserId());
-			pstmt.setDate(3,new java.sql.Date(appoint.getTime().getTime()));
-			pstmt.setInt(4, appoint.getGender());
-			pstmt.setString(5, appoint.getSubstanceToString());
-			pstmt.setString(6, appoint.getDescription());
-			pstmt.setInt(7, appoint.getMealId());
+			pstmt.setDate(2,new java.sql.Date(appoint.getEndTime().getTime()));
+			pstmt.setInt(3, appoint.getUserId());
+			pstmt.setInt(4, appoint.getOtherUserId());
+			pstmt.setString(5, appoint.getPayKey());
+			pstmt.setDate(6,new java.sql.Date(appoint.getTime().getTime()));
+			pstmt.setInt(7, appoint.getGender());
+			pstmt.setString(8, appoint.getSubstanceToString());
+			pstmt.setString(9, appoint.getDescription());
+			pstmt.setInt(10, appoint.getMealId());
 			
 			pstmt.executeUpdate();
 			return true;
@@ -47,7 +50,7 @@ public class AppointmentDao {
 	}
 	
 	/**
-	 * 查询约会
+	 * 查询所有约会
 	 * */
 	public ArrayList<Appointment> findAll() {
 		Connection conn = null;
@@ -62,6 +65,19 @@ public class AppointmentDao {
 			ArrayList<Appointment> appointments = new ArrayList<Appointment>();
 			while (rs.next()) {
 				Appointment appointment = new Appointment();
+				appointment.setId(Integer.parseInt(rs.getString("id")));
+				appointment.setStartTime(rs.getDate("start_time"));
+				appointment.setEndTime(rs.getDate("end_time"));
+				appointment.setCacel(rs.getString("is_cacel"));
+				appointment.setBreak(rs.getString("is_break"));
+				appointment.setUserId(rs.getInt("user_id"));
+				appointment.setOtherUserId(rs.getInt("other_user_id"));
+				appointment.setPayKey(rs.getString("pay_key"));
+				appointment.setTime(rs.getDate("time"));
+				appointment.setGender(rs.getInt("gender"));
+				appointment.setSubstance(rs.getString("substance"));
+				appointment.setDescription(rs.getString("description"));
+				appointment.setMealId(rs.getInt("meal_id"));
 				
 				appointments.add(appointment);
 			}
@@ -81,8 +97,15 @@ public class AppointmentDao {
 	}
 	
 	public static void main(String[] args) {
+		AppointmentDao dao = new AppointmentDao();
+		ArrayList<Appointment> appointments = dao.findAll();
+		System.out.println(appointments);
 		
+		Appointment newApp = appointments.get(0);
+		dao.insertAppointment(newApp);
+		
+		appointments = dao.findAll();
+		System.out.println(appointments);
 	}
-	
 	
 }

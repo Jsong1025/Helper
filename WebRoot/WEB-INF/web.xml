@@ -24,6 +24,11 @@
     <servlet-name>InfoUpdateServlet</servlet-name>
     <servlet-class>servlet.InfoUpdateServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ReleaseShowServlet</servlet-name>
+    <servlet-class>servlet.ReleaseShowServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -48,6 +53,10 @@
   <servlet-mapping>
     <servlet-name>InfoUpdateServlet</servlet-name>
     <url-pattern>/infoUpdate.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ReleaseShowServlet</servlet-name>
+    <url-pattern>/release.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
