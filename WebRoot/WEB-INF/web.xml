@@ -44,6 +44,11 @@
     <servlet-name>MealAdminListServlet</servlet-name>
     <servlet-class>servlet.MealAdminListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserAdminListServlet</servlet-name>
+    <servlet-class>servlet.UserAdminListServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -93,6 +98,10 @@
   <servlet-mapping>
     <servlet-name>MealAdminListServlet</servlet-name>
     <url-pattern>/mealAdminList.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserAdminListServlet</servlet-name>
+    <url-pattern>/userAdminList.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

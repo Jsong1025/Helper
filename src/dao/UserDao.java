@@ -3,6 +3,8 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import util.JdbcUtil;
 import vo.User;
@@ -11,12 +13,51 @@ public class UserDao {
 
 	public UserDao() {
 	}
+	
+	public ArrayList<User> findAll() {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "select * from t_user";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			ArrayList<User> users = new ArrayList<User>();
+			while (rs.next()) {
+				User user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				user.setName(rs.getString("name"));
+				user.setSex(rs.getString("sex").charAt(0));
+				user.setAge(rs.getInt("age"));
+				user.setTel(rs.getString("tel"));
+				user.setQQ(rs.getString("QQ"));
+				user.setEmail(rs.getString("email"));
+				user.setLocation(rs.getString("location"));
+				user.setDescription(rs.getString("description"));
+				
+				users.add(user);
+			}
+			return users;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(rs, stmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
 
 	/**
 	 * 通过用户名查找密码
-	 * 
-	 * @param username
-	 * @return
 	 */
 	public User findPasswordByUserName(String email) {
 		Connection conn = null;

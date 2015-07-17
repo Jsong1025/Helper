@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50024
 File Encoding         : 65001
 
-Date: 2015-07-17 11:41:07
+Date: 2015-07-17 17:42:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,8 +45,9 @@ CREATE TABLE `t_appointment` (
 -- Records of t_appointment
 -- ----------------------------
 INSERT INTO t_appointment VALUES ('1', '2015-07-08', '2015-07-14', 'N', 'N', '1', '3', '123', '2015-07-14', '1', '吃饭，运动', null, '1');
-INSERT INTO t_appointment VALUES ('2', '2015-07-16', '2015-07-29', 'N', 'N', '2', '2', '789', '2015-07-17', '2', '看电影', null, '2');
+INSERT INTO t_appointment VALUES ('2', '2015-07-16', '2015-07-29', 'N', 'N', '2', '1', '789', '2015-07-17', '2', '看电影', null, '2');
 INSERT INTO t_appointment VALUES ('5', '2015-07-17', null, 'N', 'N', '1', null, null, '2015-04-01', '1', '吃饭,看电影,', '', '1');
+INSERT INTO t_appointment VALUES ('6', '2015-07-17', null, 'N', 'N', '1', null, null, '2015-05-01', '1', '吃饭,', 'ihd ', '1');
 
 -- ----------------------------
 -- Table structure for `t_meal`
