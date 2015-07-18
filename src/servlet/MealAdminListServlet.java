@@ -23,7 +23,7 @@ public class MealAdminListServlet extends HttpServlet {
 		ArrayList<Meal> meals = dao.finAll();
 		
 		request.setAttribute("meals", meals);
-		request.getRequestDispatcher("mealAdmin.jsp").forward(request, response);
+		request.getRequestDispatcher("mealAdminList.jsp").forward(request, response);
 	}
 
 }

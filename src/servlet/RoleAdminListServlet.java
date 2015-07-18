@@ -24,7 +24,7 @@ public class RoleAdminListServlet extends HttpServlet {
 		ArrayList<Role> roles = dao.findAll();
 		
 		request.setAttribute("roles", roles);
-		request.getRequestDispatcher("roleAdmin.jsp").forward(request, response);
+		request.getRequestDispatcher("roleAdminList.jsp").forward(request, response);
 	}
 
 }

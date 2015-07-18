@@ -23,6 +23,6 @@ public class UserAdminListServlet extends HttpServlet {
 		ArrayList<User> users = dao.findAll();
 		
 		request.setAttribute("users", users);
-		request.getRequestDispatcher("userAdmin.jsp").forward(request, response);
+		request.getRequestDispatcher("userAdminList.jsp").forward(request, response);
 	}
 }

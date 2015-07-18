@@ -23,6 +23,6 @@ public class StoreAdminListServlet extends HttpServlet {
 		ArrayList<Store> stores = dao.finAll();
 		
 		request.setAttribute("stores", stores);
-		request.getRequestDispatcher("storeAdmin.jsp").forward(request, response);
+		request.getRequestDispatcher("storeAdminList.jsp").forward(request, response);
 	}
 }

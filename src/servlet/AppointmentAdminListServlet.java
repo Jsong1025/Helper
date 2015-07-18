@@ -25,7 +25,7 @@ public class AppointmentAdminListServlet extends HttpServlet {
 		ArrayList<Appointment> appointments = dao.findAll();
 		
 		request.setAttribute("appointments", appointments);
-		request.getRequestDispatcher("appointmentAdmin.jsp").forward(request, response);
+		request.getRequestDispatcher("appointmentAdminList.jsp").forward(request, response);
 		
 	}
 
