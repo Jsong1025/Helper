@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿<%@ page language="java" import="java.util.*,vo.Appointment" pageEncoding="utf-8"%>
+<!DOCTYPE HTML>
 <html>
  <head>
   <title>商家信息
@@ -22,7 +23,9 @@
  </head>
  <body>
  <div class="header">
-    
+    <%
+   		ArrayList<Appointment> appointments = (ArrayList<Appointment>)request.getAttribute("appointments");
+    %>
       <div class="dl-title">
         <a href="http://sc.chinaz.com" title="文档库地址" target="_blank">
         </a>
@@ -35,13 +38,13 @@
     <div class="dl-main-nav">
       <div class="dl-inform"><div class="dl-inform-title"><s class="dl-inform-icon dl-up"></s></div></div>
       <ul id="J_Nav"  class="nav-list ks-clear">
-       <li class="nav-item dl-selected"><div class="nav-item-inner nav-home"><a href="index.html">首页</a></div></li>
-       <li class="nav-item"><div class="nav-item-inner nav-order"><a href="dialog-grid.html">商家</a></div></li>
-    <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="dialog-grid2.html">产品</a></div></li>
-      <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="dialog-grid3.html">约会</a></div></li>
-         <li class="nav-item"><div class="nav-item-inner nav-supplier"><a href="dialog-grid4.html">用户</a></div></li>
-		 <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="dialog-grid5.html">角色</a></div></li>
-	 <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="dialog-grid6.html">统计</a></div></li>
+       <li class="nav-item dl-selected"><div class="nav-item-inner nav-home"><a href="default.html">首页</a></div></li>
+       <li class="nav-item"><div class="nav-item-inner nav-order"><a href="storeAdminList.do">商家</a></div></li>
+    <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="mealAdminList.do">产品</a></div></li>
+      <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="appointmentAdminList.do">约会</a></div></li>
+         <li class="nav-item"><div class="nav-item-inner nav-supplier"><a href="userAdminList.do">用户</a></div></li>
+		 <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="roleAdminList.do">角色</a></div></li>
+	 <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="#">统计</a></div></li>
       </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
@@ -203,8 +206,25 @@
 	  
 	  //默认的数据
       data = [
-        {id:'1',StartTime:'星巴克',EndTime:'河北大街',CancelMark: '123456789',DefaultSign:'咖啡',UserID:'小资生活',TargetUserID:'星巴克',DatingCode:'河北大街',DatingTime:'河北大街',DatingType: '123456789',DatingContent:'咖啡',DatingDescription:'小资生活',SetMeatID:'小资生活'},
-        {id:'2',StartTime:'星巴克',EndTime:'河北大街',CancelMark: '123456789',DefaultSign:'咖啡',UserID:'小资生活',TargetUserID:'星巴克',DatingCode:'河北大街',DatingTime:'河北大街',DatingType: '123456789',DatingContent:'咖啡',DatingDescription:'小资生活',SetMeatID:'小资生活'}
+		<%
+			for (int i = 0; i < appointments.size(); i++) {
+		%>      
+        {
+            id:'<%= appointments.get(i).getId() %>',
+            StartTime:'<%= appointments.get(i).getStartTime() %>',
+            EndTime:'<%= appointments.get(i).getEndTime() %>',
+            CancelMark: '',
+            DefaultSign:'',
+            UserID:'<%= appointments.get(i).getUserId() %>',
+            TargetUserID:'<%= appointments.get(i).getOtherUserId() %>',
+            DatingCode:'<%= appointments.get(i).getPayKey() %>',
+            DatingTime:'<%= appointments.get(i).getTime() %>',
+            DatingType: '<%= appointments.get(i).getGender() %>',
+            DatingContent:'<%= appointments.get(i).getSubstanceToString() %>',
+            DatingDescription:'<%= appointments.get(i).getDescription() %>',
+            SetMeatID:'<%= appointments.get(i).getMealId() %>'
+         },
+        <%}%>
       ],
       store = new Data.Store({
         data:data

@@ -3,15 +3,18 @@ package vo;
 public class Role {
 	
 	private int id;				//ID
-	private String name;	  //����Ա����
-	private int permision ;	  //Ȩ��ֵ
+	private String name;	  	//角色名
+	private int permision ;	  	//权限码
+	
+	public Role() {
+	}
 	
 	public Role (int id , String name,	int permision)
 	{
 				this.id=id;
 				this.name=name;
 				this.permision=permision;
-			}
+	}
 
 	public int getId() {
 		return id;

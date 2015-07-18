@@ -48,6 +48,16 @@
     <servlet-name>UserAdminListServlet</servlet-name>
     <servlet-class>servlet.UserAdminListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>RoleAdminListServlet</servlet-name>
+    <servlet-class>servlet.RoleAdminListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AppointmentAdminListServlet</servlet-name>
+    <servlet-class>servlet.AppointmentAdminListServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -102,6 +112,14 @@
   <servlet-mapping>
     <servlet-name>UserAdminListServlet</servlet-name>
     <url-pattern>/userAdminList.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoleAdminListServlet</servlet-name>
+    <url-pattern>/roleAdminList.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentAdminListServlet</servlet-name>
+    <url-pattern>/appointmentAdminList.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

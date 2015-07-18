@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿<%@ page language="java" import="java.util.*,vo.User" pageEncoding="utf-8"%>
+<!DOCTYPE HTML>
 <html>
  <head>
   <title>用户页面</title>
@@ -21,7 +22,9 @@
  </head>
  <body>
    <div class="header">
-    
+    <%
+   		ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
+    %>
       <div class="dl-title">
         <a href="http://sc.chinaz.com" title="文档库地址" target="_blank">
         </a>
@@ -34,13 +37,13 @@
     <div class="dl-main-nav">
       <div class="dl-inform"><div class="dl-inform-title">贴心小秘书<s class="dl-inform-icon dl-up"></s></div></div>
       <ul id="J_Nav"  class="nav-list ks-clear">
-       <li class="nav-item dl-selected"><div class="nav-item-inner nav-home"><a href="index.html">首页</a></div></li>
-       <li class="nav-item"><div class="nav-item-inner nav-order"><a href="dialog-grid.html">商家</a></div></li>
-    <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="dialog-grid2.html">产品</a></div></li>
-      <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="dialog-grid3.html">约会</a></div></li>
-         <li class="nav-item"><div class="nav-item-inner nav-supplier"><a href="dialog-grid4.html">用户</a></div></li>
-		 <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="dialog-grid5.html">角色</a></div></li>
-	 <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="dialog-grid6.html">统计</a></div></li>
+       <li class="nav-item dl-selected"><div class="nav-item-inner nav-home"><a href="default.html">首页</a></div></li>
+       <li class="nav-item"><div class="nav-item-inner nav-order"><a href="storeAdminList.do">商家</a></div></li>
+    <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="mealAdminList.do">产品</a></div></li>
+      <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="appointmentAdminList.do">约会</a></div></li>
+         <li class="nav-item"><div class="nav-item-inner nav-supplier"><a href="userAdminList.do">用户</a></div></li>
+		 <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="roleAdminList.do">角色</a></div></li>
+	 <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="#">统计</a></div></li>
       </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
@@ -167,8 +170,21 @@
           ],
       //默认的数据
       data = [
-        {id:'1',UserName:'500',UserPassword:'23555',Name: '',UserSex:'女',UserAge:'26'},
-        {id:'2',UserName:'500',UserPassword:'23555',Name: '',UserSex:'女',UserAge:'26'}
+		<%
+			for (int i = 0; i < users.size(); i++) {
+		%>
+        {
+            id:'<%= users.get(i).getId() %>',
+            UserName:'<%= users.get(i).getUsername() %>',
+            UserPassword:'<%= users.get(i).getPassword() %>',
+            Name: '<%= users.get(i).getName() %>',
+            UserSex:'<%= users.get(i).getSex() %>',
+            UserAge:'<%= users.get(i).getAge() %>',
+            UserTel:'<%= users.get(i).getTel() %>',
+            UserQQ:'<%= users.get(i).getQQ() %>',
+            UserEmail:'<%= users.get(i).getEmail() %>'
+         },
+        <% } %>
       ],
       store = new Data.Store({
         data:data
