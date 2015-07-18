@@ -69,9 +69,6 @@
       <button id="btnSave" class="button button-primary">提交</button>
     </p>
   
-   
- 
-      
       </div>
     </div>
     <div id="content" class="hide">
