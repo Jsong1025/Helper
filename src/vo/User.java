@@ -20,12 +20,16 @@ public class User {
 	private String location;	//居住地
 	private String description;	//个人介绍
 	
+	private int roleId;			//角色ID
+	private String role;		//角色名
+	
 	/*
 	 * 有参构造方法
 	 * */
 	public User(int id, String username, String password, String name,
 			char sex, int age, String tel, String qQ, String email,
-			String location, String description) {
+			String location, String description, int roleId, String role) {
+		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -37,6 +41,8 @@ public class User {
 		this.email = email;
 		this.location = location;
 		this.description = description;
+		this.roleId = roleId;
+		this.role = role;
 	}
 	
 	/*
@@ -48,6 +54,7 @@ public class User {
 	
 	/* geter() seter()方法 */
 	
+
 	public int getId() {
 		return id;
 	}
@@ -135,14 +142,30 @@ public class User {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {
-		return "User [QQ=" + QQ + ", age=" + age + ", description="
-				+ description + ", email=" + email + ", id=" + id
-				+ ", location=" + location + ", name=" + name + ", password="
-				+ password + ", sex=" + sex + ", tel=" + tel + ", username="
-				+ username + "]";
+		return "User [id=" + id + ", username=" + username + ", password="
+				+ password + ", name=" + name + ", sex=" + sex + ", age=" + age
+				+ ", tel=" + tel + ", QQ=" + QQ + ", email=" + email
+				+ ", location=" + location + ", description=" + description
+				+ ", roleId=" + roleId + ", role=" + role + "]";
 	}
 	
 }

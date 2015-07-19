@@ -2,8 +2,7 @@
 <!DOCTYPE HTML>
 <html>
  <head>
-  <title>商家信息
- </title>
+  <title>用户信息</title>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/dpl-min.css" rel="stylesheet" type="text/css" />
    <link href="css/main-min.css" rel="stylesheet" type="text/css" />
@@ -76,8 +75,8 @@
 										<th>电话</th>
 										<th>邮箱</th>
 										<th>QQ</th>
-										<th>自我介绍</th>
 										<th>居住地</th>
+										<th>角色</th>
 										<th>操作</th>
 									</tr>
 								</thead>
@@ -93,11 +92,11 @@
 										<td><%= users.get(i).getTel() %></td>
 										<td><%= users.get(i).getEmail() %></td>
 										<td><%= users.get(i).getQQ() %></td>
-										<td><%= users.get(i).getDescription() %></td>
 										<td><%= users.get(i).getLocation() %></td>
+										<td><%= users.get(i).getRole() %></td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="">修改</button> 
-											<button class="btn-min" type="button" onclick="">删除</button>
+											<button class="btn-min" type="button" onclick="window.location.href='userUpdateShow.do?id=<%= users.get(i).getId() %>'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='userDelete.do?id=<%= users.get(i).getId() %>'">删除</button>
 										</td>
 									</tr>   
 									<%} %>
@@ -105,6 +104,7 @@
 							</table>
                         </div>
                     </div>
+                    <button class="btn-min" type="button" onclick="window.location.href='userAddShow.do'">添加新的用户</button> 
                     <!-- /block -->
                 </div>
 			</div>

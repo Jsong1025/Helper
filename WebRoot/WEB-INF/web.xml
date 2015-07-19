@@ -72,6 +72,31 @@
     <servlet-name>StoreUpdateServlet</servlet-name>
     <servlet-class>servlet.StoreUpdateServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserAddShowServlet</servlet-name>
+    <servlet-class>servlet.UserAddShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserAddServlet</servlet-name>
+    <servlet-class>servlet.UserAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserUpdateShowServlet</servlet-name>
+    <servlet-class>servlet.UserUpdateShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserUpdateServlet</servlet-name>
+    <servlet-class>servlet.UserUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserDeleteServlet</servlet-name>
+    <servlet-class>servlet.UserDeleteServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
 
@@ -156,6 +181,26 @@
   <servlet-mapping>
     <servlet-name>StoreUpdateServlet</servlet-name>
     <url-pattern>/storeUpdate.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserAddShowServlet</servlet-name>
+    <url-pattern>/userAddShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserAddServlet</servlet-name>
+    <url-pattern>/userAdd.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserUpdateShowServlet</servlet-name>
+    <url-pattern>/userUpdateShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserUpdateServlet</servlet-name>
+    <url-pattern>/userUpdate.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserDeleteServlet</servlet-name>
+    <url-pattern>/userDelete.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

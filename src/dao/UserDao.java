@@ -14,6 +14,9 @@ public class UserDao {
 	public UserDao() {
 	}
 	
+	/*
+	 * 查找所有用户
+	 */
 	public ArrayList<User> findAll() {
 		Connection conn = null;
 		Statement stmt = null;
@@ -21,7 +24,7 @@ public class UserDao {
 		
 		try {
 			conn = JdbcUtil.getConnection();
-			String sql = "select * from t_user";
+			String sql = "SELECT * FROM t_user ,t_role WHERE role=t_role.id;";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			ArrayList<User> users = new ArrayList<User>();
@@ -38,6 +41,8 @@ public class UserDao {
 				user.setEmail(rs.getString("email"));
 				user.setLocation(rs.getString("location"));
 				user.setDescription(rs.getString("description"));
+				user.setRoleId(rs.getInt("t_role.id"));
+				user.setRole(rs.getString("t_role.name"));
 				
 				users.add(user);
 			}
@@ -122,6 +127,42 @@ public class UserDao {
 
 		return false;
 	}
+	
+	public boolean insertUser(User user) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "insert into t_user(username,password,email,name,sex,age,tel,QQ,location,description,role) value (?,?,?,?,?,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUsername());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setString(3, user.getEmail());
+			pstmt.setString(4, user.getName());
+			pstmt.setString(5, Character.toString(user.getSex()));
+			pstmt.setInt(6, user.getAge());
+			pstmt.setString(7, user.getTel());
+			pstmt.setString(8, user.getQQ());
+			pstmt.setString(9, user.getLocation());
+			pstmt.setString(10, user.getDescription());
+			pstmt.setInt(11, user.getRoleId());
+			
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
 
 	/**
 	 *  根据邮箱查询权限
@@ -201,10 +242,95 @@ public class UserDao {
 		}
 		return null;
 	}
+	
+	/*
+	 * 根据ID查找指定用户
+	 */
+	public User findUserById(int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "SELECT * FROM t_user ,t_role WHERE role=t_role.id and t_user.id=?;";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				User user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				user.setName(rs.getString("name"));
+				user.setSex(rs.getString("sex").charAt(0));
+				user.setAge(rs.getInt("age"));
+				user.setTel(rs.getString("tel"));
+				user.setQQ(rs.getString("QQ"));
+				user.setEmail(rs.getString("email"));
+				user.setLocation(rs.getString("location"));
+				user.setDescription(rs.getString("description"));
+				user.setRoleId(rs.getInt("t_role.id"));
+				user.setRole(rs.getString("t_role.name"));
+				return user;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(rs, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
 
 	/*
-	 * 更新用户所有信息
+	 * 更新用户所有信息,通过ID查询
 	 * */
+	public boolean updateUser(User user){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "update t_user set username=?,password=?,name=?,age=?,sex=?,tel=?,QQ=?,location=?,description=?, role=? where id=?;";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUsername());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setString(3, user.getName());
+			pstmt.setInt(4, user.getAge());
+			pstmt.setString(5, Character.toString(user.getSex()));
+			pstmt.setString(6, user.getTel());
+			pstmt.setString(7, user.getQQ());
+			pstmt.setString(8, user.getLocation());
+			pstmt.setString(9, user.getDescription());
+			pstmt.setInt(10, user.getRoleId());
+			pstmt.setInt(11, user.getId());
+
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return false;
+	}
+	
+	/*
+	 * 更新用户所有信息,通过邮箱查询
+	 */
 	public boolean updateInfoByEmail(User user){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -237,6 +363,34 @@ public class UserDao {
 			}
 		}
 
+		return false;
+	}
+	
+	/*
+	 * 根据ID删除用户
+	 */
+	public boolean deleteUser(int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "delete from t_user where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return false;
 	}
 
