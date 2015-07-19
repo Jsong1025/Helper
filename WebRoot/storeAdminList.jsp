@@ -88,8 +88,8 @@
 										<td><%= stores.get(i).getType() %></td>
 										<td><%= stores.get(i).getIntroduce() %></td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="#">修改</button> 
-											<button class="btn-min" type="button" onclick="#">删除</button>
+											<button class="btn-min" type="button" onclick="window.location.href='storeInfoShow.do?id=<%= stores.get(i).getId() %>'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='storeDelete.do?id=<%= stores.get(i).getId() %>'">删除</button>
 										</td>
 									</tr>   
 									<%} %>
@@ -98,6 +98,7 @@
                         </div>
                     </div>
                     <!-- /block -->
+                    <button class="btn-min" type="button" onclick="window.location.href='storeAdd.jsp'">添加新的商家</button> 
                 </div>
 			</div>
 

@@ -88,8 +88,8 @@
 										<td>123</td>
 										<td>123</td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="#">修改</button> 
-											<button class="btn-min" type="button" onclick="#">删除</button>
+											<button class="btn-min" type="button" onclick="">修改</button> 
+											<button class="btn-min" type="button" onclick="">删除</button>
 										</td>
 									</tr>   
 									<% } %>

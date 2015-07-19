@@ -96,8 +96,8 @@
 										<td><%= users.get(i).getDescription() %></td>
 										<td><%= users.get(i).getLocation() %></td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="#">修改</button> 
-											<button class="btn-min" type="button" onclick="#">删除</button>
+											<button class="btn-min" type="button" onclick="">修改</button> 
+											<button class="btn-min" type="button" onclick="">删除</button>
 										</td>
 									</tr>   
 									<%} %>

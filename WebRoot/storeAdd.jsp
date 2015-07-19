@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿<%@ page language="java" import="java.util.*,vo.*" pageEncoding="utf-8"%>
+<!DOCTYPE HTML>
 <html>
  <head>
   <title>商家信息
@@ -49,9 +50,6 @@
 
     </ul>
    </div>
- 
-</div>
-
 
 	<div class="container">
 		
@@ -80,13 +78,13 @@
 
 							<div class="tab-content">
 								<div class="tab-pane active" id="1">
-								<form id="edit-profile" class="form-horizontal" />
+								<form id="edit-profile" class="form-horizontal" action="storeAdd.do" method="post">
 									<fieldset>
 										
 										<div class="control-group">											
 											<label class="control-label" for="name">商家名称</label>
 											<div class="controls">
-												<input type="text" class="input-medium" id="name" value=""/>
+												<input type="text" class="input-medium" name="name" id="name" value=""/>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -94,7 +92,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="address">商家地址</label>
 											<div class="controls">
-												<input type="text" class="input-large" id="address" value="" />
+												<input type="text" class="input-large" name="address" id="address" value="" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -102,7 +100,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="tel">联系方式</label>
 											<div class="controls">
-												<input type="text" class="input-medium" id="tel" value="" />
+												<input type="text" class="input-medium" name="tel" id="tel" value="" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -110,14 +108,14 @@
 										<div class="control-group">											
 											<label class="control-label" for="type">商家类型</label>
 											<div class="controls">
-												<input type="text" class="input-medium" id="type" value="" />
+												<input type="text" class="input-medium" name="type" id="type" value="" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										<div class="control-group">											
 											<label class="control-label" for="introduce">基本介绍</label>
 											<div class="controls">
-												<input type="text" class="input-large"  id="introduce" value="" />
+												<input type="text" class="input-large" name="introduce"  id="introduce" value="" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 											
@@ -130,7 +128,7 @@
 									</fieldset>
 								</form>
 								</div>
-								
+								</div></div></div>
 							</div> <!-- /widget-content -->
 							
 						</div> <!-- /widget -->
