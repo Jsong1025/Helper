@@ -9,13 +9,17 @@ public class Appointment {
 	private boolean isCacel;	//取消标志
 	private boolean isBreak;	//违约标志
 	private int userId;   		//发起用户ID
+	private String userName;	//发起用户名
 	private int otherUserId;   	//接受用户ID
+	private String otherUserName; //接受用户名
 	private String payKey;   	//优惠码
 	private Date time;   		//时间
 	private int gender;			//性别要求   1.男女不限  2.只限男生 3.只限女生
 	private ArrayList<String> substance;	//约会内容
 	private String description;	//详细说明
 	private int mealId;			//套餐ID
+	private String meal;		//套餐名称
+	private boolean examine;	//审核标志
 	
 	/*
 	 * 无参构造方法
@@ -27,22 +31,28 @@ public class Appointment {
 	 * 有参数构造方法
 	 */
 	public Appointment(int id, Date startTime, Date endTime, boolean isCacel,
-			boolean isBreak, int userId, int otherUserId, String payKey,
-			Date time, int gender, ArrayList<String> substance,
-			String description, int mealId) {
+			boolean isBreak, int userId, String userName, int otherUserId,
+			String otherUserName, String payKey, Date time, int gender,
+			ArrayList<String> substance, String description, int mealId,
+			String meal, boolean examine) {
+		super();
 		this.id = id;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.isCacel = isCacel;
 		this.isBreak = isBreak;
 		this.userId = userId;
+		this.userName = userName;
 		this.otherUserId = otherUserId;
+		this.otherUserName = otherUserName;
 		this.payKey = payKey;
 		this.time = time;
 		this.gender = gender;
 		this.substance = substance;
 		this.description = description;
 		this.mealId = mealId;
+		this.meal = meal;
+		this.examine = examine;
 	}
 
 	public int getId() {
@@ -67,6 +77,14 @@ public class Appointment {
 
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
+	}
+	
+	public char isCacelChar() {
+		if (isCacel) {
+			return 'Y';
+		}else {
+			return 'N';
+		}
 	}
 
 	public boolean isCacel() {
@@ -96,6 +114,14 @@ public class Appointment {
 
 	public boolean isBreak() {
 		return isBreak;
+	}
+	
+	public char isBreakChar() {
+		if (isBreak) {
+			return 'Y';
+		}else {
+			return 'N';
+		}
 	}
 
 	public void setBreak(boolean isBreak) {
@@ -133,6 +159,47 @@ public class Appointment {
 
 	public void setOtherUserId(int otherUserId) {
 		this.otherUserId = otherUserId;
+	}
+
+	public String getMeal() {
+		return meal;
+	}
+
+	public void setMeal(String meal) {
+		this.meal = meal;
+	}
+
+	public boolean isExamine() {
+		return examine;
+	}
+	
+	public char isExamineChar() {
+		if (examine) {
+			return 'Y';
+		} else {
+			return 'N';
+		}
+	}
+
+	public void setExamine(boolean examine) {
+		this.examine = examine;
+	}
+	
+	public void setExamine(char examine) {
+		if (examine == 'N') {
+			this.examine = false;
+		} else {
+			this.examine = true;
+		}
+	}
+	
+	public void setExamine(String examine) {
+		char isExamine = examine.charAt(0);
+		if (isExamine == 'N') {
+			this.examine = false;
+		} else {
+			this.examine = true;
+		}
 	}
 
 	public String getPayKey() {
@@ -206,15 +273,32 @@ public class Appointment {
 		this.mealId = mealId;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getOtherUserName() {
+		return otherUserName;
+	}
+
+	public void setOtherUserName(String otherUserName) {
+		this.otherUserName = otherUserName;
+	}
+
 	@Override
 	public String toString() {
-		return "Appointment [description=" + description + ", endTime="
-				+ endTime + ", gender=" + gender + ", id=" + id + ", isBreak="
-				+ isBreak + ", isCacel=" + isCacel + ", mealId=" + mealId
-				+ ", otherUserId=" + otherUserId + ", payKey=" + payKey
-				+ ", startTime=" + startTime + ", substance=" + substance
-				+ ", time=" + time + ", userId=" + userId + "]";
+		return "Appointment [id=" + id + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", isCacel=" + isCacel
+				+ ", isBreak=" + isBreak + ", userId=" + userId + ", userName="
+				+ userName + ", otherUserId=" + otherUserId
+				+ ", otherUserName=" + otherUserName + ", payKey=" + payKey
+				+ ", time=" + time + ", gender=" + gender + ", substance="
+				+ substance + ", description=" + description + ", mealId="
+				+ mealId + ", meal=" + meal + ", examine=" + examine + "]";
 	}
-	
-	
+
 }
