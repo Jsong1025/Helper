@@ -18,6 +18,7 @@ public class UserUpdateServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		User user = new User();
 		user.setId(Integer.parseInt(request.getParameter("id")));
 		user.setUsername(request.getParameter("username"));

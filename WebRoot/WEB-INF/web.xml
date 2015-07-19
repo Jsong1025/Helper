@@ -92,6 +92,26 @@
     <servlet-name>UserDeleteServlet</servlet-name>
     <servlet-class>servlet.UserDeleteServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>RoleAddServlet</servlet-name>
+    <servlet-class>servlet.RoleAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RoleDeleteServlet</servlet-name>
+    <servlet-class>servlet.RoleDeleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RoleUpdateShowServlet</servlet-name>
+    <servlet-class>servlet.RoleUpdateShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RoleUpdateServlet</servlet-name>
+    <servlet-class>servlet.RoleUpdateServlet</servlet-class>
+  </servlet>
+
+
+
+
 
 
 
@@ -201,6 +221,22 @@
   <servlet-mapping>
     <servlet-name>UserDeleteServlet</servlet-name>
     <url-pattern>/userDelete.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoleAddServlet</servlet-name>
+    <url-pattern>/roleAdd.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoleDeleteServlet</servlet-name>
+    <url-pattern>/roleDelete.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoleUpdateShowServlet</servlet-name>
+    <url-pattern>/roleUpdateShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoleUpdateServlet</servlet-name>
+    <url-pattern>/roleUpdate.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

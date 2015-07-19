@@ -11,6 +11,7 @@ public class Meal {
 	private String priferemential;	//优惠条件
 	private double price;			//价格
 	private int storeId;			//所属商家ID
+	private String store;				//所属商家
 	
 	public Meal() {
 	}
@@ -20,7 +21,7 @@ public class Meal {
 	 * 有参构造方法
 	 * */
 	public Meal(int id, String name, Date startTime, Date endTime, int num,
-			String priferemential, double price, int storeId) {
+			String priferemential, double price, int storeId,String store) {
 		this.id = id;
 		this.name = name;
 		this.startTime = startTime;
@@ -29,6 +30,7 @@ public class Meal {
 		this.priferemential = priferemential;
 		this.price = price;
 		this.storeId = storeId;
+		this.store = store;
 	}
 
 
@@ -112,12 +114,23 @@ public class Meal {
 	}
 
 
+	public String getStore() {
+		return store;
+	}
+
+
+	public void setStore(String store) {
+		this.store = store;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Meal [endTime=" + endTime + ", id=" + id + ", name=" + name
-				+ ", num=" + num + ", price=" + price + ", priferemential="
-				+ priferemential + ", startTime=" + startTime + ", storeId="
-				+ storeId + "]";
+		return "Meal [id=" + id + ", name=" + name + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", num=" + num + ", priferemential="
+				+ priferemential + ", price=" + price + ", storeId=" + storeId
+				+ ", store=" + store + "]";
 	}
+
 	
 }

@@ -13,7 +13,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/DT_bootstrap.css" rel="stylesheet" media="screen">
 
-
+<% ArrayList<Role> roles = (ArrayList<Role>)request.getAttribute("roles"); %>
 
 
    <style type="text/css">
@@ -67,53 +67,28 @@
 							<table cellpadding="0" cellspacing="0" border="0" class="table table-hover table-striped table-bordered" id="example">
 								<thead>
 									<tr>
-										<th>商家名称</th>
-										<th>商家地址</th>
-										<th>商家联系方式</th>
-										<th>商家类型</th>
-										<th>商家介绍</th>
+										<th>角色名称</th>
+										<th>角色权限码</th>
 										<th>操作</th>
 									</tr>
 								</thead>
 								<tbody>
+								<% for(int i = 0; i < roles.size(); i++){ %>
 									<tr class="odd gradeX">
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
+										<td><%= roles.get(i).getName() %></td>
+										<td><%= roles.get(i).getPermision() %></td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="">修改</button> 
-											<button class="btn-min" type="button" onclick="">删除</button>
+											<button class="btn-min" type="button" onclick="window.location.href='roleUpdateShow.do?id=<%= roles.get(i).getId() %>'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='roleDelete.do?id=<%= roles.get(i).getId() %>'">删除</button>
 										</td>
 									</tr>   
-									<tr class="odd gradeX">
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td class="center">
-											<button class="btn-min" type="button" onclick="">修改</button> 
-											<button class="btn-min" type="button" onclick="">删除</button>
-										</td>
-									</tr>
-									<tr class="odd gradeX">
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td>123</td>
-										<td class="center">
-											<button class="btn-min" type="button" onclick="">修改</button> 
-											<button class="btn-min" type="button" onclick=" ">删除</button>
-										</td>
-									</tr>
+								<%} %>
 								</tbody>
 							</table>
                         </div>
                     </div>
                     <!-- /block -->
+                    <button class="btn-min" type="button" onclick="window.location.href='roleAdd.jsp'">添加新的角色</button>
                 </div>
 			</div>
 

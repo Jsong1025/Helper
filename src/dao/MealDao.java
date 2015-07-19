@@ -20,7 +20,7 @@ public class MealDao {
 		
 		try {
 			conn = JdbcUtil.getConnection();
-			String sql = "select * from t_meal";
+			String sql = "select * from t_meal,t_store where store_id=t_store.id";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			ArrayList<Meal> meals = new ArrayList<Meal>();
@@ -34,6 +34,7 @@ public class MealDao {
 				meal.setPriferemential(rs.getString("priferemential"));
 				meal.setPrice(rs.getDouble("price"));
 				meal.setStoreId(rs.getInt("store_id"));
+				meal.setStore(rs.getString("t_store.name"));
 				
 				meals.add(meal);
 			}

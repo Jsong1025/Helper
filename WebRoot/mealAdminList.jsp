@@ -76,7 +76,7 @@
 										<th>数量</th>
 										<th>价格</th>
 										<th>优惠条件</th>
-										<th>商家ID</th>
+										<th>商家</th>
 										<th>操作</th>
 									</tr>
 								</thead>
@@ -91,7 +91,7 @@
 										<td><%= meals.get(i).getNum() %></td>
 										<td><%= meals.get(i).getPrice() %></td>
 										<td><%= meals.get(i).getPriferemential() %></td>
-										<td><%= meals.get(i).getStoreId() %></td>
+										<td><%= meals.get(i).getStore() %></td>
 										<td class="center">
 											<button class="btn-min" type="button" onclick="">修改</button> 
 											<button class="btn-min" type="button" onclick="">删除</button>

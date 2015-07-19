@@ -19,6 +19,8 @@ public class UserAddServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		User user = new User();
 		user.setUsername(request.getParameter("username"));
 		user.setName(request.getParameter("name"));
