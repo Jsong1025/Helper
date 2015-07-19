@@ -36,78 +36,111 @@
     <servlet-name>AppointmentListServlet</servlet-name>
     <servlet-class>servlet.AppointmentListServlet</servlet-class>
   </servlet>
+  
+  
   <servlet>
     <servlet-name>StoreAdminListServlet</servlet-name>
-    <servlet-class>servlet.StoreAdminListServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>MealAdminListServlet</servlet-name>
-    <servlet-class>servlet.MealAdminListServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>UserAdminListServlet</servlet-name>
-    <servlet-class>servlet.UserAdminListServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>RoleAdminListServlet</servlet-name>
-    <servlet-class>servlet.RoleAdminListServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AppointmentAdminListServlet</servlet-name>
-    <servlet-class>servlet.AppointmentAdminListServlet</servlet-class>
+    <servlet-class>servlet.admin.store.StoreAdminListServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>StoreAddServlet</servlet-name>
-    <servlet-class>servlet.StoreAddServlet</servlet-class>
+    <servlet-class>servlet.admin.store.StoreAddServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>StoreDeleteServlet</servlet-name>
-    <servlet-class>servlet.StoreDeleteServlet</servlet-class>
+    <servlet-class>servlet.admin.store.StoreDeleteServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>StoreInfoShowServlet</servlet-name>
-    <servlet-class>servlet.StoreInfoShowServlet</servlet-class>
+    <servlet-class>servlet.admin.store.StoreInfoShowServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>StoreUpdateServlet</servlet-name>
-    <servlet-class>servlet.StoreUpdateServlet</servlet-class>
+    <servlet-class>servlet.admin.store.StoreUpdateServlet</servlet-class>
   </servlet>
+  
+  
+  <servlet>
+    <servlet-name>MealAdminListServlet</servlet-name>
+    <servlet-class>servlet.admin.meal.MealAdminListServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>AppointmentAdminListServlet</servlet-name>
+    <servlet-class>servlet.admin.appointment.AppointmentAdminListServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>UserAdminListServlet</servlet-name>
+    <servlet-class>servlet.admin.user.UserAdminListServlet</servlet-class>
+  </servlet>  
   <servlet>
     <servlet-name>UserAddShowServlet</servlet-name>
-    <servlet-class>servlet.UserAddShowServlet</servlet-class>
+    <servlet-class>servlet.admin.user.UserAddShowServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UserAddServlet</servlet-name>
-    <servlet-class>servlet.UserAddServlet</servlet-class>
+    <servlet-class>servlet.admin.user.UserAddServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UserUpdateShowServlet</servlet-name>
-    <servlet-class>servlet.UserUpdateShowServlet</servlet-class>
+    <servlet-class>servlet.admin.user.UserUpdateShowServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UserUpdateServlet</servlet-name>
-    <servlet-class>servlet.UserUpdateServlet</servlet-class>
+    <servlet-class>servlet.admin.user.UserUpdateServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UserDeleteServlet</servlet-name>
-    <servlet-class>servlet.UserDeleteServlet</servlet-class>
+    <servlet-class>servlet.admin.user.UserDeleteServlet</servlet-class>
+  </servlet>
+  
+  
+  <servlet>
+    <servlet-name>RoleAdminListServlet</servlet-name>
+    <servlet-class>servlet.admin.role.RoleAdminListServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RoleAddServlet</servlet-name>
-    <servlet-class>servlet.RoleAddServlet</servlet-class>
+    <servlet-class>servlet.admin.role.RoleAddServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RoleDeleteServlet</servlet-name>
-    <servlet-class>servlet.RoleDeleteServlet</servlet-class>
+    <servlet-class>servlet.admin.role.RoleDeleteServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RoleUpdateShowServlet</servlet-name>
-    <servlet-class>servlet.RoleUpdateShowServlet</servlet-class>
+    <servlet-class>servlet.admin.role.RoleUpdateShowServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RoleUpdateServlet</servlet-name>
-    <servlet-class>servlet.RoleUpdateServlet</servlet-class>
+    <servlet-class>servlet.admin.role.RoleUpdateServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>MealAddShowServlet</servlet-name>
+    <servlet-class>servlet.admin.meal.MealAddShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MealAddServlet</servlet-name>
+    <servlet-class>servlet.admin.meal.MealAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MealDeleteServlet</servlet-name>
+    <servlet-class>servlet.admin.meal.MealDeleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MealUpdateShowServlet</servlet-name>
+    <servlet-class>servlet.admin.meal.MealUpdateShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MealUpdateServlet</servlet-name>
+    <servlet-class>servlet.admin.meal.MealUpdateServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
 
@@ -166,26 +199,23 @@
     <servlet-name>AppointmentListServlet</servlet-name>
     <url-pattern>/appointmentList.do</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>StoreAdminListServlet</servlet-name>
-    <url-pattern>/storeAdminList.do</url-pattern>
-  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>MealAdminListServlet</servlet-name>
     <url-pattern>/mealAdminList.do</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>UserAdminListServlet</servlet-name>
-    <url-pattern>/userAdminList.do</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>RoleAdminListServlet</servlet-name>
-    <url-pattern>/roleAdminList.do</url-pattern>
-  </servlet-mapping>
+
+
   <servlet-mapping>
     <servlet-name>AppointmentAdminListServlet</servlet-name>
     <url-pattern>/appointmentAdminList.do</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet-mapping>
+    <servlet-name>StoreAdminListServlet</servlet-name>
+    <url-pattern>/storeAdminList.do</url-pattern>
+  </servlet-mapping>  
   <servlet-mapping>
     <servlet-name>StoreAddServlet</servlet-name>
     <url-pattern>/storeAdd.do</url-pattern>
@@ -202,6 +232,13 @@
     <servlet-name>StoreUpdateServlet</servlet-name>
     <url-pattern>/storeUpdate.do</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <servlet-mapping>
+    <servlet-name>UserAdminListServlet</servlet-name>
+    <url-pattern>/userAdminList.do</url-pattern>
+  </servlet-mapping>  
   <servlet-mapping>
     <servlet-name>UserAddShowServlet</servlet-name>
     <url-pattern>/userAddShow.do</url-pattern>
@@ -222,6 +259,12 @@
     <servlet-name>UserDeleteServlet</servlet-name>
     <url-pattern>/userDelete.do</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet-mapping>
+    <servlet-name>RoleAdminListServlet</servlet-name>
+    <url-pattern>/roleAdminList.do</url-pattern>
+  </servlet-mapping>  
   <servlet-mapping>
     <servlet-name>RoleAddServlet</servlet-name>
     <url-pattern>/roleAdd.do</url-pattern>
@@ -237,6 +280,26 @@
   <servlet-mapping>
     <servlet-name>RoleUpdateServlet</servlet-name>
     <url-pattern>/roleUpdate.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MealAddShowServlet</servlet-name>
+    <url-pattern>/mealAddShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MealAddServlet</servlet-name>
+    <url-pattern>/mealAdd.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MealDeleteServlet</servlet-name>
+    <url-pattern>/mealDelete.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MealUpdateShowServlet</servlet-name>
+    <url-pattern>/mealUpdateShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MealUpdateServlet</servlet-name>
+    <url-pattern>/mealUpdate.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

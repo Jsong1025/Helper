@@ -93,8 +93,8 @@
 										<td><%= meals.get(i).getPriferemential() %></td>
 										<td><%= meals.get(i).getStore() %></td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="">修改</button> 
-											<button class="btn-min" type="button" onclick="">删除</button>
+											<button class="btn-min" type="button" onclick="window.location.href='mealUpdateShow.do?id=<%= meals.get(i).getId() %>'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='mealDelete.do?id=<%= meals.get(i).getId() %>'">删除</button>
 										</td>
 									</tr>   
 									<%} %>
@@ -103,6 +103,7 @@
                         </div>
                     </div>
                     <!-- /block -->
+                    <button class="btn-min" type="button" onclick="window.location.href='mealAddShow.do'">添加新的角色</button>
                 </div>
 			</div>
 

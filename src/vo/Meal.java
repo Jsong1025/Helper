@@ -11,7 +11,7 @@ public class Meal {
 	private String priferemential;	//优惠条件
 	private double price;			//价格
 	private int storeId;			//所属商家ID
-	private String store;				//所属商家
+	private String store;			//所属商家
 	
 	public Meal() {
 	}
