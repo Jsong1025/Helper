@@ -148,6 +148,11 @@
     <servlet-name>AppointmentUpdateShowServlet</servlet-name>
     <servlet-class>servlet.admin.appointment.AppointmentUpdateShowServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AppointmentsCancelServlet</servlet-name>
+    <servlet-class>servlet.AppointmentsCancelServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -327,6 +332,10 @@
   <servlet-mapping>
     <servlet-name>AppointmentUpdateShowServlet</servlet-name>
     <url-pattern>/appointmentUpdateShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentsCancelServlet</servlet-name>
+    <url-pattern>/appointmentCancel.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

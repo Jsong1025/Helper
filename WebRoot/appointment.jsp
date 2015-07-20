@@ -124,10 +124,11 @@
                   <%=appointments.get(i).getStartTime()  %> <%=appointments.get(i).getSubstanceToString() %>                     
                    <span class="pull-right">展开<span class="glyphicon glyphicon-chevron-down"></span></span>
                 </a>
-                <div id="lab_name" class="panel-info"></div>
+                <div id="lab_name" class="panel-info">
+                </div>
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse">
+            <div id="collapse<%=i %>" class="panel-collapse collapse">
               <div class="panel-body form-horizontal">
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">约会时间</label>
@@ -153,6 +154,11 @@
                     <label for="" class="col-sm-2 control-label">描述</label>
                     <div class="col-sm-4">
                      <%=appointments.get(i).getDescription() %>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button id="" type="button" class="btn btn-primary" onclick="window.location.href='appointmentCancel.do?id=<%= appointments.get(i).getId() %>'">取消约会</button>
                     </div>
                   </div>
               </div>

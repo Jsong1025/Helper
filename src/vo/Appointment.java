@@ -20,6 +20,7 @@ public class Appointment {
 	private int mealId;			//套餐ID
 	private String meal;		//套餐名称
 	private boolean examine;	//审核标志
+	private boolean response;	//相应标志
 	
 	/*
 	 * 无参构造方法
@@ -34,8 +35,7 @@ public class Appointment {
 			boolean isBreak, int userId, String userName, int otherUserId,
 			String otherUserName, String payKey, Date time, int gender,
 			ArrayList<String> substance, String description, int mealId,
-			String meal, boolean examine) {
-		super();
+			String meal, boolean examine,boolean response) {
 		this.id = id;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -53,6 +53,31 @@ public class Appointment {
 		this.mealId = mealId;
 		this.meal = meal;
 		this.examine = examine;
+		this.response = response;
+	}
+
+	public boolean isResponse() {
+		return response;
+	}
+	
+	public char isResponseChar() {
+		if (response) {
+			return 'Y';
+		}else {
+			return 'N';
+		}
+	}
+	
+	public void setResponse(char examine) {
+		if (examine == 'N') {
+			this.response = false;
+		} else {
+			this.response = true;
+		}
+	}
+
+	public void setResponse(boolean response) {
+		this.response = response;
 	}
 
 	public int getId() {
@@ -291,14 +316,15 @@ public class Appointment {
 
 	@Override
 	public String toString() {
-		return "Appointment [id=" + id + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", isCacel=" + isCacel
-				+ ", isBreak=" + isBreak + ", userId=" + userId + ", userName="
-				+ userName + ", otherUserId=" + otherUserId
-				+ ", otherUserName=" + otherUserName + ", payKey=" + payKey
-				+ ", time=" + time + ", gender=" + gender + ", substance="
-				+ substance + ", description=" + description + ", mealId="
-				+ mealId + ", meal=" + meal + ", examine=" + examine + "]";
+		return "Appointment [description=" + description + ", endTime="
+				+ endTime + ", examine=" + examine + ", gender=" + gender
+				+ ", id=" + id + ", isBreak=" + isBreak + ", isCacel="
+				+ isCacel + ", meal=" + meal + ", mealId=" + mealId
+				+ ", otherUserId=" + otherUserId + ", otherUserName="
+				+ otherUserName + ", payKey=" + payKey + ", response="
+				+ response + ", startTime=" + startTime + ", substance="
+				+ substance + ", time=" + time + ", userId=" + userId
+				+ ", userName=" + userName + "]";
 	}
 
 }

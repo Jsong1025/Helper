@@ -180,6 +180,32 @@ public class AppointmentDao {
 		}
 		return null;
 	}
+	
+	public boolean cancelAppointment(int id){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "update t_appointment set is_cacel='Y' where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return false;
+	}
 
 
 	/*

@@ -29,6 +29,12 @@ public class AppointmentListServlet extends HttpServlet {
 		AppointmentDao dao = new AppointmentDao();
 		ArrayList<Appointment> appointments = dao.findAllByEmail(email);
 		
+		//移除已经取消了的约会
+		for (int i = 0; i < appointments.size(); i++) {
+			if (appointments.get(i).isCacel()) {
+				appointments.remove(i);
+			}
+		}
 		
 		//绑定数据，转发
 		request.setAttribute("appointments", appointments);
