@@ -136,6 +136,21 @@
     <servlet-name>MealUpdateServlet</servlet-name>
     <servlet-class>servlet.admin.meal.MealUpdateServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AppointmentAddShowServlet</servlet-name>
+    <servlet-class>servlet.admin.appointment.AppointmentAddShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AppointmentAddServlet</servlet-name>
+    <servlet-class>servlet.admin.appointment.AppointmentAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AppointmentUpdateShowServlet</servlet-name>
+    <servlet-class>servlet.admin.appointment.AppointmentUpdateShowServlet</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -300,6 +315,18 @@
   <servlet-mapping>
     <servlet-name>MealUpdateServlet</servlet-name>
     <url-pattern>/mealUpdate.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentAddShowServlet</servlet-name>
+    <url-pattern>/appointmentAddShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentAddServlet</servlet-name>
+    <url-pattern>/appointmentAdd.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentUpdateShowServlet</servlet-name>
+    <url-pattern>/appointmentUpdateShow.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

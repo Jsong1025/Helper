@@ -2,8 +2,7 @@
 <!DOCTYPE HTML>
 <html>
  <head>
-  <title>商家信息
- </title>
+  <title>约会信息</title>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/dpl-min.css" rel="stylesheet" type="text/css" />
    <link href="css/main-min.css" rel="stylesheet" type="text/css" />
@@ -11,7 +10,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
 
-
+<%
+	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
+	ArrayList<Meal> meals = (ArrayList<Meal>)request.getAttribute("meals");
+%>
 
    <style type="text/css">
     code {
@@ -52,7 +54,6 @@
 			
 			<div class="span3">
 
-
 			<div class="span9">
 					
 				<div class="row">
@@ -62,7 +63,7 @@
 						<div class="widget">
 							
 							<div class="widget-header">
-								<h3>添加商家</h3>
+								<h3>添加约会</h3>
 							</div> <!-- /widget-header -->
 									
 							<div class="widget-content">
@@ -73,47 +74,85 @@
 
 							<div class="tab-content">
 								<div class="tab-pane active" id="1">
-								<form id="edit-profile" class="form-horizontal" action="storeAdd.do" method="post">
+								<form id="edit-profile" class="form-horizontal" action="appointmentAdd.do" method="post">
 									<fieldset>
 										
 										<div class="control-group">											
-											<label class="control-label" for="name">商家名称</label>
+											<label class="control-label" for="startTime">开始时间</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="name" id="name" value=""/>
+												<input type="date" class="input-medium" id="startTime" name="startTime" value="" />
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+
+										<div class="control-group">											
+											<label class="control-label" for="time">约会时间</label>
+											<div class="controls">
+												<input type="date" class="input-medium" id="time" name="time" value=""/>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										
 										<div class="control-group">											
-											<label class="control-label" for="address">商家地址</label>
+											<label class="control-label" for="user">发起用户</label>
 											<div class="controls">
-												<input type="text" class="input-large" name="address" id="address" value="" />
+												<select name="user">
+												<% for(int i=0; i<users.size();i++){ %>
+													<option value="<%= users.get(i).getId() %>"><%= users.get(i).getName() %></option>
+												<%} %>
+												</select>
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										<div class="control-group">											
+											<label class="control-label" for="otherUser">接受用户</label>
+											<div class="controls">
+												<select name="otherUser">
+													<% for(int i=0; i<users.size();i++){ %>
+													<option value="<%= users.get(i).getId() %>"><%= users.get(i).getName() %></option>
+												<%} %>
+												</select>
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										<div class="control-group">											
+											<label class="control-label" for="gender">性别要求</label>
+											<div class="controls">
+												<input type="radio" class="input-medium" id="sex" name="gender" value=1 />男女不限&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="radio" class="input-medium" id="sex" name="gender" value=2 />只限男生&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="radio" class="input-medium" id="sex" name="gender" value=3 />只限女生
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										
 										<div class="control-group">											
-											<label class="control-label" for="tel">联系方式</label>
+											<label class="control-label" for="substance">约会内容</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="tel" id="tel" value="" />
-											</div> <!-- /controls -->				
-										</div> <!-- /control-group -->
-										
-										
-										<div class="control-group">											
-											<label class="control-label" for="type">商家类型</label>
-											<div class="controls">
-												<input type="text" class="input-medium" name="type" id="type" value="" />
+												<input type="checkbox" class="input-medium" id="substance" name="substance" value="吃饭" />吃饭&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="checkbox" class="input-medium" id="substance" name="substance" value="唱歌" />唱歌&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="checkbox" class="input-medium" id="substance" name="substance" value="看电影" />看电影&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="checkbox" class="input-medium" id="substance" name="substance" value="运动" />运动
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										<div class="control-group">											
-											<label class="control-label" for="introduce">基本介绍</label>
+											<label class="control-label" for="meal">套餐</label>
 											<div class="controls">
-												<input type="text" class="input-large" name="introduce"  id="introduce" value="" />
+												<select name="meal">
+													<% for(int i=0; i<meals.size();i++){ %>
+													<option value="<%= meals.get(i).getId() %>"><%= meals.get(i).getName() %></option>
+												<%} %>
+												</select>
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+
+										<div class="control-group">											
+											<label class="control-label" for="description">详细说明</label>
+											<div class="controls">
+												<input type="text" class="input-large"  id="description" value="" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 											
+
 											<br />
 
 										<div class="form-actions">
