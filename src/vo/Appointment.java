@@ -9,9 +9,9 @@ public class Appointment {
 	private boolean isCacel;	//取消标志
 	private boolean isBreak;	//违约标志
 	private int userId;   		//发起用户ID
-	private String userName;	//发起用户名
+	private User user;	//发起用户名
 	private int otherUserId;   	//接受用户ID
-	private String otherUserName; //接受用户名
+	private User otherUser; //接受用户名
 	private String payKey;   	//优惠码
 	private Date time;   		//时间
 	private int gender;			//性别要求   1.男女不限  2.只限男生 3.只限女生
@@ -21,6 +21,8 @@ public class Appointment {
 	private String meal;		//套餐名称
 	private boolean examine;	//审核标志
 	private boolean response;	//相应标志
+	
+	private int type;   //类型标识（1.用户发出的约会邀请  2.已经响应的约会邀请  3.可以响应的约会邀请）
 	
 	/*
 	 * 无参构造方法
@@ -32,8 +34,8 @@ public class Appointment {
 	 * 有参数构造方法
 	 */
 	public Appointment(int id, Date startTime, Date endTime, boolean isCacel,
-			boolean isBreak, int userId, String userName, int otherUserId,
-			String otherUserName, String payKey, Date time, int gender,
+			boolean isBreak, int userId, User userName, int otherUserId,
+			User otherUserName, String payKey, Date time, int gender,
 			ArrayList<String> substance, String description, int mealId,
 			String meal, boolean examine,boolean response) {
 		this.id = id;
@@ -42,9 +44,9 @@ public class Appointment {
 		this.isCacel = isCacel;
 		this.isBreak = isBreak;
 		this.userId = userId;
-		this.userName = userName;
+		this.user = user;
 		this.otherUserId = otherUserId;
-		this.otherUserName = otherUserName;
+		this.otherUser = otherUser;
 		this.payKey = payKey;
 		this.time = time;
 		this.gender = gender;
@@ -190,6 +192,14 @@ public class Appointment {
 		return meal;
 	}
 
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	public void setMeal(String meal) {
 		this.meal = meal;
 	}
@@ -246,6 +256,16 @@ public class Appointment {
 	public int getGender() {
 		return gender;
 	}
+	
+	public String getGenderString() {
+		if(gender == 1){
+			return "男女不限";
+		}else if(gender ==2){
+			return "只限男生";
+		} else {
+			return "只限女生";
+		}
+	}
 
 	public void setGender(int gender) {
 		this.gender = gender;
@@ -298,20 +318,20 @@ public class Appointment {
 		this.mealId = mealId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public String getOtherUserName() {
-		return otherUserName;
+	public User getOtherUser() {
+		return otherUser;
 	}
 
-	public void setOtherUserName(String otherUserName) {
-		this.otherUserName = otherUserName;
+	public void setOtherUserName(User otherUser) {
+		this.otherUser = otherUser;
 	}
 
 	@Override
@@ -321,10 +341,10 @@ public class Appointment {
 				+ ", id=" + id + ", isBreak=" + isBreak + ", isCacel="
 				+ isCacel + ", meal=" + meal + ", mealId=" + mealId
 				+ ", otherUserId=" + otherUserId + ", otherUserName="
-				+ otherUserName + ", payKey=" + payKey + ", response="
+				+ otherUser + ", payKey=" + payKey + ", response="
 				+ response + ", startTime=" + startTime + ", substance="
 				+ substance + ", time=" + time + ", userId=" + userId
-				+ ", userName=" + userName + "]";
+				+ ", userName=" + user + "]";
 	}
 
 }

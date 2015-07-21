@@ -43,6 +43,7 @@ public class UserDao {
 				user.setDescription(rs.getString("description"));
 				user.setRoleId(rs.getInt("t_role.id"));
 				user.setRole(rs.getString("t_role.name"));
+				user.setPicture(rs.getString("picture"));
 				
 				users.add(user);
 			}
@@ -226,6 +227,7 @@ public class UserDao {
 				user.setEmail(rs.getString("email"));
 				user.setLocation(rs.getString("location"));
 				user.setDescription(rs.getString("description"));
+				user.setPicture(rs.getString("picture"));
 				return user;
 			}else {
 				return null;
@@ -273,6 +275,7 @@ public class UserDao {
 				user.setDescription(rs.getString("description"));
 				user.setRoleId(rs.getInt("t_role.id"));
 				user.setRole(rs.getString("t_role.name"));
+				user.setPicture(rs.getString("picture"));
 				return user;
 			}
 			

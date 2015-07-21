@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 import util.JdbcUtil;
 import vo.Appointment;
+import vo.User;
 
 public class AppointmentDao {
 
@@ -29,6 +31,37 @@ public class AppointmentDao {
 			pstmt.setString(5, appoint.getSubstanceToString());
 			pstmt.setString(6, appoint.getDescription());
 			pstmt.setInt(7, appoint.getMealId());
+
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return false;
+	}
+	
+	/**
+	 * 响应约会请求
+	 * */
+	public boolean responseAppointment(int appointmentID,int userId,Date time) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "insert into t_responser(appointment_id,response_user_id,time) value(?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, appointmentID);
+			pstmt.setInt(2, userId);
+			pstmt.setDate(3,new java.sql.Date(time.getTime()));
 
 			pstmt.executeUpdate();
 			return true;
@@ -75,6 +108,8 @@ public class AppointmentDao {
 				appointment.setSubstance(rs.getString("substance"));
 				appointment.setDescription(rs.getString("description"));
 				appointment.setMealId(rs.getInt("meal_id"));
+				appointment.setResponse(rs.getString("response").charAt(0));
+				appointment.setExamine(rs.getString("examine").charAt(0));
 
 				appointments.add(appointment);
 			}
@@ -89,14 +124,14 @@ public class AppointmentDao {
 
 				//查询用户名
 				int userId = appointments.get(i).getUserId();
-				String userName = userDao.findUserById(userId).getName();
-				appointments.get(i).setUserName(userName);
+				User user = userDao.findUserById(userId);
+				appointments.get(i).setUser(user);
 
 				//如果有另一用户名，查询另一用户名
 				int otherUserId = appointments.get(i).getOtherUserId();
 				if (otherUserId != 0) {
-					String otherUserName = userDao.findUserById(otherUserId).getName();
-					appointments.get(i).setOtherUserName(otherUserName);
+					User otherUser = userDao.findUserById(otherUserId);
+					appointments.get(i).setOtherUserName(otherUser);
 				}
 			}
 			return appointments;
@@ -111,6 +146,43 @@ public class AppointmentDao {
 			}
 		}
 		return null;
+	}
+	
+	
+	/*
+	 * 查询指定用户是否响应了指定约会
+	 */
+	public boolean isResponseAppointment(int appointmentId,int userId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "select * from t_responser where response_user_id = ? and appointment_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userId);
+			pstmt.setInt(2, appointmentId);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(rs, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 	/*
@@ -156,14 +228,14 @@ public class AppointmentDao {
 
 				//查询用户名
 				int userId = appointment.getUserId();
-				String userName = userDao.findUserById(userId).getName();
-				appointment.setUserName(userName);
+				User user = userDao.findUserById(userId);
+				appointment.setUser(user);
 
 				//如果有另一用户名，查询另一用户名
 				int otherUserId = appointment.getOtherUserId();
 				if (otherUserId != 0) {
-					String otherUserName = userDao.findUserById(otherUserId).getName();
-					appointment.setOtherUserName(otherUserName);
+					User otherUser = userDao.findUserById(otherUserId);
+					appointment.setOtherUserName(otherUser);
 				}
 
 				return appointment;
@@ -181,6 +253,39 @@ public class AppointmentDao {
 		return null;
 	}
 	
+	/*
+	 * 审核约会
+	 * */
+	public boolean examineAppointment(int id,String payKey){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "update t_appointment set examine='Y',pay_key=? where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, payKey);
+			pstmt.setInt(2, id);
+
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return false;
+	}
+	
+	/*
+	 * 取消约会
+	 * */
 	public boolean cancelAppointment(int id){
 		Connection conn = null;
 		PreparedStatement pstmt = null;

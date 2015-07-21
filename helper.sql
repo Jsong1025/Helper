@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50024
 File Encoding         : 65001
 
-Date: 2015-07-20 16:26:21
+Date: 2015-07-21 17:22:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,7 +46,7 @@ CREATE TABLE `t_appointment` (
 -- ----------------------------
 -- Records of t_appointment
 -- ----------------------------
-INSERT INTO t_appointment VALUES ('1', '2015-07-08', '2015-07-14', 'Y', 'N', '1', '3', '123', '2015-07-14', '1', '吃饭，运动', null, '1', 'N', 'N');
+INSERT INTO t_appointment VALUES ('1', '2015-07-08', '2015-07-14', 'N', 'N', '1', '3', '123', '2015-07-14', '1', '吃饭，运动', null, '1', 'N', 'N');
 INSERT INTO t_appointment VALUES ('2', '2015-07-16', '2015-07-29', 'N', 'N', '2', '1', '789', '2015-07-17', '2', '看电影', null, '2', 'N', 'N');
 INSERT INTO t_appointment VALUES ('5', '2015-07-17', null, 'N', 'N', '1', null, null, '2015-04-01', '1', '吃饭,看电影,', '', '1', 'N', 'N');
 INSERT INTO t_appointment VALUES ('6', '2015-07-17', null, 'N', 'N', '1', null, null, '2015-05-01', '1', '吃饭,', 'ihd ', '1', 'N', 'N');
@@ -85,13 +85,41 @@ CREATE TABLE `t_message` (
   `id` int(10) NOT NULL auto_increment,
   `user` int(10) NOT NULL,
   `message` varchar(1000) NOT NULL,
+  `appointment_id` int(10) default NULL,
   PRIMARY KEY  (`id`),
-  CONSTRAINT `t_message_ibfk_1` FOREIGN KEY (`id`) REFERENCES `t_user` (`id`)
+  KEY `appointment_id` (`appointment_id`),
+  KEY `t_message_ibfk_1` (`user`),
+  CONSTRAINT `t_message_ibfk_1` FOREIGN KEY (`user`) REFERENCES `t_user` (`id`),
+  CONSTRAINT `t_message_ibfk_2` FOREIGN KEY (`appointment_id`) REFERENCES `t_appointment` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_message
 -- ----------------------------
+INSERT INTO t_message VALUES ('1', '1', '你好', null);
+INSERT INTO t_message VALUES ('2', '1', '123', '1');
+INSERT INTO t_message VALUES ('6', '1', '李四回应了您的约会请求', '1');
+
+-- ----------------------------
+-- Table structure for `t_responser`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_responser`;
+CREATE TABLE `t_responser` (
+  `id` int(10) NOT NULL auto_increment,
+  `appointment_id` int(10) NOT NULL,
+  `response_user_id` int(10) NOT NULL,
+  `time` date NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `appointment_id` (`appointment_id`),
+  KEY `response_user_id` (`response_user_id`),
+  CONSTRAINT `t_responser_ibfk_1` FOREIGN KEY (`appointment_id`) REFERENCES `t_appointment` (`id`),
+  CONSTRAINT `t_responser_ibfk_2` FOREIGN KEY (`response_user_id`) REFERENCES `t_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
+
+-- ----------------------------
+-- Records of t_responser
+-- ----------------------------
+INSERT INTO t_responser VALUES ('3', '1', '3', '2015-07-21');
 
 -- ----------------------------
 -- Table structure for `t_role`
@@ -132,24 +160,6 @@ CREATE TABLE `t_store` (
 -- ----------------------------
 INSERT INTO t_store VALUES ('1', '南娱', '南戴河', '321654', '游乐场', '', '南戴河娱乐中心');
 INSERT INTO t_store VALUES ('2', '联峰山', '联峰山', '123654', '景点', '', '联峰山景点');
-
--- ----------------------------
--- Table structure for `t_store_collect`
--- ----------------------------
-DROP TABLE IF EXISTS `t_store_collect`;
-CREATE TABLE `t_store_collect` (
-  `store_id` int(10) NOT NULL,
-  `user_id` int(10) NOT NULL,
-  PRIMARY KEY  (`store_id`,`user_id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `t_store_collect_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `t_store` (`id`),
-  CONSTRAINT `t_store_collect_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gbk;
-
--- ----------------------------
--- Records of t_store_collect
--- ----------------------------
-INSERT INTO t_store_collect VALUES ('1', '3');
 
 -- ----------------------------
 -- Table structure for `t_tag`
@@ -198,6 +208,7 @@ CREATE TABLE `t_user` (
   `role` int(10) NOT NULL default '4',
   `location` varchar(50) default NULL,
   `description` varchar(500) default NULL,
+  `picture` varchar(500) default 'img/img.jpg',
   PRIMARY KEY  (`id`),
   KEY `role` (`role`),
   CONSTRAINT `t_user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `t_role` (`id`)
@@ -206,9 +217,9 @@ CREATE TABLE `t_user` (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO t_user VALUES ('1', 'zhangsan', 'zhangsan', '张三', 'M', '20', '123456', '123456', 'zhangsan@123.com', '4', '秦皇岛', '我是张三');
-INSERT INTO t_user VALUES ('2', 'admin', 'admin', 'admin', 'M', '21', '123456', '123456', 'admin@123.com', '1', 'null', 'null');
-INSERT INTO t_user VALUES ('3', 'lisi', 'lisi', '李四', 'F', '22', '123456', '123456', 'lisi@123.com', '4', null, null);
+INSERT INTO t_user VALUES ('1', 'zhangsan', 'zhangsan', '张三', 'M', '20', '123456', '123456', 'zhangsan@123.com', '4', '秦皇岛', '我是张三', 'img/img.jpg');
+INSERT INTO t_user VALUES ('2', 'admin', 'admin', 'admin', 'M', '21', '123456', '123456', 'admin@123.com', '1', 'null', 'null', 'img/img.jpg');
+INSERT INTO t_user VALUES ('3', 'lisi', 'lisi', '李四', 'F', '22', '123456', '123456', 'lisi@123.com', '4', null, null, 'img/img.jpg');
 
 -- ----------------------------
 -- Table structure for `t_user_friend`

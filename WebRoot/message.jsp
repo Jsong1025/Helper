@@ -74,7 +74,7 @@
 <div class="fs" style="margin-left: 800px; margin-top: 0px; border-top-width: 500px; margin-bottom: 20px; padding-top: 20px;"><a herf="#">回复</a></div>
 <div class="fs" style=" margin-left: 800px;"><a herf="#">删除</a></div>
 
-<div styly="background:">123155452005512236</div>
+
                 
                    <button type="button" class="btn btn-default navbar-btn" title="上一页" onclick="window.location.href='#'" style=" margin-left: 870px; margin-top: 200px;
     height: 34px;  width: 66px; margin-bottom: 80px;">上一页</button>

@@ -47,26 +47,6 @@
               <li><a href="login.html" title="前往 消息管理">消息管理</a></li>
               <li><a href="login.html" title="前往 个人设置">个人设置</a></li>
 <li>
-
-<form action="" method="get">
-<span class="kuan"><input name="" type="text" style="
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;outline-color;black;
-    outline-color: black;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    border-left-width: 1px;
-    padding-bottom: 0px;
-    width: 152px;
-    height: 21px;
-    margin-left: 40px;
-">
-</span><!--搜索框-->
-<span class="an"><input name="搜索" type="button" value="搜索" style="width: 42px; height: 20px;"/>
-</span>
-</form>
 </ul>
      
   <ul class="an" style="margin-top:10px;">

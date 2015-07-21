@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿<%@ page language="java" import="java.util.*,vo.*" pageEncoding="utf-8"%>
+<%@page import="dao.UserDao"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -23,12 +24,16 @@
     <%
     	int permision = 5;
     	String username = "";
+    	String email = (String)session.getAttribute("email");
+    	UserDao dao = new UserDao();
+		User user = dao.findInfoByEmail(email);
+		
     	if(session != null ){
     		// 获取用户名
     		if(session.getAttribute("username") != null){
         		username = (String)session.getAttribute("username");
         	} else if(session.getAttribute("email") != null){
-        		username = (String)session.getAttribute("email");
+        		username = email;
         	} else {
         		response.sendRedirect("index.jsp");
         	}
@@ -43,6 +48,7 @@
             	out.print((String)session.getAttribute("message"));
             	session.removeAttribute("message");
             }
+    		
     		
     	} else {
     		response.sendRedirect("index.jsp");
@@ -69,38 +75,19 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
+          	  <li><a href="home.jsp" title=首页">首页</a></li>
               <li><a href="release.do" title="前往 发布约会">发布约会</a></li>
               <li><a href="appointmentList.do" title="前往 约会管理">约会管理</a></li>
-              <li><a href="#" title="前往 搜索约会">搜索约会</a></li>
+              <li><a href="searchList.do" title="前往 搜索约会">搜索约会</a></li>
               <li><a href="#" title="前往 消息管理">消息管理</a></li>
               <li><a class="visible-md visible-lg" href="info.do" title="前往 个人设置">个人设置</a></li>
              <%
              	if(permision < 3){
              %>
-              <li><a href="default.html" title="前往 后台管理">后台管理</a></li>
+              <li><a href="default.jsp" title="前往 后台管理">后台管理</a></li>
               <% }%>
      
 <li>
-
-<form action="" method="get">
-<span class="kuan"><input name="" type="text" style="
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;outline-color;black;
-    outline-color: black;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    border-left-width: 1px;
-    padding-bottom: 0px;
-    width: 152px;
-    height: 21px;
-    margin-left: 40px;
-">
-</span><!--搜索框-->
-<span class="an"><input name="搜索" type="button" value="搜索" style="width: 42px;height: 20px;"/>
-</span>
-</form>
 </ul>
      
   <ul class="an" style="margin-top: 10px;">
@@ -116,7 +103,7 @@
 			<li style="margin-top: 10px;"><%= username %></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="img/img.jpg"></span><b class="caret"></b></a>
+                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="<%= user.getPicture() %>"></span><b class="caret"></b></a>
                 <ul class="dropdown-menu clearfix">
                   
                   <li><a href="logout.do" title="退出登录">注销</a></li>

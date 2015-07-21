@@ -80,8 +80,8 @@
 									<tr class="odd gradeX">
 										<td><%= appointments.get(i).getStartTime() %></td>
 										<td><%= appointments.get(i).getTime() %></td>
-										<td><%= appointments.get(i).getUserName() %></td>
-										<td><%= appointments.get(i).getOtherUserName() %></td>
+										<td><%= appointments.get(i).getUser().getUsername() %></td>
+										<td><%if(appointments.get(i).getOtherUser() != null){ %><%= appointments.get(i).getOtherUser().getUsername() %><%} %></td>
 										<td><%= appointments.get(i).getGender() %></td>
 										<td><%= appointments.get(i).getSubstanceToString() %></td>
 										<td><%= appointments.get(i).getMeal() %></td>

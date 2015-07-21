@@ -152,6 +152,30 @@
     <servlet-name>AppointmentsCancelServlet</servlet-name>
     <servlet-class>servlet.AppointmentsCancelServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SearchListServlet</servlet-name>
+    <servlet-class>servlet.SearchListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AppointmentResponseServlet</servlet-name>
+    <servlet-class>servlet.AppointmentResponseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MessageShowServlet</servlet-name>
+    <servlet-class>servlet.MessageShowServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AppointmentExamineServlet</servlet-name>
+    <servlet-class>servlet.admin.appointment.AppointmentExamineServlet</servlet-class>
+  </servlet>
+
+
+
+
 
 
 
@@ -336,6 +360,22 @@
   <servlet-mapping>
     <servlet-name>AppointmentsCancelServlet</servlet-name>
     <url-pattern>/appointmentCancel.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchListServlet</servlet-name>
+    <url-pattern>/searchList.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentResponseServlet</servlet-name>
+    <url-pattern>/appointmentResponse.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MessageShowServlet</servlet-name>
+    <url-pattern>/messageShow.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentExamineServlet</servlet-name>
+    <url-pattern>/appointmentExamine.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

@@ -19,6 +19,7 @@ public class User {
 	private String email;		//e-mail
 	private String location;	//居住地
 	private String description;	//个人介绍
+	private String picture;		//用户头像
 	
 	private int roleId;			//角色ID
 	private String role;		//角色名
@@ -28,7 +29,7 @@ public class User {
 	 * */
 	public User(int id, String username, String password, String name,
 			char sex, int age, String tel, String qQ, String email,
-			String location, String description, int roleId, String role) {
+			String location, String description,String picture, int roleId, String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -41,6 +42,7 @@ public class User {
 		this.email = email;
 		this.location = location;
 		this.description = description;
+		this.picture = picture;
 		this.roleId = roleId;
 		this.role = role;
 	}
@@ -159,13 +161,22 @@ public class User {
 		this.role = role;
 	}
 
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", name=" + name + ", sex=" + sex + ", age=" + age
-				+ ", tel=" + tel + ", QQ=" + QQ + ", email=" + email
-				+ ", location=" + location + ", description=" + description
-				+ ", roleId=" + roleId + ", role=" + role + "]";
+		return "User [QQ=" + QQ + ", age=" + age + ", description="
+				+ description + ", email=" + email + ", id=" + id
+				+ ", location=" + location + ", name=" + name + ", password="
+				+ password + ", picture=" + picture + ", role=" + role
+				+ ", roleId=" + roleId + ", sex=" + sex + ", tel=" + tel
+				+ ", username=" + username + "]";
 	}
-	
+
 }

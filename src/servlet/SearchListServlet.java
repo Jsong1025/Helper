@@ -10,39 +10,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import vo.Appointment;
-import vo.User;
-
 import dao.AppointmentDao;
 import dao.UserDao;
 
-public class AppointmentListServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
+import vo.Appointment;
+import vo.User;
 
+public class SearchListServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//获取用户邮箱
+		AppointmentDao dao = new AppointmentDao();
+		ArrayList<Appointment> appointments = dao.findAll();
+		
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
+		User user = (new UserDao()).findInfoByEmail(email);
 		
-		
-		//查找用户所有约会
-		AppointmentDao dao = new AppointmentDao();
-		ArrayList<Appointment> appointments = dao.findAllByEmail(email);
-		
+		//去除已经响应了的约会
 		for (int i = 0; i < appointments.size(); i++) {
-			//移除已经取消了的约会
-			if (appointments.get(i).isCacel()) {
+			if (appointments.get(i).isResponse()) {
 				appointments.remove(i);
 			}
-		
+			if (dao.isResponseAppointment(appointments.get(i).getId(), user.getId())) {
+				appointments.get(i).setType(2);
+			}
 		}
 		
-		//绑定数据，转发
 		request.setAttribute("appointments", appointments);
-		request.getRequestDispatcher("appointment.jsp").forward(request, response);
+		request.getRequestDispatcher("search.jsp").forward(request, response);
 	}
 
 }
