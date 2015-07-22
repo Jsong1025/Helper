@@ -1,7 +1,5 @@
-﻿
-
-
-  
+﻿<%@ page language="java" import="java.util.*,vo.*" pageEncoding="utf-8"%>
+<%@page import="dao.UserDao"%>  
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -21,8 +19,42 @@
   <body>
 
 
-
-
+    <%
+    	int permision = 5;
+    	String username = "";
+    	String email = (String)session.getAttribute("email");
+    	UserDao dao = new UserDao();
+		User user = dao.findInfoByEmail(email);
+		
+    	if(session != null ){
+    		// 获取用户名
+    		if(session.getAttribute("username") != null){
+        		username = (String)session.getAttribute("username");
+        	} else if(session.getAttribute("email") != null){
+        		username = email;
+        	} else {
+        		response.sendRedirect("index.jsp");
+        	}
+    		
+    		// 权限值
+    		if(session.getAttribute("permision") != null){
+    			permision = (Integer)session.getAttribute("permision");
+        	}
+    		
+    		//需要显示的消息
+            if(session.getAttribute("message") != null){
+            	out.print((String)session.getAttribute("message"));
+            	session.removeAttribute("message");
+            }
+    		
+    		
+    	} else {
+    		response.sendRedirect("index.jsp");
+    	}
+    %>
+<%
+	ArrayList<Message> messages = (ArrayList<Message>)request.getAttribute("messages");
+%>
 
 <div class="nav-top">
     <div class="container">
@@ -34,63 +66,69 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-         
+          <a class="navbar-brand text-hide" href="/" title="约会帮帮忙">约会帮帮忙</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-              <li><a href="/collection/10000/" title="发布约会">发布约会</a></li>
-              <li><a href="/collection/10001/" title="搜索约会">搜索约会</a></li>
-              <li><a href="/collection/10002/" title="消息管理">消息管理</a></li>
-              <li><a href="/collection/10002/" title="个人资料">个人资料</a></li>
-              <li><a href="/collection/10002/" title="后台管理">后台管理</a></li>
-            </ul>
-          
-          
-          <ul class="nav navbar-nav navbar-right">
+          	  <li><a href="home.jsp" title=首页">首页</a></li>
+              <li><a href="release.do" title="前往 发布约会">发布约会</a></li>
+              <li><a href="appointmentList.do" title="前往 约会管理">约会管理</a></li>
+              <li><a href="searchList.do" title="前往 搜索约会">搜索约会</a></li>
+              <li><a href="messageShow.do" title="前往 消息管理">消息管理</a></li>
+              <li><a class="visible-md visible-lg" href="info.do" title="前往 个人设置">个人设置</a></li>
+             <%
+             	if(permision < 3){
+             %>
+              <li><a href="default.jsp" title="前往 后台管理">后台管理</a></li>
+              <% }%>
+     
+<li>
+</ul>
+     
+  <ul class="an" style="margin-top: 10px;">
+
+</ul>
+<ul class="nav navbar-nav navbar-right">
+			<li style="margin-top: 10px;"><%= username %></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="img/头像.jpg" alt=""></span><b class="caret"></b></a>
+                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="<%= user.getPicture() %>"></span><b class="caret"></b></a>
                 <ul class="dropdown-menu clearfix">
-              <li><a href="/account/logout/" title="好友列表">好友</a></li>
-                  <li><a href="/account/logout/" title="退出登录">注销</a></li>
+                  
+                  <li><a href="logout.do" title="退出登录">注销</a></li>
                 </ul>
               </li>
           </ul>
-          
-          
-          
-        </div>
+
+          </div>
+
       </nav>
     </div>
 </div>
 
 <div class="settingbar">
-    <div class="container" margin-left: 250px; style="margin-left: 250px">
+    <div class="container" style="margin-left: 250px">
       <h1 class="mb40"style="border-bottom-width: 0px;">消息管理<small class="pull-right"></small></h1><small class="pull-right"></small></h1>
     
                
-                    <div class="ab" style=" width: 854px;   height: 443px; border-top-width: 0px; border-left-width: 0px; margin-left: 50px;">
-          
-<div class="fs" style="margin-left: 800px; margin-top: 0px; border-top-width: 500px; margin-bottom: 20px; padding-top: 20px;"><a herf="#">回复</a></div>
-<div class="fs" style=" margin-left: 800px;"><a herf="#">删除</a></div>
 
-
-                
-                   <button type="button" class="btn btn-default navbar-btn" title="上一页" onclick="window.location.href='#'" style=" margin-left: 870px; margin-top: 200px;
-    height: 34px;  width: 66px; margin-bottom: 80px;">上一页</button>
-		<button type="button" class="btn btn-default navbar-btn" title="下一页" onclick="window.location.href='#'" style=" margin-left: 870px; margin-top: 0px;
-    height: 34px; width: 66px;">下一页</button>
-	</span>
-
-
-                    </div>
+     <% for(int i=0;i<messages.size();i++){ %>           
+       <div class="panel panel-default panelbox" style="margin-right: 30%;margin-left: 10%;padding: 15px;">
+              <div class="panel-body"  >
+              <%= messages.get(i).getMessage() %>
+              	<br/> <br/>
+              <button class="btn btn-primary" onclick="window.location.href='.do?id=<%= messages.get(i).getId() %>'">确认</button>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-primary" onclick="window.location.href='messageDelete.do?id=<%= messages.get(i).getId() %>'">删除</button>
+              </div>
+        </div>
+	<%} %>
                     
 
       </div>
          
-           </div>  
- 
-    <!-- 尾部导航（PC端）-->
+</div>  
+
     <footer class="container clearfix   visible-md visible-lg">
       <div class="row">
 		<div class="col-sm-12 text-muted text-center">
@@ -102,95 +140,14 @@
    
       </div>
     </footer>
-    <!-- 尾部导航（移动端）-->
-    <nav class="navbar navbar-default navbar-bottomnav  visible-xs visible-sm" role="navigation">
-      <div class="navbar-header">
-        <ul class="pager pull-left">
-          <li><a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span> 后退</a></li>
-          <li><a href="javascript:history.go(1);">前进 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
-        </ul>
-        <ul class="pager pull-right">
-          <li><a href="/">首页</a></li>
-          
-          <li><a href="/u/1804037/">我的主页</a></li>
-          
-        </ul>
-      </div>
-    </nav>
 	<script src="js/zhuye4.js"></script>
     <script src="js/zhuye2.js"></script>
     <script src="js/zhuye3.js"></script>
    
-   
-<script type="text/javascript">
-$('#btn_fd').click(function(){
-	var fd = $('#fd').val();
-	var fdlink = $('#fdlink').val();
-	fd = $.trim(fd);
-	fdlink = $.trim(fdlink);
-	if(fd == '' || fdlink == ''){
-		alert('请填写你的意见和联系方式！');
-		return false;
-	}
-	var d={};
-	d['fd']=fd;
-	d['fdlink']=fdlink;
-	$(this).html('提交中...');
-	$(this).attr("disabled", true);
-	$.ajax({
-		url : '/feedback/',
-		type : 'POST',
-		data : d,
-		cache: false,
-		dataType : 'json',
-		error : function() {
-			alert('系统故障，稍微重试！');
-			$('#btn_fd').attr("disabled", false);
-		},
-		success : function(data) {
-			if(data.error){
-				alert(data.desc);
-			}else{
-				alert('提交成功');
-			}
-			$('#btn_fd').html('提交');
-			$('#btn_fd').attr("disabled", false);
-			$('#btn_fd_cancel').trigger('click');
-		}
-	});
-});
-</script>
-    
-    
-    
-    
-     
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?fd99bd0a8c1c5b6fb9082a310736be80";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-<script type="text/javascript">
-mx_as_id =3003803;
-mx_server_base_url ="mega.mlt01.com/";
-</script>
 <script type="text/javascript" src="js/zhuye1.js"></script>
 <script type="text/javascript" src="js/zhuye.js" charset="UTF-8"></script>
-    <script>
-      $(function(){
-        var btn =  $(".btn-load");
-        btn.click(function(){
-            btn.button('loading');
-            setTimeout(function(){
-                btn.button("reset");
-            },1200);
-        });
-      });  
-    </script>
+
+
     <!-- 回到顶部 -->
     <a id="scrollUp" href="#top" class="text-muted" title="回到顶部" style="position: fixed; z-index: 2147483647;">▲</a>
   </body>

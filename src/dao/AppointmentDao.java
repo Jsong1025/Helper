@@ -78,6 +78,40 @@ public class AppointmentDao {
 
 		return false;
 	}
+	/**
+	 * 确认约会响应，删除t_responser表中与约会ID相关数据,并修改t_appointment表中另一用户数据
+	 */
+	public boolean submitResponseAppointment(int appointmentId,int userId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "delete from t_responser where appointment_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, appointmentId);
+			pstmt.executeUpdate();
+			
+			sql = "update t_appointment set other_user_id = ? where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userId);
+			pstmt.setInt(2, appointmentId);
+			pstmt.executeUpdate();
+			
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
 
 	/**
 	 * 查询所有约会

@@ -44,6 +44,7 @@ public class AppointmentResponseServlet extends HttpServlet {
 		message.setUser(appointment.getUser().getId());
 		message.setMessage(user.getName()+"回应了您的约会请求");
 		message.setAppointmentId(appointmentId);
+		message.setOtherUser(user.getId());
 		MessageDao messageDao = new MessageDao();
 		messageDao.insertMessage(message);
 		

@@ -31,6 +31,7 @@ public class MessageDao {
 				message.setUser(rs.getInt("t_message.user"));
 				message.setMessage(rs.getString("t_message.message"));
 				message.setAppointmentId(rs.getInt("t_message.appointment_id"));
+				message.setOtherUser(rs.getInt("t_message.other_user"));
 				
 				messages.add(message);
 			}
@@ -49,6 +50,44 @@ public class MessageDao {
 		return null;
 	}
 	
+	
+	/*
+	 * 根据ID查找指定消息
+	 */
+	public Message findMessageById(int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "select * from t_message where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Message message = new Message();
+				message.setId(rs.getInt("id"));
+				message.setUser(rs.getInt("user"));
+				message.setMessage(rs.getString("message"));
+				message.setAppointmentId(rs.getInt("appointment_id"));
+				message.setOtherUser(rs.getInt("other_user"));
+				
+				return message;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(rs, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
 
 	/*
 	 * 添加消息
@@ -59,11 +98,12 @@ public class MessageDao {
 
 		try {
 			conn = JdbcUtil.getConnection();
-			String sql = "insert into t_message(user,message,appointment_id) value (?,?,?)";
+			String sql = "insert into t_message(user,message,appointment_id,other_user_id) value (?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, message.getUser());
 			pstmt.setString(2, message.getMessage());
 			pstmt.setInt(3, message.getAppointmentId());
+			pstmt.setInt(4, message.getOtherUser());
 			pstmt.executeUpdate();
 			return true;
 

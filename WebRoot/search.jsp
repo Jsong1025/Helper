@@ -53,8 +53,8 @@
           		<li><a href="home.jsp" title=首页">首页</a></li>
               <li><a href="release.do" title="发布约会">发布约会</a></li>
               <li><a href="appointmentList.do" title="约会管理">约会管理</a></li>
-              <li><a href="#" title="搜索约会">搜索约会</a></li>
-              <li><a href="#" title="消息管理">消息管理</a></li>
+              <li><a href="searchList.do" title="搜索约会">搜索约会</a></li>
+              <li><a href="messageShow.do" title="消息管理">消息管理</a></li>
               <li><a href="info.do" title="个人资料">个人资料</a></li>
               <%
              	if(permision < 3){
@@ -169,7 +169,7 @@
                    <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <% if(appointments.get(i).getType() == 2){ %>
-                      	<button id="" type="button" class="btn btn-primary" onclick="#" disabled >您已确认</button>
+                      	<button id="" type="button" class="btn btn-primary" onclick="" disabled >您已确认</button>
                       <% } else {%>
                       	<button id="" type="button" class="btn btn-primary" onclick="window.location.href='appointmentResponse.do?id=<%= appointments.get(i).getId() %>'">确认约会</button>
                       <%} %>
@@ -186,11 +186,7 @@
 
 
 
- <div class="ab" style=" width: 1100px;   height: 350px; border-top-width: 0px; border-left-width: 0px; margin-left: 150px;"></div>
-<span class="q" style="margin-left: 500px;">
-<span class="fs" ><a herf="#" style=" margin-left: 160px;">上一页</a>
-<span class="fs" style="  border-top-width: 500px; margin-bottom: 20px; padding-top: 20px;  margin-left: 80px;"><a herf="#">下一页</a></span>
-</span>
+
     <!-- 尾部导航（PC端）-->
    <footer class="container clearfix   visible-md visible-lg" style="
     border-top-width: 200px;
@@ -199,31 +195,16 @@
 ">
       <div class="row">
 		<div class="col-sm-12 text-muted text-center">
-           
-        </div>
+		</div>
         <div class="col-sm-12 text-muted text-center">
 		<bottom>
-            <a href="/post/5008/" class="text-muted">关于我们</a>  ·  <a href="/post/5021/" class="text-muted">联系我们</a>  ·  <a href="/post/5023/" class="text-muted">加入我们</a>  ·  <a href="/post/5011/" class="text-muted">服务协议</a>  ·  <a href="/topic/10024/" class="text-muted">帮助中心</a>  ·  <a href="/post/5024/" class="text-muted">App</a>  ·  <a href="http://list.qq.com/cgi-bin/qf_invite?id=c47b87624bbe1feaa4dcd4e7510e57809b22d9cc9eaaa8c4" target="_blank" class="text-muted">订阅</a>
+            <a href="#" class="text-muted">关于我们</a>  ·  <a href="#" class="text-muted">联系我们</a>  ·  <a href="#" class="text-muted">加入我们</a>  ·  <a href="#" class="text-muted">服务协议</a>  ·  <a href="#" class="text-muted">帮助中心</a>  ·  <a href="#" class="text-muted">App</a>  ·  <a href="#" class="text-muted">订阅</a>
         </bottom>
 		</div>
    
       </div>
     </footer>
-    <!-- 尾部导航（移动端）-->
-    <nav class="navbar navbar-default navbar-bottomnav  visible-xs visible-sm" role="navigation">
-      <div class="navbar-header">
-        <ul class="pager pull-left">
-          <li><a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span> 后退</a></li>
-          <li><a href="javascript:history.go(1);">前进 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
-        </ul>
-        <ul class="pager pull-right">
-          <li><a href="/">首页</a></li>
-          
-          <li><a href="/u/1804037/">我的主页</a></li>
-          
-        </ul>
-      </div>
-    </nav>
+ 
 	<script src="js/zhuye4.js"></script>
     <script src="js/zhuye2.js"></script>
     <script src="js/zhuye3.js"></script>

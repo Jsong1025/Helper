@@ -82,27 +82,27 @@
         <div class="carousel-inner">
 		  <div class="item active">
             <div style="background-image:url('img/6.jpg')">
-              <a href="   " class="text-hide" title=" "></a>
+              <a href="" class="text-hide" ></a>
             </div>
           </div>
           <div class="item">
             <div style="background-image:url('img/8.jpg')">
-              <a href="/post/5027/" class="text-hide" title=""></a>
+              <a href="" class="text-hide"></a>
             </div>
           </div>
           <div class="item">
             <div style="background-image:url('img/1.jpg')">
-              <a href="/topic/10025/" class="text-hide" title="不辜负每个周末的好时光">不辜负每个周末的好时光</a>
+              <a href="" class="text-hide" ></a>
             </div>
           </div>
           <div class="item">
             <div style="background-image:url('img/2.jpg')">
-              <a href="/post/5018/" class="text-hide" title=""></a>
+              <a href="" class="text-hide" ></a>
             </div>
           </div>
           <div class="item">
             <div style="background-image:url('img/7.jpg')">
-              <a href="/post/5019/" class="text-hide" title=""></a>
+              <a href="" class="text-hide" ></a>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@
         <div class="col-md-8">
         <div class="page-header list-header visible-md visible-lg">
             <h3>
-              <a href="http://www.yuelvxing.com/zine/weekly/" title="前往 热门景点" target="_blank">
+              <a href="" title="前往 热门景点" target="_blank">
                 热门景点&nbsp;&nbsp;&nbsp;
                 <small class="text-muted">景多图美，尽情观赏！</small>
                 <small class="pull-right" >更多 <span class="mediumicon mediumicon-arrow-right"></span></small>
@@ -129,29 +129,29 @@
           <div class="row  mb20 visible-md visible-lg">
 			<div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="  " title="" target="_blank">
-                  <img  alt="" src="img/15.jpg" class="img-responsive cover"/>
+                <a href="  " >
+                  <img  src="img/15.jpg" class="img-responsive cover"/>
                 </a>
               </div>
             </div>
 			<div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="http://www.yuelvxing.com/zine/vol073/" title="" target="_blank">
-                  <img  alt="" src="img/21.jpg" class="img-responsive cover"/>
+                <a href="" >
+                  <img  src="img/21.jpg" class="img-responsive cover"/>
                 </a>
               </div>
             </div>
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="http://www.yuelvxing.com/zine/vol072/" title="" target="_blank">
-                  <img alt="" src="img/22.jpg" class="img-responsive cover"/>
+                <a href="" target="_blank">
+                  <img  src="img/22.jpg" class="img-responsive cover"/>
                 </a>
               </div>
             </div>
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="http://www.yuelvxing.com/zine/vol071/" title="" target="_blank">
-                  <img alt="" src="img/23.jpg" class="img-responsive cover"/>
+                <a href="">
+                  <img src="img/23.jpg" class="img-responsive cover"/>
                 </a>
               </div>
             </div>
@@ -163,117 +163,117 @@
           
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5436/"><img  alt="" src="img/chi1.jpg" class="img-responsive cover2"/></a>
+                <a href=""><img   src="img/chi1.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5436/"></a></h3>      
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>      
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5435/"><img  alt="" src="img/chi2.jpg"/></a>
+                <a href=""><img  src="img/chi2.jpg"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5435/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                   
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5434/"><img  alt="" src="img/chi3.jpg" class="img-responsive cover2"/></a>
+                <a href=""><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5434/"></a></h3>
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5433/"><img  alt="" src="http://yuelxm.b0.upaiyun.com/zine/column/1430480114499p69f4508f34248d3f04e90d2e8afc222c.png!cover8" class="img-responsive cover2"/></a>
+                <a href=""><img   src="img/chi1.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5433/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5432/"><img  alt="" src="http://yuelxm.b0.upaiyun.com/zine/column/1429893291631pf0acf4fedfae41c4320cb1409ec2bb5e.png!cover8" class="img-responsive cover2"/></a>
+                <a href=""><img src="img/chi2.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5432/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                   
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5431/"><img  alt="" src="http://yuelxm.b0.upaiyun.com/zine/column/1429892025132pf60feb182efc3bbee9c7a34b99fc852c.jpg!cover8" class="img-responsive cover2"/></a>
+                <a href=""><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5431/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5430/"><img  alt="" src="http://yuelxm.b0.upaiyun.com/zine/column/1427487208790p7516af4bfae4bedd84f8dcf10d150d93.png!cover8" class="img-responsive cover2"/></a>
+                <a href=""><img src="img/chi1.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5430/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                   
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5429/"><img  alt="" src="http://yuelxm.b0.upaiyun.com/zine/column/1427486560868p0a29ec6eef4b49ab5c9db97fbcde9ad3.jpg!cover8" class="img-responsive cover2"/></a>
+                <a href=""><img src="img/chi2.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5429/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5428/"><img  alt="" src="http://yuelxm.b0.upaiyun.com/zine/column/1426870458302pf1bbdde3a7382b7421e9a11ceb63ac80.jpg!cover8" class="img-responsive cover2"/></a>
+                <a href=""><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5428/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted"></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href="/post/5427/"><img  alt="" src="http://yuelxm.b0.upaiyun.com/zine/column/1426869626808p2269449ed9d4585f245e61ff73f1bb8d.jpg!cover8" class="img-responsive cover2"/></a>
+                <a href=""><img  src="img/chi1.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="/collection/10000/" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="/post/5427/"></a></h3>
+                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="/u/100000/" class="text-muted" ></a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted" >商家描述</a></small></p>
                 </div>
               </div>
             </div>
@@ -343,46 +343,46 @@
 
           </div>
           <div class="page-header list-header">
-            <h3><a href="/collection/">主题栏目<small></small><small class="pull-right" >更多 <span class="mediumicon mediumicon-arrow-right"></span></small></a></h3>
+            <h3><a href="">套餐信息<small></small><small class="pull-right" >更多 <span class="mediumicon mediumicon-arrow-right"></span></small></a></h3>
           </div>
           <div class="row mb20 ">
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href="/collection/10042/"  title="前往 &#x6bd5;&#x4e1a;&#x53bb;&#x65c5;&#x884c; &mdash;&mdash; &#x9752;&#x6625;&#x5c31;&#x662f;&#x6c38;&#x4e0d;&#x56de;&#x5934;"><img  alt="&#x6bd5;&#x4e1a;&#x53bb;&#x65c5;&#x884c; &mdash;&mdash; &#x9752;&#x6625;&#x5c31;&#x662f;&#x6c38;&#x4e0d;&#x56de;&#x5934;" src="img/24.jpg" class="img-responsive cover"/></a>
+                <a href="" ><img src="img/24.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="/collection/10042/">&#x6bd5;&#x4e1a;&#x53bb;&#x65c5;&#x884c; &mdash;&mdash; &#x9752;&#x6625;&#x5c31;&#x662f;&#x6c38;&#x4e0d;&#x56de;&#x5934;</a></h3>
-                  <p class="text-muted"><a href="/u/100000/" class="text-muted">&#x60a6;&#x65c5;&#x884c;</a> 主编，共0篇</p>
+                  <h3><a href="">套餐描述</a></h3>
+                  <p class="text-muted"><a href="" class="text-muted"></a></p>
                 </div>
               </div>
             </div>
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href="/collection/10041/"  title="前往 &#x6bd5;&#x4e1a;&#x53bb;&#x65c5;&#x884c; &mdash;&mdash; &#x9752;&#x6625;&#x5c31;&#x662f;&#x6c38;&#x4e0d;&#x56de;&#x5934;"><img  alt="&#x6bd5;&#x4e1a;&#x53bb;&#x65c5;&#x884c; &mdash;&mdash; &#x9752;&#x6625;&#x5c31;&#x662f;&#x6c38;&#x4e0d;&#x56de;&#x5934;" src="img/25.jpg" class="img-responsive cover"/></a>
+                <a href="" ><img  src="img/25.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="/collection/10041/">&#x6bd5;&#x4e1a;&#x53bb;&#x65c5;&#x884c; &mdash;&mdash; &#x9752;&#x6625;&#x5c31;&#x662f;&#x6c38;&#x4e0d;&#x56de;&#x5934;</a></h3>
-                  <p class="text-muted"><a href="/u/100000/" class="text-muted">&#x60a6;&#x65c5;&#x884c;</a> 主编，共0篇</p>
+                  <h3><a href="">套餐描述</a></h3>
+                  <p class="text-muted"><a href="" class="text-muted"></a></p>
                 </div>
               </div>
             </div>
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href="/collection/10036/"  title="前往 &#x62fc;&#x9014;&#x53ec;&#x96c6;&#x4ee4;"><img  alt="&#x62fc;&#x9014;&#x53ec;&#x96c6;&#x4ee4;" src="img/26.jpg" class="img-responsive cover"/></a>
+                <a href="" ><img  src="img/26.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="/collection/10036/">&#x62fc;&#x9014;&#x53ec;&#x96c6;&#x4ee4;</a></h3>
-                  <p class="text-muted"><a href="/u/100000/" class="text-muted">&#x60a6;&#x65c5;&#x884c;</a> 主编，共0篇</p>
+                  <h3><a href="">套餐描述</a></h3>
+                  <p class="text-muted"><a href="" class="text-muted"></a> </p>
                 </div>
               </div>
             </div>
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href="/collection/10013/"  title="前往 &#x60a6;&#x65c5;&#x884c;&#x4e4b;&#x5bb6;"><img  alt="&#x60a6;&#x65c5;&#x884c;&#x4e4b;&#x5bb6;" src="img/27.jpg" class="img-responsive cover"/></a>
+                <a href=""  ><img   src="img/27.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="/collection/10013/">&#x60a6;&#x65c5;&#x884c;&#x4e4b;&#x5bb6;</a></h3>
-                  <p class="text-muted"><a href="/u/100000/" class="text-muted">&#x60a6;&#x65c5;&#x884c;</a> 主编，共12篇</p>
+                  <h3><a href="">套餐描述</a></h3>
+                  <p class="text-muted"><a href="" class="text-muted"></a></p>
                 </div>
               </div>
             </div>
@@ -397,24 +397,42 @@
               </div>
             </div>
             <div class="thumbnail list-theme list-theme-topic visible-md visible-lg">
-              <a href="http://www.pintour.com" target="_blank"><img src="/assets/img/test/ad.jpg" class="img-responsive cover"></a>
+              <a href="" target="_blank"><img src="img/24.jpg" class="img-responsive cover"></a>
+               <div class="caption">
+                <div class="caption-content">
+                  <h3><a href="">专题</a></h3>
+                  <div class="divider"></div>
+                  <h4><a href=""></a></h4>
+                  <p><small><a href="" class="text-muted"></a></small></p>
+                  
+                </div>
+              </div>
             </div>
             <div class="thumbnail list-theme list-theme-topic ">
             
-            <a href="/topic/10046/"><img src="img/25.jpg!cover8" class="img-responsive cover" alt="..."></a>
+            <a href=""><img src="img/25.jpg" class="img-responsive cover" ></a>
               <div class="caption">
                 <div class="caption-content">
-                  <h3><a href="/topic/10046/">专题</a></h3>
+                  <h3><a href="">专题</a></h3>
                   <div class="divider"></div>
-                  <h4><a href="/topic/10046/">&#x5bfb;&#x627e;&#x4e2d;&#x56fd;&#x6700;&#x7f8e;&#x51ac;&#x5b63;</a></h4>
-                  <p><small><a href="/u/100000/" class="text-muted">&#x60a6;&#x65c5;&#x884c;</a> 主编，共5篇</small></p>
+                  <h4><a href=""></a></h4>
+                  <p><small><a href="" class="text-muted"></a></small></p>
                   
                 </div>
               </div>
             
             </div>
 	    <div class="thumbnail list-theme list-theme-topic visible-md visible-lg">
-              <a href="/post/5024/"><img src="img/24.jpg" class="img-responsive cover"></a>
+              <a href=""><img src="img/24.jpg" class="img-responsive cover"></a>
+               <div class="caption">
+                <div class="caption-content">
+                  <h3><a href="">专题</a></h3>
+                  <div class="divider"></div>
+                  <h4><a href=""></a></h4>
+                  <p><small><a href="" class="text-muted"></a></small></p>
+                  
+                </div>
+              </div>
             </div>
             <div class="list-group mb40">
             </div>
@@ -436,7 +454,7 @@
           
         </div>
         <div class="col-sm-12 text-muted text-center">
-            <a href="/post/5008/" class="text-muted">关于我们</a>  ·  <a href="/post/5021/" class="text-muted">联系我们</a>  ·  <a href="/post/5023/" class="text-muted">加入我们</a>  ·  <a href="/post/5011/" class="text-muted">服务协议</a>  ·  <a href="/topic/10024/" class="text-muted">帮助中心</a>  ·  <a href="/post/5024/" class="text-muted">App</a>  ·  <a href="http://list.qq.com/cgi-bin/qf_invite?id=c47b87624bbe1feaa4dcd4e7510e57809b22d9cc9eaaa8c4" target="_blank"  class="text-muted">订阅</a>
+            <a href="" class="text-muted">关于我们</a>  ·  <a href="" class="text-muted">联系我们</a>  ·  <a href="" class="text-muted">加入我们</a>  ·  <a href="" class="text-muted">服务协议</a>  ·  <a href="" class="text-muted">帮助中心</a>  ·  <a href="" class="text-muted">App</a>  ·  <a href="" target="_blank"  class="text-muted">订阅</a>
         </div>
         <div class="col-sm-12 text-center text-muted">
         	
@@ -461,44 +479,7 @@
     <script src="js\zhuye2.js"></script>   
  
     
-<script type="text/javascript">
-$('#btn_fd').click(function(){
-	var fd = $('#fd').val();
-	var fdlink = $('#fdlink').val();
-	fd = $.trim(fd);
-	fdlink = $.trim(fdlink);
-	if(fd == '' || fdlink == ''){
-		alert('请填写你的意见和联系方式！');
-		return false;
-	}
-	var d={};
-	d['fd']=fd;
-	d['fdlink']=fdlink;
-	$(this).html('提交中...');
-	$(this).attr("disabled", true);
-	$.ajax({
-		url : '/feedback/',
-		type : 'POST',
-		data : d,
-		cache: false,
-		dataType : 'json',
-		error : function() {
-			alert('系统故障，稍微重试！');
-			$('#btn_fd').attr("disabled", false);
-		},
-		success : function(data) {
-			if(data.error){
-				alert(data.desc);
-			}else{
-				alert('提交成功');
-			}
-			$('#btn_fd').html('提交');
-			$('#btn_fd').attr("disabled", false);
-			$('#btn_fd_cancel').trigger('click');
-		}
-	});
-});
-</script>
+
     
     
     

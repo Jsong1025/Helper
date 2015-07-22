@@ -82,7 +82,7 @@
               <li><a href="release.do" title="前往 发布约会">发布约会</a></li>
               <li><a href="appointmentList.do" title="前往 约会管理">约会管理</a></li>
               <li><a href="searchList.do" title="前往 搜索约会">搜索约会</a></li>
-              <li><a href="#" title="前往 消息管理">消息管理</a></li>
+              <li><a href="messageShow.do" title="前往 消息管理">消息管理</a></li>
               <li><a class="visible-md visible-lg" href="info.do" title="前往 个人设置">个人设置</a></li>
              <%
              	if(permision < 3){
@@ -297,26 +297,12 @@
            
         </div>
         <div class="col-sm-12 text-muted text-center">
-            <a href="/post/5008/" class="text-muted">关于我们</a>  ·  <a href="/post/5021/" class="text-muted">联系我们</a>  ·  <a href="/post/5023/" class="text-muted">加入我们</a>  ·  <a href="/post/5011/" class="text-muted">服务协议</a>  ·  <a href="/topic/10024/" class="text-muted">帮助中心</a>  ·  <a href="/post/5024/" class="text-muted">App</a>  ·  <a href="http://list.qq.com/cgi-bin/qf_invite?id=c47b87624bbe1feaa4dcd4e7510e57809b22d9cc9eaaa8c4" target="_blank"  class="text-muted">订阅</a>
+            <a href="#" class="text-muted">关于我们</a>  ·  <a href="#" class="text-muted">联系我们</a>  ·  <a href="#" class="text-muted">加入我们</a>  ·  <a href="#" class="text-muted">服务协议</a>  ·  <a href="#" class="text-muted">帮助中心</a>  ·  <a href="#" class="text-muted">App</a>  ·  <a href="#"  class="text-muted">订阅</a>
         </div>
        
       </div>
     </footer>
-    <!-- 尾部导航（移动端）-->
-    <nav class="navbar navbar-default navbar-bottomnav  visible-xs visible-sm" role="navigation">
-      <div class="navbar-header">
-        <ul class="pager pull-left">
-          <li><a href="javascript:history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span> 后退</a></li>
-          <li><a href="javascript:history.go(1);">前进 <span class="glyphicon glyphicon-chevron-right"></span></a></li>
-        </ul>
-        <ul class="pager pull-right">
-          <li><a href="/">首页</a></li>
-          
-          <li><a href="/u/1804037/">我的主页</a></li>
-          
-        </ul>
-      </div>
-    </nav>
+   
 	<script src="js/zhuye4.js"></script>
     <script src="js/zhuye3.js"></script>
     <script src="js/zhuye2.js"></script>

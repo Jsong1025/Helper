@@ -34,7 +34,9 @@ public class UserDao {
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
 				user.setName(rs.getString("name"));
-				user.setSex(rs.getString("sex").charAt(0));
+				if (rs.getString("sex") != null) {
+					user.setSex(rs.getString("sex").charAt(0));
+				}
 				user.setAge(rs.getInt("age"));
 				user.setTel(rs.getString("tel"));
 				user.setQQ(rs.getString("QQ"));
@@ -221,7 +223,9 @@ public class UserDao {
 				user.setPassword(rs.getString("password"));
 				user.setName(rs.getString("name"));
 				user.setAge(rs.getInt("age"));
-				user.setSex(rs.getString("sex").charAt(0));
+				if (rs.getString("sex") != null) {
+					user.setSex(rs.getString("sex").charAt(0));
+				}
 				user.setTel(rs.getString("tel"));
 				user.setQQ(rs.getString("QQ"));
 				user.setEmail(rs.getString("email"));
@@ -266,7 +270,9 @@ public class UserDao {
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
 				user.setName(rs.getString("name"));
-				user.setSex(rs.getString("sex").charAt(0));
+				if (rs.getString("sex") != null) {
+					user.setSex(rs.getString("sex").charAt(0));
+				}
 				user.setAge(rs.getInt("age"));
 				user.setTel(rs.getString("tel"));
 				user.setQQ(rs.getString("QQ"));

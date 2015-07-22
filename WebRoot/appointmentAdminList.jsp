@@ -89,7 +89,9 @@
 										<td class="center">
 											<button class="btn-min" type="button" onclick="window.location.href='appointmentUpdateShow.do?id=<%= appointments.get(i).getId() %>'">修改</button> 
 											<button class="btn-min" type="button" onclick="window.location.href='appointmentdelete.do?id=<%= appointments.get(i).getId() %>'">删除</button>
-											<button class="btn-min" type="button" onclick="">审核</button>
+											<%if(!appointments.get(i).isExamine()) {%>
+											<button class="btn-min" type="button" onclick="window.location.href='appointmentExamine.do?id=<%= appointments.get(i).getId() %>'">审核</button>
+											<%} %>
 										</td>
 									</tr>   
 									<% } %>

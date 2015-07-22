@@ -1,6 +1,5 @@
 package servlet.admin.appointment;
 
-
 import java.io.IOException;
 import java.util.Random;
 
@@ -21,13 +20,8 @@ public class AppointmentExamineServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		//生成消费码
-		String base = "abcdefghijklmnopqrstuvwxyz0123456789";     
-	    Random random = new Random();     
-	    StringBuffer payKey = new StringBuffer();     
-	    for (int i = 0; i < 6; i++) {     
-	        int number = random.nextInt(base.length());     
-	        payKey.append(base.charAt(number));     
-	    } 
+	    Random random = new Random();
+	    Integer payKey = random.nextInt(8);     
 		
 	    AppointmentDao dao = new AppointmentDao();
 	    dao.examineAppointment(id, payKey.toString());
