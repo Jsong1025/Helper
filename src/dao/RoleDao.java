@@ -9,9 +9,15 @@ import java.util.ArrayList;
 import util.JdbcUtil;
 import vo.Role;
 
+/**
+ * @author Jsong
+ * 
+ * 此类为数据库helper中t_role表（角色表）的操作类
+ *
+ */
 public class RoleDao {
 	
-	/*
+	/**
 	 * 查找所有角色信息
 	 */
 	public ArrayList<Role> findAll() {
@@ -48,7 +54,7 @@ public class RoleDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 根据ID查找单个角色
 	 * */
 	public Role findRoleById(int id){
@@ -85,7 +91,7 @@ public class RoleDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 添加角色
 	 */
 	public boolean insertRole(Role role) {
@@ -114,7 +120,7 @@ public class RoleDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 根据ID删除角色
 	 */
 	public boolean deleteRole(int id) {
@@ -142,7 +148,7 @@ public class RoleDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 更新角色信息
 	 */
 	public boolean updateRole(Role role) {

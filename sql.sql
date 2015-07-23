@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50024
 File Encoding         : 65001
 
-Date: 2015-07-23 11:38:51
+Date: 2015-07-23 16:54:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,8 +46,9 @@ CREATE TABLE `t_appointment` (
 -- ----------------------------
 -- Records of t_appointment
 -- ----------------------------
-INSERT INTO t_appointment VALUES ('10', '2015-07-23', null, 'N', 'N', '1', null, null, '2015-04-01', '2', '吃饭,', '你好', '1', 'N', 'Y');
-INSERT INTO t_appointment VALUES ('11', '2015-07-23', null, 'N', 'N', '1', '3', null, '2015-07-08', '3', '看电影,唱歌,', '欢迎', '2', 'N', 'Y');
+INSERT INTO t_appointment VALUES ('10', '2015-07-23', null, 'N', 'N', '1', '3', '6', '2015-04-01', '2', '吃饭,', '你好', '1', 'Y', 'Y');
+INSERT INTO t_appointment VALUES ('11', '2015-07-23', null, 'N', 'N', '1', '3', '', '2015-07-08', '3', '看电影,唱歌,', '欢迎', '2', 'N', 'Y');
+INSERT INTO t_appointment VALUES ('12', '2015-07-23', null, 'N', 'N', '1', '3', '1', '2015-07-08', '2', '吃饭,看电影,', '123456', '1', 'Y', 'Y');
 
 -- ----------------------------
 -- Table structure for `t_meal`
@@ -95,9 +96,12 @@ CREATE TABLE `t_message` (
 -- ----------------------------
 -- Records of t_message
 -- ----------------------------
-INSERT INTO t_message VALUES ('13', '1', '李四回应了您的约会编号为  11 的约会请求', '11', '3');
-INSERT INTO t_message VALUES ('14', '1', '李四回应了您的约会编号为  11 的约会请求', '11', '3');
-INSERT INTO t_message VALUES ('15', '3', '您的申请约会编号为  3 的约会对方已同意，正在等待管理员审核。', '11', '1');
+INSERT INTO t_message VALUES ('16', '1', '您的编号为  10 的约会，管理员已审核通过。消费码为： 6 。凭此码享受服务。', '10', '2');
+INSERT INTO t_message VALUES ('17', '3', '您的编号为  10 的约会，管理员已审核通过。消费码为： 6 。凭此码享受服务。', '10', '2');
+INSERT INTO t_message VALUES ('18', '1', '李四回应了您的约会编号为  12 的约会请求', '12', '3');
+INSERT INTO t_message VALUES ('19', '3', '您的申请约会编号为  3 的约会对方已同意，正在等待管理员审核。', '12', '1');
+INSERT INTO t_message VALUES ('20', '1', '您的编号为  12 的约会，管理员已审核通过。消费码为： 1 。凭此码享受服务。', '12', '2');
+INSERT INTO t_message VALUES ('21', '3', '您的编号为  12 的约会，管理员已审核通过。消费码为： 1 。凭此码享受服务。', '12', '2');
 
 -- ----------------------------
 -- Table structure for `t_responser`

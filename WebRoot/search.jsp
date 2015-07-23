@@ -95,36 +95,35 @@
 </div>
 
    <h2 float:left;="" margin-top:="" 0px;="" margin-left:400px;="" border-top-width:200px;="" border-left-width:20px;="" style="margin-left: 400px;margin-top: 40px;margin-bottom: 0px;">条件查找</h2>
- <div id="xuan" ;="" style="
-    margin-left: 500px;
-">
-             性别：<select style="border-top-width:1px; margin-top: 50px">
-			  <option value="不限">不限</option>
-			  <option value="男">男</option>
-			  <option value="女">女</option>
+ <div id="xuan" ;="" style="margin-left: 500px;">
+ 	<form action="searchList.do" method="get">
+             性别：<select name="gender" style="border-top-width:1px; margin-top: 50px">
+			  <option value="0">不限</option>
+			  <option value="1">男</option>
+			  <option value="2">女</option>
 			  </select>
 			  
               &nbsp;  &nbsp;  &nbsp; &nbsp;
-             年龄：<select style="border-top-width:1px; margin-top: 50px">
-			  <option value="不限">不限</option>
-			  <option value="19岁以下">19岁以下</option>
-			  <option value="19-22岁">19-22岁</option>
-              <option value="23-26岁">23-26岁</option>
-			  <option value="27-35岁">27-35岁</option>
-			  <option value="35岁以上">35岁以上</option>
+             年龄：<select name="age" style="border-top-width:1px; margin-top: 50px">
+			  <option value="0">不限</option>
+			  <option value="1">19岁以下</option>
+			  <option value="2">19-22岁</option>
+              <option value="3">23-26岁</option>
+			  <option value="4">27-35岁</option>
+			  <option value="5">35岁以上</option>
 			  </select>
 		&nbsp;  &nbsp;  &nbsp; &nbsp;
-			  约会内容:<select style="border-top-width:1px; margin-top: 50px">
-			  <option value="不限">不限</option>
-			  <option value="吃饭">吃饭</option>
-			  <option value="看电影">看电影</option>
-              <option value="唱歌">唱歌</option>
-			  <option value="运动">运动</option>
+			  约会内容:<select name="substance" style="border-top-width:1px; margin-top: 50px">
+			  <option value="0">不限</option>
+			  <option value="1">吃饭</option>
+			  <option value="2">看电影</option>
+              <option value="3">唱歌</option>
+			  <option value="4">运动</option>
 			  </select>
 		&nbsp;  &nbsp;  &nbsp; &nbsp;
 			   <button class="btn" onclick="window.location.href=''">搜索</button>
-			  </div>
-
+	</form>
+</div>
 
   <div class="settingbar">
     <div class="container">

@@ -17,6 +17,12 @@ import dao.MessageDao;
 import dao.ResponserDao;
 import dao.UserDao;
 
+/**
+ * @author Jsong
+ * 
+ * 用户确认约会类。另一用户确认了已发布的约会后，
+ *
+ */
 public class AppointmentSubmitServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

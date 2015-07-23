@@ -8,11 +8,16 @@ import java.util.ArrayList;
 
 import util.JdbcUtil;
 import vo.Store;
-import vo.User;
 
+/**
+ * @author Jsong
+ * 
+ * 此类为数据库helper中t_store表（商家表）的操作类
+ *
+ */
 public class StoreDao {
 	
-	/*
+	/**
 	 * 查找所有商家
 	 * */
 	public ArrayList<Store> finAll(){
@@ -53,7 +58,7 @@ public class StoreDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 根据ID查找单个商家信息
 	 * */
 	public Store findStoreById(int id){
@@ -94,7 +99,7 @@ public class StoreDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 添加商家
 	 */
 	public boolean insertStore(Store store) {
@@ -127,7 +132,7 @@ public class StoreDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 根据ID删除商家
 	 */
 	public boolean deleteStore(int id) {
@@ -155,7 +160,7 @@ public class StoreDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 更新商家信息
 	 */
 	public boolean updateStore(Store store) {

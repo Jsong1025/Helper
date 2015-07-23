@@ -19,6 +19,12 @@ import vo.Appointment;
 import vo.Message;
 import vo.User;
 
+/**
+ * @author Jsong
+ * 
+ * 用户约会响应类。此类用于用户界搜索约会中，用户点击“确认约会”操作。
+ *
+ */
 public class AppointmentResponseServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;

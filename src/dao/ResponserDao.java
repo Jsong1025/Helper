@@ -9,6 +9,12 @@ import java.util.Date;
 import util.JdbcUtil;
 import vo.Responser;
 
+/**
+ * @author Jsong
+ * 
+ * 此类为数据库helper中t_responser表（响应表）的操作类
+ *
+ */
 public class ResponserDao {
 	
 	/**
@@ -42,7 +48,7 @@ public class ResponserDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 根据ID查询指定响应
 	 */
 	public Responser findResponserById(int id) {
@@ -80,7 +86,7 @@ public class ResponserDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 查询约会的所有响应信息
 	 */
 	public ArrayList<Responser> findResponserByApponitment(int appointmentId) {
@@ -120,7 +126,7 @@ public class ResponserDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 查询指定用户是否响应了指定约会
 	 */
 	public ArrayList<Responser> findResponserByApponitmentUser(int appointmentId,int userId) {
@@ -161,7 +167,7 @@ public class ResponserDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 根据约会ID删除响应信息
 	 */
 	public boolean deleteResponserByAppointmentId(int appointmentId) {

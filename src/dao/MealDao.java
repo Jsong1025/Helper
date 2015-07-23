@@ -8,11 +8,16 @@ import java.util.ArrayList;
 
 import util.JdbcUtil;
 import vo.Meal;
-import vo.Role;
 
+/**
+ * @author Jsong
+ * 
+ * 此类为数据库helper中t_meal表（套餐表）的操作类
+ *
+ */
 public class MealDao {
 	
-	/*
+	/**
 	 * 查找所有套餐
 	 * */
 	public ArrayList<Meal> finAll(){
@@ -55,7 +60,7 @@ public class MealDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 根据ID查找套餐
 	 * */
 	public Meal findMealById(int id){
@@ -99,7 +104,7 @@ public class MealDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 添加套餐
 	 */
 	public boolean insertMeal(Meal meal) {
@@ -134,7 +139,7 @@ public class MealDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 根据ID删除套餐
 	 */
 	public boolean deleteRole(int id) {
@@ -162,7 +167,7 @@ public class MealDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 更新套餐信息
 	 */
 	public boolean updateMeal(Meal meal) {

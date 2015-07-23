@@ -11,12 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import vo.Appointment;
-import vo.User;
 
 import dao.AppointmentDao;
-import dao.MessageDao;
-import dao.UserDao;
 
+/**
+ * @author Jsong
+ * 
+ * 用户约会信息显示类。此类用于用户界面显示约会信息列表操作
+ *
+ */
 public class AppointmentListServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -32,8 +35,6 @@ public class AppointmentListServlet extends HttpServlet {
 		//查找用户所有约会
 		AppointmentDao dao = new AppointmentDao();
 		ArrayList<Appointment> appointments = dao.findAllByEmail(email);
-		
-		MessageDao messageDao = new MessageDao();
 		
 		for (int i = 0; i < appointments.size(); i++) {
 			//移除已经取消了的约会

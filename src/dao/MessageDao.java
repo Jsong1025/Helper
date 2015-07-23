@@ -8,9 +8,15 @@ import java.util.ArrayList;
 import util.JdbcUtil;
 import vo.Message;
 
+/**
+ * @author Jsong
+ * 
+ * 此类为数据库helper中t_messa表（消息表）的操作类
+ *
+ */
 public class MessageDao {
 	
-	/*
+	/**
 	 * 查找用户所有消息
 	 */
 	public ArrayList<Message> findAllByEmail(String email) {
@@ -51,7 +57,7 @@ public class MessageDao {
 	}
 	
 	
-	/*
+	/**
 	 * 根据ID查找指定消息
 	 */
 	public Message findMessageById(int id) {
@@ -89,7 +95,7 @@ public class MessageDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 根据约会ID查找指定消息
 	 */
 	public ArrayList<Message> findMessageByAppointmentId(int AppointmentId) {
@@ -129,7 +135,7 @@ public class MessageDao {
 		return null;
 	}
 
-	/*
+	/**
 	 * 添加消息
 	 */
 	public boolean insertMessage(Message message) {
@@ -160,7 +166,7 @@ public class MessageDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 根据ID删除消息
 	 */
 	public boolean deleteMessage(int id) {

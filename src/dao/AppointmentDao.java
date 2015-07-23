@@ -5,17 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import util.JdbcUtil;
 import vo.Appointment;
 import vo.User;
 
+/**
+ * @author Jsong
+ * 
+ * 此类为数据库helper中t_appointment表（约会表）的操作类
+ *
+ */
 public class AppointmentDao {
 
 	/**
-	 * 添加约会
-	 * */
+	 * 向约会表中添加约会新的数据
+	 */
 	public boolean insertAppointment(Appointment appoint) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -50,7 +55,10 @@ public class AppointmentDao {
 	
 
 	/**
-	 * 确认约会响应，删除t_responser表中与约会ID相关数据,并修改t_appointment表中另一用户数据
+	 * 确认约会响应，修改t_appointment表中另一用户数据，并把响应字段设置为‘Y’
+	 * 
+	 * @param appointmentId	要修改的约会ID
+	 * @param userId		确认的另一用户ID
 	 */
 	public boolean updateAppointmentOtherUser(int appointmentId,int userId) {
 		Connection conn = null;
@@ -79,7 +87,7 @@ public class AppointmentDao {
 	}
 
 	/**
-	 * 查询所有约会
+	 * 查询所有约会数据
 	 * */
 	public ArrayList<Appointment> findAll() {
 		Connection conn = null;
@@ -153,7 +161,7 @@ public class AppointmentDao {
 	}
 	
 	
-	/*
+	/**
 	 * 根据ID查找约会信息
 	 */
 	public Appointment findAppointmentById(int id) {
@@ -226,9 +234,102 @@ public class AppointmentDao {
 		return null;
 	}
 	
-	/*
-	 * 审核约会
+	/**
+	 * 条件查询约会数据
 	 * */
+	public ArrayList<Appointment> searchAppointment(int gender,int minAge,int maxAge,String substance) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			if (substance == null) {
+				String sql = "select * from t_appointment,t_user where user_id=t_user.id and gender = ? and age < ? and age > ? ;";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, gender);
+				pstmt.setInt(2, maxAge);
+				pstmt.setInt(3, minAge);
+				System.out.println("OK");
+				
+			} else {
+				String sql = "select * from t_appointment,t_user where user_id=t_user.id and gender = ? and age < ? and age > ? and substance= ? ;";
+				pstmt = conn.prepareStatement(sql);
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, gender);
+				pstmt.setInt(2, maxAge);
+				pstmt.setInt(3, minAge);
+				pstmt.setString(4, substance);
+			}
+			
+			rs = pstmt.executeQuery();
+			ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+			while (rs.next()) {
+				Appointment appointment = new Appointment();
+				appointment.setId(Integer.parseInt(rs.getString("id")));
+				appointment.setStartTime(rs.getDate("start_time"));
+				appointment.setEndTime(rs.getDate("end_time"));
+				appointment.setCacel(rs.getString("is_cacel"));
+				appointment.setBreak(rs.getString("is_break"));
+				appointment.setUserId(rs.getInt("user_id"));
+				appointment.setOtherUserId(rs.getInt("other_user_id"));
+				appointment.setPayKey(rs.getString("pay_key"));
+				appointment.setTime(rs.getDate("time"));
+				appointment.setGender(rs.getInt("gender"));
+				appointment.setSubstance(rs.getString("substance"));
+				appointment.setDescription(rs.getString("description"));
+				appointment.setMealId(rs.getInt("meal_id"));
+				appointment.setResponse(rs.getString("response").charAt(0));
+				appointment.setExamine(rs.getString("examine").charAt(0));
+
+				appointments.add(appointment);
+			}
+
+			UserDao userDao = new UserDao();
+			MealDao mealDao = new MealDao();
+			ResponserDao responserDao = new ResponserDao();
+			for (int i = 0; i < appointments.size(); i++) {
+				//查询套餐名称
+				int mealId = appointments.get(i).getMealId();
+				String mealName = mealDao.findMealById(mealId).getName();
+				appointments.get(i).setMeal(mealName);
+
+				//查询用户名
+				int userId = appointments.get(i).getUserId();
+				User user = userDao.findUserById(userId);
+				appointments.get(i).setUser(user);
+
+				//如果有另一用户名，查询另一用户名
+				int otherUserId = appointments.get(i).getOtherUserId();
+				if (otherUserId != 0) {
+					User otherUser = userDao.findUserById(otherUserId);
+					appointments.get(i).setOtherUserName(otherUser);
+				}
+				
+				//查询所有响应信息
+				int appointmentId = appointments.get(i).getId();
+				appointments.get(i).setResponsers(responserDao.findResponserByApponitment(appointmentId));
+			}
+			return appointments;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(rs, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * 审核约会
+	 * 
+	 * @param id		需要审核的约会ID
+	 * @param payKey	审核后的消费码
+	 */
 	public boolean examineAppointment(int id,String payKey){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -256,8 +357,8 @@ public class AppointmentDao {
 		return false;
 	}
 	
-	/*
-	 * 取消约会
+	/**
+	 * 取消约会（将约会中is_cacel标志设置为N）
 	 * */
 	public boolean cancelAppointment(int id){
 		Connection conn = null;
@@ -286,8 +387,8 @@ public class AppointmentDao {
 	}
 
 
-	/*
-	 *	查找用户的所有约会 
+	/**
+	 *	查找用户的所有约会（根据邮箱查找） 
 	 */
 	public ArrayList<Appointment> findAllByEmail(String email) {
 		Connection conn = null;
@@ -339,11 +440,5 @@ public class AppointmentDao {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		AppointmentDao dao = new AppointmentDao();
-		ArrayList<Appointment> appointments = dao.findAll();
-		System.out.println(appointments);
-
-	}
 
 }

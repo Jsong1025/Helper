@@ -9,12 +9,18 @@ import java.util.ArrayList;
 import util.JdbcUtil;
 import vo.User;
 
+/**
+ * @author Jsong
+ * 
+ * 此类为数据库helper中t_user表（用户表）的操作类
+ *
+ */
 public class UserDao {
 
 	public UserDao() {
 	}
 	
-	/*
+	/**
 	 * 查找所有用户
 	 */
 	public ArrayList<User> findAll() {
@@ -201,7 +207,7 @@ public class UserDao {
 		return 0;
 	}
 
-	/*
+	/**
 	 * 根据email查询用户所有信息
 	 * */
 	public User findInfoByEmail(String email){
@@ -249,7 +255,7 @@ public class UserDao {
 		return null;
 	}
 	
-	/*
+	/**
 	 * 根据ID查找指定用户
 	 */
 	public User findUserById(int id) {
@@ -298,7 +304,7 @@ public class UserDao {
 		return null;
 	}
 
-	/*
+	/**
 	 * 更新用户所有信息,通过ID查询
 	 * */
 	public boolean updateUser(User user){
@@ -337,7 +343,7 @@ public class UserDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 更新用户所有信息,通过邮箱查询
 	 */
 	public boolean updateInfoByEmail(User user){
@@ -375,7 +381,7 @@ public class UserDao {
 		return false;
 	}
 	
-	/*
+	/**
 	 * 根据ID删除用户
 	 */
 	public boolean deleteUser(int id) {
@@ -401,9 +407,6 @@ public class UserDao {
 		}
 		
 		return false;
-	}
-
-	public static void main(String[] args) {
 	}
 
 }
