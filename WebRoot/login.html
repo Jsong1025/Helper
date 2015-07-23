@@ -163,7 +163,9 @@ $(function(){
 			</DIV>
 			<P style="padding: 30px 0px 10px; position: relative;">
 				<SPAN class="u_logo"></SPAN>
-				<INPUT class="ipt" type="text" placeholder="请输入用户名或邮箱" name="useradress"> 
+				<INPUT class="ipt" type="text" placeholder="请输入用户名或邮箱" id="useradress" name="useradress" 
+
+onBlur="checkemail();"/> 
 			</P>
 			<P style="position: relative;">
 				<SPAN class="p_logo"></SPAN>         
@@ -185,4 +187,23 @@ $(function(){
 		</form>
 		<div style="text-align:center;"></div>
 	</BODY>
+	<script language="javascript">
+   function checkemail(){
+   var temp = document.getElementById("useradress");
+      //对电子邮件的验证
+   var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+   if(temp.value!="")
+   {
+   if(!myreg.test(temp.value))
+   {
+    alert('提示:请输入有效的E_mail！');
+    useradress.focus();
+    return false;
+    }
+    else{
+    return ture;
+    }
+  }
+}
+    </script>
 </HTML>
