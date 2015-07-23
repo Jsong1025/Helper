@@ -14,6 +14,7 @@ import vo.Appointment;
 import vo.User;
 
 import dao.AppointmentDao;
+import dao.MessageDao;
 import dao.UserDao;
 
 public class AppointmentListServlet extends HttpServlet {
@@ -32,12 +33,13 @@ public class AppointmentListServlet extends HttpServlet {
 		AppointmentDao dao = new AppointmentDao();
 		ArrayList<Appointment> appointments = dao.findAllByEmail(email);
 		
+		MessageDao messageDao = new MessageDao();
+		
 		for (int i = 0; i < appointments.size(); i++) {
 			//移除已经取消了的约会
 			if (appointments.get(i).isCacel()) {
 				appointments.remove(i);
 			}
-		
 		}
 		
 		//绑定数据，转发

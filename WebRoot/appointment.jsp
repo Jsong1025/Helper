@@ -1,4 +1,6 @@
 ﻿<%@ page language="java" import="java.util.*,vo.Appointment" pageEncoding="utf-8"%>
+<%@page import="vo.Message"%>
+<%@page import="vo.Responser"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -122,7 +124,9 @@
             <div class="panel-heading">
               <h4 class="panel-title clearfix">
                 <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i %>" >
-                  <%=appointments.get(i).getStartTime()  %> <%=appointments.get(i).getSubstanceToString() %>                     
+                 	 编号：<%=appointments.get(i).getId()  %>&nbsp;&nbsp;
+                 	 时间： <%=appointments.get(i).getTime()  %> &nbsp;&nbsp;
+                 	内容： <%=appointments.get(i).getSubstanceToString() %>                     
                    <span class="pull-right">展开<span class="glyphicon glyphicon-chevron-down"></span></span>
                 </a>
                 <div id="lab_name" class="panel-info">
@@ -134,7 +138,7 @@
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">约会时间</label>
                     <div class="col-sm-4">
-                      <%=appointments.get(i).getStartTime()  %>
+                      <%=appointments.get(i).getTime()  %>
                     </div>
                   </div>
                     <div class="form-group">
@@ -163,6 +167,19 @@
                     </div>
                   </div>
               </div>
+              <% if(appointments.get(i).getResponsers() != null){
+            	  ArrayList<Responser> Responsers = appointments.get(i).getResponsers();
+            	  for(int j=0; j<Responsers.size();j++){
+             %>
+             
+              <div class="panel-body form-horizontal">
+              	<%= Responsers.get(j).getResponserUser().getUsername() %>响应了您的约会申请
+              	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              	<button id="" type="button" class="btn" onclick="window.location.href='appointmentSubmit.do?id=<%= Responsers.get(j).getId() %>'">确认与其约会</button>
+              </div>
+              <%
+            	  }
+              } %>
             </div>
           </div>
 

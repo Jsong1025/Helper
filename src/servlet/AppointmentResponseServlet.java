@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AppointmentDao;
 import dao.MessageDao;
+import dao.ResponserDao;
 import dao.UserDao;
 
 import vo.Appointment;
@@ -35,14 +36,16 @@ public class AppointmentResponseServlet extends HttpServlet {
 		User user = userDao.findInfoByEmail(email);
 		
 		//添加约会请求
+		ResponserDao responserDao = new ResponserDao();
+		responserDao.insertResponser(appointmentId, user.getId(), new Date());
+		
 		AppointmentDao appointmentDao = new AppointmentDao();
 		Appointment appointment = appointmentDao.findAppointmentById(appointmentId);
-		appointmentDao.responseAppointment(appointmentId, user.getId(), new Date());
 		
 		//添加消息
 		Message message = new Message();
 		message.setUser(appointment.getUser().getId());
-		message.setMessage(user.getName()+"回应了您的约会请求");
+		message.setMessage(user.getName()+"回应了您的约会编号为  "+appointmentId+" 的约会请求");
 		message.setAppointmentId(appointmentId);
 		message.setOtherUser(user.getId());
 		MessageDao messageDao = new MessageDao();

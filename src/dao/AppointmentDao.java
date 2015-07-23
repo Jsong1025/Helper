@@ -48,56 +48,21 @@ public class AppointmentDao {
 		return false;
 	}
 	
-	/**
-	 * 响应约会请求
-	 * */
-	public boolean responseAppointment(int appointmentID,int userId,Date time) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
 
-		try {
-			conn = JdbcUtil.getConnection();
-			String sql = "insert into t_responser(appointment_id,response_user_id,time) value(?,?,?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, appointmentID);
-			pstmt.setInt(2, userId);
-			pstmt.setDate(3,new java.sql.Date(time.getTime()));
-
-			pstmt.executeUpdate();
-			return true;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				JdbcUtil.close(null, pstmt, conn);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		return false;
-	}
 	/**
 	 * 确认约会响应，删除t_responser表中与约会ID相关数据,并修改t_appointment表中另一用户数据
 	 */
-	public boolean submitResponseAppointment(int appointmentId,int userId) {
+	public boolean updateAppointmentOtherUser(int appointmentId,int userId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
+			String sql = "update t_appointment set other_user_id = ? ,response = 'Y' where id = ?";
 			conn = JdbcUtil.getConnection();
-			String sql = "delete from t_responser where appointment_id = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, appointmentId);
-			pstmt.executeUpdate();
-			
-			sql = "update t_appointment set other_user_id = ? where id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userId);
 			pstmt.setInt(2, appointmentId);
 			pstmt.executeUpdate();
-			
 			return true;
 
 		} catch (Exception e) {
@@ -150,6 +115,7 @@ public class AppointmentDao {
 
 			UserDao userDao = new UserDao();
 			MealDao mealDao = new MealDao();
+			ResponserDao responserDao = new ResponserDao();
 			for (int i = 0; i < appointments.size(); i++) {
 				//查询套餐名称
 				int mealId = appointments.get(i).getMealId();
@@ -167,6 +133,10 @@ public class AppointmentDao {
 					User otherUser = userDao.findUserById(otherUserId);
 					appointments.get(i).setOtherUserName(otherUser);
 				}
+				
+				//查询所有响应信息
+				int appointmentId = appointments.get(i).getId();
+				appointments.get(i).setResponsers(responserDao.findResponserByApponitment(appointmentId));
 			}
 			return appointments;
 
@@ -183,42 +153,6 @@ public class AppointmentDao {
 	}
 	
 	
-	/*
-	 * 查询指定用户是否响应了指定约会
-	 */
-	public boolean isResponseAppointment(int appointmentId,int userId) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			conn = JdbcUtil.getConnection();
-			String sql = "select * from t_responser where response_user_id = ? and appointment_id = ?";
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, userId);
-			pstmt.setInt(2, appointmentId);
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-
-				return true;
-			} else {
-				return false;
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				JdbcUtil.close(rs, pstmt, conn);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return false;
-	}
-
 	/*
 	 * 根据ID查找约会信息
 	 */
@@ -252,15 +186,15 @@ public class AppointmentDao {
 				appointment.setMealId(rs.getInt("meal_id"));
 
 
-				UserDao userDao = new UserDao();
-				MealDao mealDao = new MealDao();
 
 				//查询套餐名称
+				MealDao mealDao = new MealDao();
 				int mealId = appointment.getMealId();
 				String mealName = mealDao.findMealById(mealId).getName();
 				appointment.setMeal(mealName);
 
 				//查询用户名
+				UserDao userDao = new UserDao();
 				int userId = appointment.getUserId();
 				User user = userDao.findUserById(userId);
 				appointment.setUser(user);
@@ -271,6 +205,11 @@ public class AppointmentDao {
 					User otherUser = userDao.findUserById(otherUserId);
 					appointment.setOtherUserName(otherUser);
 				}
+				
+				//查询所有响应信息
+				ResponserDao responserDao = new ResponserDao();
+				int appointmentId = appointment.getId();
+				appointment.setResponsers(responserDao.findResponserByApponitment(appointmentId));
 
 				return appointment;
 			}
@@ -377,6 +316,11 @@ public class AppointmentDao {
 				appointment.setSubstance(rs.getString("substance"));
 				appointment.setDescription(rs.getString("description"));
 				appointment.setMealId(rs.getInt("meal_id"));
+				
+				//查询所有响应信息
+				ResponserDao responserDao = new ResponserDao();
+				int appointmentId = appointment.getId();
+				appointment.setResponsers(responserDao.findResponserByApponitment(appointmentId));
 
 				appointments.add(appointment);
 			}
@@ -400,11 +344,6 @@ public class AppointmentDao {
 		ArrayList<Appointment> appointments = dao.findAll();
 		System.out.println(appointments);
 
-		Appointment newApp = appointments.get(0);
-		dao.insertAppointment(newApp);
-
-		appointments = dao.findAll();
-		System.out.println(appointments);
 	}
 
 }

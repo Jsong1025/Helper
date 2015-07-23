@@ -120,7 +120,10 @@
 			  <option value="看电影">看电影</option>
               <option value="唱歌">唱歌</option>
 			  <option value="运动">运动</option>
-			  </select></div>
+			  </select>
+		&nbsp;  &nbsp;  &nbsp; &nbsp;
+			   <button class="btn" onclick="window.location.href=''">搜索</button>
+			  </div>
 
 
   <div class="settingbar">
@@ -134,7 +137,10 @@
             <div class="panel-heading">
               <h4 class="panel-title clearfix">
                 <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" >
-                  <%= appointments.get(i).getTime() %>&nbsp;&nbsp;<%= appointments.get(i).getGenderString() %>&nbsp;&nbsp;<%= appointments.get(i).getSubstanceToString() %>
+                  <%= appointments.get(i).getTime() %>&nbsp;&nbsp;
+                  <%= appointments.get(i).getGenderString() %>&nbsp;&nbsp;
+                  <%= appointments.get(i).getSubstanceToString() %>&nbsp;&nbsp;
+                  <%= appointments.get(i).getUser().getUsername() %>
 				<span class="pull-right">展开<span class="glyphicon glyphicon-chevron-down"></span></span>
                 </a>
                 <div id="lab_name" class="panel-info"></div>
@@ -146,6 +152,12 @@
                     <label for="" class="col-sm-2 control-label">约会时间</label>
                     <div class="col-sm-4">
                       <%= appointments.get(i).getTime() %>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">发起者</label>
+                    <div class="col-sm-4">
+                     <%= appointments.get(i).getUser().getUsername() %>
                     </div>
                   </div>
                     <div class="form-group">
@@ -166,13 +178,12 @@
                      <%= appointments.get(i).getDescription() %>
                     </div>
                   </div>
+                  
                    <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <% if(appointments.get(i).getType() == 2){ %>
-                      	<button id="" type="button" class="btn btn-primary" onclick="" disabled >您已确认</button>
-                      <% } else {%>
+                      
                       	<button id="" type="button" class="btn btn-primary" onclick="window.location.href='appointmentResponse.do?id=<%= appointments.get(i).getId() %>'">确认约会</button>
-                      <%} %>
+                     
                     </div>
                   </div>
               </div>

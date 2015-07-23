@@ -88,6 +88,46 @@ public class MessageDao {
 		
 		return null;
 	}
+	
+	/*
+	 * 根据约会ID查找指定消息
+	 */
+	public ArrayList<Message> findMessageByAppointmentId(int AppointmentId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "select * from t_message where appointment_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, AppointmentId);
+			rs = pstmt.executeQuery();
+			
+			ArrayList<Message> messages = new ArrayList<Message>();
+			while (rs.next()) {
+				Message message = new Message();
+				message.setId(rs.getInt("id"));
+				message.setUser(rs.getInt("user"));
+				message.setMessage(rs.getString("message"));
+				message.setAppointmentId(rs.getInt("appointment_id"));
+				message.setOtherUser(rs.getInt("other_user"));
+				messages.add(message);
+			}
+			return messages;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(rs, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
 
 	/*
 	 * 添加消息
@@ -98,7 +138,7 @@ public class MessageDao {
 
 		try {
 			conn = JdbcUtil.getConnection();
-			String sql = "insert into t_message(user,message,appointment_id,other_user_id) value (?,?,?,?)";
+			String sql = "insert into t_message(user,message,appointment_id,other_user) value (?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, message.getUser());
 			pstmt.setString(2, message.getMessage());

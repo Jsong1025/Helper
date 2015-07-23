@@ -20,9 +20,9 @@ public class Appointment {
 	private int mealId;			//套餐ID
 	private String meal;		//套餐名称
 	private boolean examine;	//审核标志
-	private boolean response;	//相应标志
+	private boolean response;	//响应标志
 	
-	private int type;   //类型标识（1.用户发出的约会邀请  2.已经响应的约会邀请  3.可以响应的约会邀请）
+	private ArrayList<Responser> responsers;
 	
 	/*
 	 * 无参构造方法
@@ -30,33 +30,6 @@ public class Appointment {
 	public Appointment() {
 	}
 	
-	/*
-	 * 有参数构造方法
-	 */
-	public Appointment(int id, Date startTime, Date endTime, boolean isCacel,
-			boolean isBreak, int userId, User userName, int otherUserId,
-			User otherUserName, String payKey, Date time, int gender,
-			ArrayList<String> substance, String description, int mealId,
-			String meal, boolean examine,boolean response) {
-		this.id = id;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.isCacel = isCacel;
-		this.isBreak = isBreak;
-		this.userId = userId;
-		this.user = user;
-		this.otherUserId = otherUserId;
-		this.otherUser = otherUser;
-		this.payKey = payKey;
-		this.time = time;
-		this.gender = gender;
-		this.substance = substance;
-		this.description = description;
-		this.mealId = mealId;
-		this.meal = meal;
-		this.examine = examine;
-		this.response = response;
-	}
 
 	public boolean isResponse() {
 		return response;
@@ -77,6 +50,14 @@ public class Appointment {
 			this.response = true;
 		}
 	}
+	
+	public ArrayList<Responser> getResponsers() {
+		return responsers;
+	}
+
+	public void setResponsers(ArrayList<Responser> responsers) {
+		this.responsers = responsers;
+	}
 
 	public void setResponse(boolean response) {
 		this.response = response;
@@ -84,6 +65,10 @@ public class Appointment {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setOtherUser(User otherUser) {
+		this.otherUser = otherUser;
 	}
 
 	public void setId(int id) {
@@ -192,13 +177,6 @@ public class Appointment {
 		return meal;
 	}
 
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
 
 	public void setMeal(String meal) {
 		this.meal = meal;
@@ -334,17 +312,17 @@ public class Appointment {
 		this.otherUser = otherUser;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Appointment [description=" + description + ", endTime="
 				+ endTime + ", examine=" + examine + ", gender=" + gender
 				+ ", id=" + id + ", isBreak=" + isBreak + ", isCacel="
 				+ isCacel + ", meal=" + meal + ", mealId=" + mealId
-				+ ", otherUserId=" + otherUserId + ", otherUserName="
-				+ otherUser + ", payKey=" + payKey + ", response="
-				+ response + ", startTime=" + startTime + ", substance="
-				+ substance + ", time=" + time + ", userId=" + userId
-				+ ", userName=" + user + "]";
+				+ ", otherUser=" + otherUser + ", otherUserId=" + otherUserId
+				+ ", payKey=" + payKey + ", response=" + response
+				+ ", responsers=" + responsers + ", startTime=" + startTime
+				+ ", substance=" + substance + ", time=" + time + ", user="
+				+ user + ", userId=" + userId + "]";
 	}
-
 }

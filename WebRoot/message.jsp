@@ -116,10 +116,8 @@
        <div class="panel panel-default panelbox" style="margin-right: 30%;margin-left: 10%;padding: 15px;">
               <div class="panel-body"  >
               <%= messages.get(i).getMessage() %>
-              	<br/> <br/>
-              <button class="btn btn-primary" onclick="window.location.href='.do?id=<%= messages.get(i).getId() %>'">确认</button>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn btn-primary" onclick="window.location.href='messageDelete.do?id=<%= messages.get(i).getId() %>'">删除</button>
+
+              <button class="btn btn-primary" style="float: right;" onclick="window.location.href='messageDelete.do?id=<%= messages.get(i).getId() %>'">删除</button>
               </div>
         </div>
 	<%} %>

@@ -35,9 +35,9 @@ public class SearchListServlet extends HttpServlet {
 			if (appointments.get(i).isResponse()) {
 				appointments.remove(i);
 			}
-			if (dao.isResponseAppointment(appointments.get(i).getId(), user.getId())) {
-				appointments.get(i).setType(2);
-			}
+//			if (dao.isResponseAppointment(appointments.get(i).getId(), user.getId())) {
+//				appointments.get(i).setType(2);
+//			}
 		}
 		
 		request.setAttribute("appointments", appointments);
