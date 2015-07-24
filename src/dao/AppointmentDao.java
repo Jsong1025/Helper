@@ -53,6 +53,41 @@ public class AppointmentDao {
 		return false;
 	}
 	
+	/**
+	 * 更新约会表中的数据
+	 */
+	public boolean updateAppointment(Appointment appoint) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "update t_appointment set start_time=? , user_id=? , time=? , gender=? , substance=? , description=? , meal_id=? where id =?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setDate(1,new java.sql.Date(appoint.getStartTime().getTime()));
+			pstmt.setInt(2, appoint.getUserId());
+			pstmt.setDate(3,new java.sql.Date(appoint.getTime().getTime()));
+			pstmt.setInt(4, appoint.getGender());
+			pstmt.setString(5, appoint.getSubstanceToString());
+			pstmt.setString(6, appoint.getDescription());
+			pstmt.setInt(7, appoint.getMealId());
+			pstmt.setInt(8, appoint.getId());
+
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	 * 确认约会响应，修改t_appointment表中另一用户数据，并把响应字段设置为‘Y’
@@ -439,6 +474,30 @@ public class AppointmentDao {
 
 		return null;
 	}
+//删除
+	public boolean deleteAppointment(int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 
+		try {
+			conn = JdbcUtil.getConnection();
+			String sql = "delete from t_appointment where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				JdbcUtil.close(null, pstmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
 
 }

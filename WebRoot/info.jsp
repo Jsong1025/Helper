@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*,vo.User" pageEncoding="utf-8"%>
+<%@page import="dao.UserDao"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -42,7 +43,9 @@
  <%
     	int permision = 5;
     	String username = "";
-    	User user = null;
+    	String email = (String)session.getAttribute("email");
+    	UserDao dao = new UserDao();
+		User user = dao.findInfoByEmail(email);
     	if(session != null ){
     		// 获取用户名
     		if(session.getAttribute("username") != null){
@@ -87,7 +90,7 @@
              <%
              	if(permision < 3){
              %>
-              <li><a href="default.jsp" title="前往 后台管理">后台管理</a></li>
+              <li><a href="storeAdminList.do" title="前往 后台管理">后台管理</a></li>
               <% }%>
            
             </ul>
@@ -97,7 +100,7 @@
 			<li style="margin-top: 10px;"><%= username %></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="img/img.jpg"></span><b class="caret"></b></a>
+                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="<%= user.getPicture() %>"></span><b class="caret"></b></a>
                 <ul class="dropdown-menu clearfix">
                   
                   <li><a href="logout.do" title="退出登录">注销</a></li>
@@ -176,7 +179,7 @@
                                         头像<span class="pull-right">展开<span class="glyphicon glyphicon-chevron-down"></span></span>
                 </a>
               </h4>
-              <div class="panel-info"><span class="avatar"><img id="head_s" src="img/头像.jpg" /></span></div>
+              <div class="panel-info"><span class="avatar"><img id="head_s" src="<%= user.getPicture() %>" /></span></div>
             </div>
             <form id="info2" action="infoUpdate.do?type=2" method = "post">
             <div id="collapseTwo" class="panel-collapse collapse">
@@ -185,7 +188,7 @@
                     <div class="form-group">
                       <div class="col-sm-4 text-right">
                         <span class="avatar avatar150">
-                          <img id="head_b" src="img/头像.jpg" class="img-circle img-responsive">
+                          <img id="head_b" src="<%= user.getPicture() %>" class="img-circle img-responsive">
                         </span>
                       </div>
                       <div class="col-sm-8">
@@ -308,37 +311,7 @@
     <script src="js/zhuye2.js"></script>
     
    
-    
-    
-    
-    
-     
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?fd99bd0a8c1c5b6fb9082a310736be80";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-<script type="text/javascript">
-mx_as_id =3003803;
-mx_server_base_url ="mega.mlt01.com/";
-</script>
-<script type="text/javascript" src="js/zhuye1.js"></script>
-<script type="text/javascript" src="js/zhuye.js" charset="UTF-8"></script>
-    <script>
-      $(function(){
-        var btn =  $(".btn-load");
-        btn.click(function(){
-            btn.button('loading');
-            setTimeout(function(){
-                btn.button("reset");
-            },1200);
-        });
-      });  
-    </script>
+
     <!-- 回到顶部 -->
     <a id="scrollUp" href="#top" class="text-muted" title="回到顶部" style="position: fixed; z-index: 2147483647;">▲</a>
   </body>

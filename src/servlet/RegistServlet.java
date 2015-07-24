@@ -27,7 +27,7 @@ public class RegistServlet extends HttpServlet {
 			session.setAttribute("permision", 5);	//初始权限值5
 			//消息弹框
 			session.setAttribute("message", "<script type='text/javascript'>alert('注册成功！');</script>");
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("info.do");
 		} else {
 			response.sendRedirect("regist.html");
 		}

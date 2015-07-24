@@ -180,6 +180,16 @@
     <servlet-name>AppointmentSubmitServlet</servlet-name>
     <servlet-class>servlet.AppointmentSubmitServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AppointmentDeleteServlet</servlet-name>
+    <servlet-class>servlet.admin.appointment.AppointmentDeleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AppointmentUpdateServlet</servlet-name>
+    <servlet-class>servlet.admin.appointment.AppointmentUpdateServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -394,6 +404,14 @@
   <servlet-mapping>
     <servlet-name>AppointmentSubmitServlet</servlet-name>
     <url-pattern>/appointmentSubmit.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentDeleteServlet</servlet-name>
+    <url-pattern>/appointmentDelete.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AppointmentUpdateServlet</servlet-name>
+    <url-pattern>/appointmentUpdate.do</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

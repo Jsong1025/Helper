@@ -84,7 +84,7 @@
              <%
              	if(permision < 3){
              %>
-              <li><a href="default.jsp" title="前往 后台管理">后台管理</a></li>
+              <li><a href="storeAdminList.do" title="前往 后台管理">后台管理</a></li>
               <% }%>
      
 <li>
@@ -130,7 +130,7 @@
         <div class="carousel-inner">
 		  <div class="item active">
             <div style="background-image:url('img/6.jpg')">
-              <a href="   " class="text-hide" ></a>
+              <a href="" class="text-hide" ></a>
             </div>
           </div>
           <div class="item">
@@ -177,28 +177,28 @@
           <div class="row  mb20 visible-md visible-lg">
 			<div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="  " target="_blank">
-                  <img  alt="" src="img/15.jpg" class="img-responsive cover"/>
+                <a href="business.html" >
+                  <img  src="img/15.jpg" class="img-responsive cover"/>
                 </a>
               </div>
             </div>
 			<div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="" target="_blank">
-                  <img  alt="" src="img/21.jpg" class="img-responsive cover"/>
+                <a href="business.html" >
+                  <img  src="img/21.jpg" class="img-responsive cover"/>
                 </a>
               </div>
             </div>
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="" target="_blank">
+                <a href="business.html">
                   <img  src="img/22.jpg" class="img-responsive cover"/>
                 </a>
               </div>
             </div>
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme">
-                <a href="" >
+                <a href="business.html" >
                   <img src="img/23.jpg" class="img-responsive cover"/>
                 </a>
               </div>
@@ -211,117 +211,117 @@
           
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img  src="img/chi1.jpg" class="img-responsive cover2"/></a>
+                <a href="business.html"><img  src="img/chi1.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>      
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>      
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img  src="img/chi2.jpg"/></a>
+                <a href="business.html"><img src="img/chi2.jpg"/></a>
                 <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>
+                  
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
+                </div>
+              </div>
+            </div>
+		  
+            <div class="col-sm-6">
+              <div class="thumbnail list-theme list-theme-post">
+                <a href="business.html"><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
+                <div class="caption">
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
+                </div>
+              </div>
+            </div>
+		  
+            <div class="col-sm-6">
+              <div class="thumbnail list-theme list-theme-post">
+                <a href="business.html"><img src="img/chi1.jpg" class="img-responsive cover2"/></a>
+                <div class="caption">
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>
+                 
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
+                </div>
+              </div>
+            </div>
+		  
+            <div class="col-sm-6">
+              <div class="thumbnail list-theme list-theme-post">
+                <a href="business.html"><img  src="img/chi2.jpg" class="img-responsive cover2"/></a>
+                <div class="caption">
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
                   <h3><a href="">商家名称</a></h3>
                   
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img  src="img/chi3.jpg" class="img-responsive cover2"/></a>
+                <a href="business.html"><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
-                </div>
-              </div>
-            </div>
-		  
-            <div class="col-sm-6">
-              <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img src="img/chi1.jpg" class="img-responsive cover2"/></a>
-                <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img  src="img/chi2.jpg" class="img-responsive cover2"/></a>
+                <a href="business.html"><img  src="img/chi1.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
                   <h3><a href="">商家名称</a></h3>
                   
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
+                <a href="business.html"><img   src="img/chi1.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
-                </div>
-              </div>
-            </div>
-		  
-            <div class="col-sm-6">
-              <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img  src="img/chi1.jpg" class="img-responsive cover2"/></a>
-                <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>
-                  
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
-                </div>
-              </div>
-            </div>
-		  
-            <div class="col-sm-6">
-              <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img   src="img/chi1.jpg" class="img-responsive cover2"/></a>
-                <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>
-                 
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img  src="img/chi2.jpg" class="img-responsive cover2"/></a>
+                <a href="business.html"><img  src="img/chi2.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
 		  
             <div class="col-sm-6">
               <div class="thumbnail list-theme list-theme-post">
-                <a href=""><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
+                <a href="business.html"><img src="img/chi3.jpg" class="img-responsive cover2"/></a>
                 <div class="caption">
-                  <p><small><a href="" title="商家信息" class="text-muted"></a></small></p>
-                  <h3><a href="">商家名称</a></h3>
+                  <p><small><a href="business.html" title="商家信息" class="text-muted"></a></small></p>
+                  <h3><a href="business.html">商家名称</a></h3>
                  
-                  <p class="text-right"><small class="text-muted"><a href="" class="text-muted">商家描述</a></small></p>
+                  <p class="text-right"><small class="text-muted"><a href="business.html" class="text-muted">商家描述</a></small></p>
                 </div>
               </div>
             </div>
@@ -397,40 +397,40 @@
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href=""  ><img src="img/24.jpg" class="img-responsive cover"/></a>
+                <a href="business.html"  ><img src="img/24.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="">套餐描述</a></h3>
-                  <p class="text-muted"><a href="" class="text-muted"></a></p>
+                  <h3><a href="business.html">套餐描述</a></h3>
+                  <p class="text-muted"><a href="business.html" class="text-muted"></a></p>
                 </div>
               </div>
             </div>
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href="" ><img   src="img/25.jpg" class="img-responsive cover"/></a>
+                <a href="business.html" ><img   src="img/25.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="">套餐描述</a></h3>
-                  <p class="text-muted"><a href="" class="text-muted"></a></p>
+                  <h3><a href="business.html">套餐描述</a></h3>
+                  <p class="text-muted"><a href="business.html" class="text-muted"></a></p>
                 </div>
               </div>
             </div>
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href="" ><img  src="img/26.jpg" class="img-responsive cover"/></a>
+                <a href="business.html" ><img  src="img/26.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="">套餐描述</a></h3>
-                  <p class="text-muted"><a href="" class="text-muted"></a></p>
+                  <h3><a href="business.html">套餐描述</a></h3>
+                  <p class="text-muted"><a href="business.html" class="text-muted"></a></p>
                 </div>
               </div>
             </div>
             
             <div class="col-xs-6 col-sm-3">
               <div class="thumbnail list-theme list-theme-column">
-                <a href=""  ><img  src="img/27.jpg" class="img-responsive cover"/></a>
+                <a href="business.html"  ><img  src="img/27.jpg" class="img-responsive cover"/></a>
                 <div class="caption">
-                  <h3><a href="">套餐描述</a></h3>
-                  <p class="text-muted"><a href="" class="text-muted"></a></p>
+                  <h3><a href="business.html">套餐描述</a></h3>
+                  <p class="text-muted"><a href="business.html" class="text-muted"></a></p>
                 </div>
               </div>
             </div>
@@ -445,39 +445,39 @@
               </div>
             </div>
             <div class="thumbnail list-theme list-theme-topic visible-md visible-lg">
-              <a href="" ><img src="img/24.jpg" class="img-responsive cover"></a>
+              <a href="business.html" ><img src="img/24.jpg" class="img-responsive cover"></a>
                <div class="caption">
                 <div class="caption-content">
-                  <h3><a href="">专题</a></h3>
+                  <h3><a href="business.html">专题</a></h3>
                   <div class="divider"></div>
-                  <h4><a href=""></a></h4>
-                  <p><small><a href="" class="text-muted"></a></small></p>
+                  <h4><a href="business.html"></a></h4>
+                  <p><small><a href="business.html" class="text-muted"></a></small></p>
                   
                 </div>
               </div>
             </div>
             <div class="thumbnail list-theme list-theme-topic ">
             
-            <a href=""><img src="img/25.jpg" class="img-responsive cover" ></a>
+            <a href="business.html"><img src="img/25.jpg" class="img-responsive cover" ></a>
               <div class="caption">
                 <div class="caption-content">
-                  <h3><a href="">专题</a></h3>
+                  <h3><a href="business.html">专题</a></h3>
                   <div class="divider"></div>
-                  <h4><a href=""></a></h4>
-                  <p><small><a href="" class="text-muted"></a></small></p>
+                  <h4><a href="business.html"></a></h4>
+                  <p><small><a href="business.html" class="text-muted"></a></small></p>
                   
                 </div>
               </div>
             
             </div>
 	    <div class="thumbnail list-theme list-theme-topic visible-md visible-lg">
-              <a href=""><img src="img/24.jpg" class="img-responsive cover"></a>
+              <a href="business.html"><img src="img/24.jpg" class="img-responsive cover"></a>
                <div class="caption">
                 <div class="caption-content">
-                  <h3><a href="">专题</a></h3>
+                  <h3><a href="business.html">专题</a></h3>
                   <div class="divider"></div>
-                  <h4><a href=""></a></h4>
-                  <p><small><a href="" class="text-muted"></a></small></p>
+                  <h4><a href="business.html"></a></h4>
+                  <p><small><a href="business.html" class="text-muted"></a></small></p>
                   
                 </div>
               </div>

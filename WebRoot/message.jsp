@@ -79,7 +79,7 @@
              <%
              	if(permision < 3){
              %>
-              <li><a href="default.jsp" title="前往 后台管理">后台管理</a></li>
+              <li><a href="storeAdminList.do" title="前往 后台管理">后台管理</a></li>
               <% }%>
      
 <li>
@@ -133,7 +133,7 @@
            
         </div>
         <div class="col-sm-12 text-muted text-center">
-            <a href="/post/5008/" class="text-muted">关于我们</a>  ·  <a href="/post/5021/" class="text-muted">联系我们</a>  ·  <a href="/post/5023/" class="text-muted">加入我们</a>  ·  <a href="/post/5011/" class="text-muted">服务协议</a>  ·  <a href="/topic/10024/" class="text-muted">帮助中心</a>  ·  <a href="/post/5024/" class="text-muted">App</a>  ·  <a href="http://list.qq.com/cgi-bin/qf_invite?id=c47b87624bbe1feaa4dcd4e7510e57809b22d9cc9eaaa8c4" target="_blank"  class="text-muted">订阅</a>
+            <a href="" class="text-muted">关于我们</a>  ·  <a href="" class="text-muted">联系我们</a>  ·  <a href="" class="text-muted">加入我们</a>  ·  <a href="" class="text-muted">服务协议</a>  ·  <a href="" class="text-muted">帮助中心</a>  ·  <a href="" class="text-muted">App</a>  ·  <a href=""   class="text-muted">订阅</a>
         </div>
    
       </div>
@@ -142,7 +142,7 @@
     <script src="js/zhuye2.js"></script>
     <script src="js/zhuye3.js"></script>
    
-<script type="text/javascript" src="js/zhuye1.js"></script>
+
 <script type="text/javascript" src="js/zhuye.js" charset="UTF-8"></script>
 
 

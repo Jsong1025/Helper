@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50024
 File Encoding         : 65001
 
-Date: 2015-07-23 16:54:08
+Date: 2015-07-24 16:01:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,7 +46,7 @@ CREATE TABLE `t_appointment` (
 -- ----------------------------
 -- Records of t_appointment
 -- ----------------------------
-INSERT INTO t_appointment VALUES ('10', '2015-07-23', null, 'N', 'N', '1', '3', '6', '2015-04-01', '2', '吃饭,', '你好', '1', 'Y', 'Y');
+INSERT INTO t_appointment VALUES ('10', '2015-07-23', null, 'N', 'N', '1', '3', '6', '2015-04-01', '1', '看电影,', null, '1', 'Y', 'Y');
 INSERT INTO t_appointment VALUES ('11', '2015-07-23', null, 'N', 'N', '1', '3', '', '2015-07-08', '3', '看电影,唱歌,', '欢迎', '2', 'N', 'Y');
 INSERT INTO t_appointment VALUES ('12', '2015-07-23', null, 'N', 'N', '1', '3', '1', '2015-07-08', '2', '吃饭,看电影,', '123456', '1', 'Y', 'Y');
 
@@ -73,6 +73,7 @@ CREATE TABLE `t_meal` (
 -- ----------------------------
 INSERT INTO t_meal VALUES ('1', '南娱半价', '2015-07-01', '2015-09-01', '100', '全场半价', '54.10', '1');
 INSERT INTO t_meal VALUES ('2', '联峰山免费', '2015-07-16', '2015-07-20', '51', '免费', '0.00', '2');
+INSERT INTO t_meal VALUES ('3', '2123', '2014-04-01', '2014-04-04', '25', '45', '45.00', '1');
 
 -- ----------------------------
 -- Table structure for `t_message`

@@ -59,7 +59,7 @@
               <%
              	if(permision < 3){
              %>
-              <li><a href="default.jsp" title="前往 后台管理">后台管理</a></li>
+              <li><a href="storeAdminList.do" title="前往 后台管理">后台管理</a></li>
               <% }%>
            
       

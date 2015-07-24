@@ -19,6 +19,8 @@ public class StoreUpdateServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		Store store = new Store();
 		store.setId(Integer.parseInt(request.getParameter("id")));
 		store.setAddress(request.getParameter("address"));

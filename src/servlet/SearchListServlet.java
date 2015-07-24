@@ -83,10 +83,6 @@ public class SearchListServlet extends HttpServlet {
 				strSubstance =null;
 				break;
 			}
-			System.out.println(gender);
-			System.out.println(minAge);
-			System.out.println(maxAge);
-			System.out.println(strSubstance);
 			appointments = dao.searchAppointment(gender, minAge, maxAge, strSubstance);
 		}
 		
@@ -100,8 +96,6 @@ public class SearchListServlet extends HttpServlet {
 //				appointments.get(i).setType(2);
 //			}
 		}
-		
-		System.out.println(appointments);
 		
 		request.setAttribute("appointments", appointments);
 		request.getRequestDispatcher("search.jsp").forward(request, response);

@@ -35,13 +35,12 @@
     <div class="dl-main-nav">
       <div class="dl-inform"><div class="dl-inform-title">贴心小秘书<s class="dl-inform-icon dl-up"></s></div></div>
       <ul id="J_Nav"  class="nav-list ks-clear">
-       <li class="nav-item dl-selected"><div class="nav-item-inner nav-home"><a href="default.jsp">首页</a></div></li>
+       <li class="nav-item dl-selected"><div class="nav-item-inner nav-home"><a href="home.jsp">首页</a></div></li>
        <li class="nav-item"><div class="nav-item-inner nav-order"><a href="storeAdminList.do">商家</a></div></li>
     <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="mealAdminList.do">产品</a></div></li>
       <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="appointmentAdminList.do">约会</a></div></li>
          <li class="nav-item"><div class="nav-item-inner nav-supplier"><a href="userAdminList.do">用户</a></div></li>
 		 <li class="nav-item"><div class="nav-item-inner nav-inventory"><a href="roleAdminList.do">角色</a></div></li>
-	 <li class="nav-item"><div class="nav-item-inner nav-marketing"><a href="#">统计</a></div></li>
       </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">
@@ -75,7 +74,7 @@
 
 							<div class="tab-content">
 								<div class="tab-pane active" id="1">
-								<form id="edit-profile" class="form-horizontal" action="appointmentUpdate.do" method="post">
+								<form id="edit-profile" class="form-horizontal" action="appointmentUpdate.do?id=<%= request.getParameter("id") %>" method="post">
 									<fieldset>
 										
 										<div class="control-group">											
@@ -88,7 +87,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="time">约会时间</label>
 											<div class="controls">
-												<input type="date" class="input-medium" id="time" name="time" value="<%= appointment.getEndTime() %>"/>
+												<input type="date" class="input-medium" id="time" name="time" value="<%= appointment.getTime() %>"/>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -118,9 +117,9 @@
 										<div class="control-group">											
 											<label class="control-label" for="gender">性别要求</label>
 											<div class="controls">
-												<input type="radio" class="input-medium" id="sex" name="gender" value=1 />男女不限&nbsp;&nbsp;&nbsp;&nbsp;
-												<input type="radio" class="input-medium" id="sex" name="gender" value=2 />只限男生&nbsp;&nbsp;&nbsp;&nbsp;
-												<input type="radio" class="input-medium" id="sex" name="gender" value=3 />只限女生
+												<input type="radio" class="input-medium" id="sex" name="gender" value=1 <% if(appointment.getGender() == 1){ %>checked<%} %> />男女不限&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="radio" class="input-medium" id="sex" name="gender" value=2 <% if(appointment.getGender() == 2){ %>checked<%} %>  />只限男生&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="radio" class="input-medium" id="sex" name="gender" value=3 <% if(appointment.getGender() == 3){ %>checked<%} %>  />只限女生
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -128,10 +127,17 @@
 										<div class="control-group">											
 											<label class="control-label" for="substance">约会内容</label>
 											<div class="controls">
-												<input type="checkbox" class="input-medium" id="substance" name="substance" value="吃饭" />吃饭&nbsp;&nbsp;&nbsp;&nbsp;
-												<input type="checkbox" class="input-medium" id="substance" name="substance" value="唱歌" />唱歌&nbsp;&nbsp;&nbsp;&nbsp;
-												<input type="checkbox" class="input-medium" id="substance" name="substance" value="看电影" />看电影&nbsp;&nbsp;&nbsp;&nbsp;
-												<input type="checkbox" class="input-medium" id="substance" name="substance" value="运动" />运动
+												<input type="checkbox" class="input-medium" id="substance" name="substance" value="吃饭" 
+												<%for(int i=0;i<appointment.getSubstance().size();i++){ if(appointment.getSubstance().get(i).equals("吃饭")) { %> checked <% } } %> />吃饭&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="checkbox" class="input-medium" id="substance" name="substance" 
+												<%for(int i=0;i<appointment.getSubstance().size();i++){ if(appointment.getSubstance().get(i).equals("唱歌")) { %> checked <% } } %>
+												value="唱歌" />唱歌&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="checkbox" class="input-medium" id="substance" name="substance" 
+												<%for(int i=0;i<appointment.getSubstance().size();i++){ if(appointment.getSubstance().get(i).equals("看电影")) { %> checked <% } } %>
+												value="看电影" />看电影&nbsp;&nbsp;&nbsp;&nbsp;
+												<input type="checkbox" class="input-medium" id="substance" name="substance" 
+												<%for(int i=0;i<appointment.getSubstance().size();i++){ if(appointment.getSubstance().get(i).equals("运动")) { %> checked <% } } %>
+												 value="运动" />运动
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
