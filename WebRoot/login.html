@@ -1,8 +1,6 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
-<!-- saved from url=(0064)http://www.17sucai.com/preview/137615/2015-01-15/demo/index.html -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
-xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=11.0000" 
-http-equiv="X-UA-Compatible">
+﻿<!DOCTYPE HTML>
+<HEAD>
+<META content="IE=11.0000" http-equiv="X-UA-Compatible">
 
 <META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <TITLE>登录页面</TITLE> 
@@ -40,7 +38,7 @@ body{
 	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
 .u_logo{
-	background: url("images/username.png") no-repeat;
+	background: url("img/username.png") no-repeat;
 	padding: 10px 10px;
 	position: absolute;
 	top: 43px;
@@ -48,7 +46,7 @@ body{
 
 }
 .p_logo{
-	background: url("images/password.png") no-repeat;
+	background: url("img/password.png") no-repeat;
 	padding: 10px 10px;
 	position: absolute;
 	top: 12px;
@@ -58,7 +56,7 @@ a{
 	text-decoration: none;
 }
 .tou{
-	background: url("images/tou.png") no-repeat;
+	background: url("img/tou.png") no-repeat;
 	width: 97px;
 	height: 92px;
 	position: absolute;
@@ -66,7 +64,7 @@ a{
 	left: 140px;
 }
 .left_hand{
-	background: url("images/left_hand.png") no-repeat;
+	background: url("img/left_hand.png") no-repeat;
 	width: 32px;
 	height: 37px;
 	position: absolute;
@@ -74,7 +72,7 @@ a{
 	left: 150px;
 }
 .right_hand{
-	background: url("images/right_hand.png") no-repeat;
+	background: url("img/right_hand.png") no-repeat;
 	width: 32px;
 	height: 37px;
 	position: absolute;
@@ -82,7 +80,7 @@ a{
 	right: -64px;
 }
 .initial_left_hand{
-	background: url("images/hand.png") no-repeat;
+	background: url("img/hand.png") no-repeat;
 	width: 30px;
 	height: 20px;
 	position: absolute;
@@ -90,7 +88,7 @@ a{
 	left: 100px;
 }
 .initial_right_hand{
-	background: url("images/hand.png") no-repeat;
+	background: url("img/hand.png") no-repeat;
 	width: 30px;
 	height: 20px;
 	position: absolute;
@@ -98,7 +96,7 @@ a{
 	right: -112px;
 }
 .left_handing{
-	background: url("images/left-handing.png") no-repeat;
+	background: url("img/left-handing.png") no-repeat;
 	width: 30px;
 	height: 20px;
 	position: absolute;
@@ -106,7 +104,7 @@ a{
 	left: 139px;
 }
 .right_handinging{
-	background: url("images/right_handing.png") no-repeat;
+	background: url("img/right_handing.png") no-repeat;
 	width: 30px;
 	height: 20px;
 	position: absolute;
@@ -117,10 +115,7 @@ a{
 </STYLE>
      
 <SCRIPT type="text/javascript">
-function login(){
-	var login = document.getElementById("loginForm");
-	login.submit();
-}
+
 $(function(){
 	//得到焦点
 	$("#password").focus(function(){
@@ -149,12 +144,46 @@ $(function(){
 		$("#right_hand").attr("style","right:-112px;top:-12px");
 	});
 });
+
+function checkemail(){
+	var temp = document.getElementById("useradress");
+	//对电子邮件的验证
+	var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+	if(temp.value!="")
+	{
+		if(!myreg.test(temp.value))
+		{
+			alert('提示:请输入有效的E_mail！');
+			useradress.focus();
+			return false;
+		} else {
+			return ture;
+		}
+		}
+}
+
+$(function() {
+	$("#loginBtn").click(function() {
+		var useradress = $("#useradress").val();
+		var password = $("#password").val();
+		$.get("loginCheck.do","useradress="+useradress+"&password="+password,function(data){
+			var obj = JSON.parse(data);
+			if(obj.code != true){
+	 		   	alert(obj.message);
+			} else {
+				$("#loginForm").submit();
+			}
+			
+		});
+	});
+});
+
 </SCRIPT>
  
 <META name="GENERATOR" content="MSHTML 11.00.9600.17496"></HEAD> 
 <BODY>
 	<DIV class="top_div"></DIV>
-		<form id="loginForm" action="login.do"" method="post">
+		<form id="loginForm" action="login.do">
 		<DIV style="background: rgb(255, 255, 255); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 200px; text-align: center;">
 			<DIV style="width: 165px; height: 96px; position: absolute;">
 				<DIV class="tou"></DIV>
@@ -163,13 +192,11 @@ $(function(){
 			</DIV>
 			<P style="padding: 30px 0px 10px; position: relative;">
 				<SPAN class="u_logo"></SPAN>
-				<INPUT class="ipt" type="text" placeholder="请输入邮箱" id="useradress" name="useradress" 
-
-onBlur="checkemail();"/> 
+				<INPUT class="ipt" type="text" placeholder="请输入邮箱" id="useradress" name="useradress" onBlur="checkemail();"/> 
 			</P>
 			<P style="position: relative;">
 				<SPAN class="p_logo"></SPAN>         
-				<INPUT class="ipt" id="password" type="password" placeholder="请输入密码" name="userpassword">   
+				<INPUT class="ipt" id="password" type="password" placeholder="请输入密码" name="password">   
 			</P>
 			<DIV style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
 				<P style="margin: 0px 35px 20px 45px;">
@@ -178,8 +205,8 @@ onBlur="checkemail();"/>
 					</SPAN> 
 					<SPAN style="float: right;">
 						<A style="color: rgb(204, 204, 204); margin-right: 10px;" href="regist.html">注册</A>  
-						<A style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;"
-						href="#" onclick="login()">登录</A> 
+						<A id="loginBtn" style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;"
+						href="javascript:;" >登录</A> 
 					</SPAN>
 				</P>
 			</DIV>
@@ -187,23 +214,4 @@ onBlur="checkemail();"/>
 		</form>
 		<div style="text-align:center;"></div>
 	</BODY>
-	<script language="javascript">
-   function checkemail(){
-   var temp = document.getElementById("useradress");
-      //对电子邮件的验证
-   var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-   if(temp.value!="")
-   {
-   if(!myreg.test(temp.value))
-   {
-    alert('提示:请输入有效的E_mail！');
-    useradress.focus();
-    return false;
-    }
-    else{
-    return ture;
-    }
-  }
-}
-    </script>
 </HTML>
