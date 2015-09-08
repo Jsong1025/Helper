@@ -1,4 +1,4 @@
-package servlet.admin.appointment;
+﻿package servlet.admin.appointment;
 
 import java.io.IOException;
 import java.util.Random;
@@ -27,7 +27,7 @@ public class AppointmentExamineServlet extends HttpServlet {
 		
 		//生成消费码
 	    Random random = new Random();
-	    Integer payKey = random.nextInt(8);     
+	    Integer payKey = random.nextInt(100000);     
 		
 	    AppointmentDao dao = new AppointmentDao();
 	    dao.examineAppointment(id, payKey.toString());

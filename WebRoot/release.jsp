@@ -112,7 +112,7 @@
 									<label for="" class="col-sm-2 control-label">
 										约会内容
 									</label>
-									<div class="col-sm-4">
+								<div class="col-sm-4" style="width: 300px; height: 40px; border-top-width: 20px; padding-top: 10px;">
 										<input type=checkbox name=substance value="吃饭">
 										吃饭&nbsp
 										<input type=checkbox name=substance value="看电影">

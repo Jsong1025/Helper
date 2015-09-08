@@ -114,9 +114,9 @@
 			  </select>
 		&nbsp;  &nbsp;  &nbsp; &nbsp;
 			  约会内容:<select name="substance" style="border-top-width:1px; margin-top: 50px">
-			  <option value="0">不限</option>
-			  <option value="1">吃饭</option>
-			  <option value="2">看电影</option>
+			  <option value="1">不限</option>
+			  <option value="2">吃饭</option>
+			  <option value="3">看电影</option>
               <option value="3">唱歌</option>
 			  <option value="4">运动</option>
 			  </select>

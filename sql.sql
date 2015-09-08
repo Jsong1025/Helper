@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50024
 File Encoding         : 65001
 
-Date: 2015-07-24 16:01:42
+Date: 2015-07-25 10:11:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,9 +46,13 @@ CREATE TABLE `t_appointment` (
 -- ----------------------------
 -- Records of t_appointment
 -- ----------------------------
-INSERT INTO t_appointment VALUES ('10', '2015-07-23', null, 'N', 'N', '1', '3', '6', '2015-04-01', '1', '看电影,', null, '1', 'Y', 'Y');
-INSERT INTO t_appointment VALUES ('11', '2015-07-23', null, 'N', 'N', '1', '3', '', '2015-07-08', '3', '看电影,唱歌,', '欢迎', '2', 'N', 'Y');
-INSERT INTO t_appointment VALUES ('12', '2015-07-23', null, 'N', 'N', '1', '3', '1', '2015-07-08', '2', '吃饭,看电影,', '123456', '1', 'Y', 'Y');
+INSERT INTO t_appointment VALUES ('10', '2015-07-23', null, 'N', 'N', '1', '3', '15582', '2015-04-01', '1', '看电影,', null, '1', 'Y', 'Y');
+INSERT INTO t_appointment VALUES ('11', '2015-07-23', null, 'N', 'N', '1', '3', '61331', '2015-07-08', '3', '看电影,唱歌,', '欢迎', '2', 'Y', 'Y');
+INSERT INTO t_appointment VALUES ('12', '2015-07-23', null, 'N', 'N', '1', '3', '68401', '2015-07-08', '2', '吃饭,看电影,', '123456', '1', 'Y', 'Y');
+INSERT INTO t_appointment VALUES ('13', '2015-07-25', null, 'N', 'N', '4', '1', '75886', '2015-04-01', '1', '吃饭,', '123', '1', 'Y', 'Y');
+INSERT INTO t_appointment VALUES ('14', '2015-07-25', null, 'N', 'N', '2', null, null, '2014-04-04', '1', '吃饭,', '122', '1', 'N', 'N');
+INSERT INTO t_appointment VALUES ('15', '2015-07-25', null, 'N', 'N', '2', null, null, '2514-07-08', '2', '看电影,', '', '1', 'N', 'N');
+INSERT INTO t_appointment VALUES ('16', '2015-07-25', null, 'N', 'N', '2', null, null, '2015-04-04', '2', '吃饭,', '', '1', 'N', 'N');
 
 -- ----------------------------
 -- Table structure for `t_meal`
@@ -73,7 +77,6 @@ CREATE TABLE `t_meal` (
 -- ----------------------------
 INSERT INTO t_meal VALUES ('1', '南娱半价', '2015-07-01', '2015-09-01', '100', '全场半价', '54.10', '1');
 INSERT INTO t_meal VALUES ('2', '联峰山免费', '2015-07-16', '2015-07-20', '51', '免费', '0.00', '2');
-INSERT INTO t_meal VALUES ('3', '2123', '2014-04-01', '2014-04-04', '25', '45', '45.00', '1');
 
 -- ----------------------------
 -- Table structure for `t_message`
@@ -99,10 +102,14 @@ CREATE TABLE `t_message` (
 -- ----------------------------
 INSERT INTO t_message VALUES ('16', '1', '您的编号为  10 的约会，管理员已审核通过。消费码为： 6 。凭此码享受服务。', '10', '2');
 INSERT INTO t_message VALUES ('17', '3', '您的编号为  10 的约会，管理员已审核通过。消费码为： 6 。凭此码享受服务。', '10', '2');
-INSERT INTO t_message VALUES ('18', '1', '李四回应了您的约会编号为  12 的约会请求', '12', '3');
 INSERT INTO t_message VALUES ('19', '3', '您的申请约会编号为  3 的约会对方已同意，正在等待管理员审核。', '12', '1');
-INSERT INTO t_message VALUES ('20', '1', '您的编号为  12 的约会，管理员已审核通过。消费码为： 1 。凭此码享受服务。', '12', '2');
 INSERT INTO t_message VALUES ('21', '3', '您的编号为  12 的约会，管理员已审核通过。消费码为： 1 。凭此码享受服务。', '12', '2');
+INSERT INTO t_message VALUES ('22', '4', '张三回应了您的约会编号为  13 的约会请求', '13', '1');
+INSERT INTO t_message VALUES ('23', '1', '您的申请约会编号为  1 的约会对方已同意，正在等待管理员审核。', '13', '4');
+INSERT INTO t_message VALUES ('24', '4', '您的编号为  13 的约会，管理员已审核通过。消费码为： 7 。凭此码享受服务。', '13', '2');
+INSERT INTO t_message VALUES ('25', '1', '您的编号为  13 的约会，管理员已审核通过。消费码为： 7 。凭此码享受服务。', '13', '2');
+INSERT INTO t_message VALUES ('26', '1', '您的编号为  11 的约会，管理员已审核通过。消费码为： 61331 。凭此码享受服务。', '11', '2');
+INSERT INTO t_message VALUES ('27', '3', '您的编号为  11 的约会，管理员已审核通过。消费码为： 61331 。凭此码享受服务。', '11', '2');
 
 -- ----------------------------
 -- Table structure for `t_responser`
@@ -163,6 +170,15 @@ CREATE TABLE `t_store` (
 -- ----------------------------
 INSERT INTO t_store VALUES ('1', '南娱', '南戴河娱乐中心', '213123123', '游乐场', '', '南戴河娱乐中心');
 INSERT INTO t_store VALUES ('2', '联峰山', '联峰山', '123654', '景点', '', '联峰山景点');
+INSERT INTO t_store VALUES ('4', '商家1', '地址1', '123', '商家', '', '123');
+INSERT INTO t_store VALUES ('5', '商家2', '地址2', '456', '商家', '', '');
+INSERT INTO t_store VALUES ('6', '商家3', '地址3', '123', '商家', '', '');
+INSERT INTO t_store VALUES ('7', '商家4', '地址4', '123', '商家', '', '');
+INSERT INTO t_store VALUES ('8', '商家', '商家', '123', '商家', '', '');
+INSERT INTO t_store VALUES ('9', '商家', '商家', '123', '商家', '', '');
+INSERT INTO t_store VALUES ('10', '商家', '商家', '123', '商家', '', '');
+INSERT INTO t_store VALUES ('11', '商家', '商家', '123', '商家', '', '');
+INSERT INTO t_store VALUES ('12', '商家', '商家', '123', '商家', '', '');
 
 -- ----------------------------
 -- Table structure for `t_user`
@@ -191,5 +207,6 @@ CREATE TABLE `t_user` (
 -- Records of t_user
 -- ----------------------------
 INSERT INTO t_user VALUES ('1', 'zhangsan', 'zhangsan', '张三', 'M', '20', '123456', '123456', 'zhangsan@123.com', '4', '秦皇岛', '我是张三', 'img/img.jpg');
-INSERT INTO t_user VALUES ('2', 'admin', 'admin', 'admin', 'M', '21', '5235234123', '43534634534', 'admin@123.com', '1', 'null', 'aaa', 'img/img.jpg');
+INSERT INTO t_user VALUES ('2', 'admin', 'admin', 'admin', 'M', '21', '5235234123', '43534634534', 'admin@123.com', '1', '秦皇岛', 'aaa', 'img/img.jpg');
 INSERT INTO t_user VALUES ('3', 'lisi', 'lisi', '李四', 'F', '22', '123456', '123456', 'lisi@123.com', '4', null, null, 'img/img.jpg');
+INSERT INTO t_user VALUES ('4', null, '123', 'song', 'M', '0', null, null, 'song@123.com', '4', 'null', 'song', 'img/img.jpg');
