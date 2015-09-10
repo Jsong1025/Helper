@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -9,10 +10,6 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
-
-<% 
-	Role role = (Role)request.getAttribute("role");
-%>
 
    <style type="text/css">
     code {
@@ -73,13 +70,13 @@
 
 							<div class="tab-content">
 								<div class="tab-pane active" id="1">
-								<form id="edit-profile" class="form-horizontal" action="roleUpdate.do?id=<%= role.getId() %>" method="post">
+								<form id="edit-profile" class="form-horizontal" action="roleUpdate.do?id=${role.id}" method="post">
 									<fieldset>
 
 										<div class="control-group">											
 											<label class="control-label" for="name">角色名称</label>
 											<div class="controls">
-												<input type="text" class="input-medium" id="name" name="name" value="<%= role.getName() %>"/>
+												<input type="text" class="input-medium" id="name" name="name" value="${role.name}"/>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -89,7 +86,9 @@
 											<div class="controls">
 												<select name="permision">
 												<% for(int i=1 ; i<=6 ; i++){ %>
+												<c:forEach var="i" items="6">
 													<option value=<%=i %> <% if(role.getPermision()==i){  %>selected<%} %>><%=i %></option>
+												</c:forEach>
 												<%} %>
 												</select>
 											</div> <!-- /controls -->				

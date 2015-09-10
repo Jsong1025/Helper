@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -11,31 +12,6 @@
     <link rel="stylesheet" href="css/search.css" media="screen">
   </head>
   <body>
-
- <%
-    	int permision = 5;
-    	String username = "";
-    	ArrayList<Appointment> appointments = (ArrayList<Appointment>)request.getAttribute("appointments");
-    	if(session != null ){
-    		// 获取用户名
-    		if(session.getAttribute("username") != null){
-        		username = (String)session.getAttribute("username");
-        	} else if(session.getAttribute("email") != null){
-        		username = (String)session.getAttribute("email");
-        	} else {
-        		response.sendRedirect("index.jsp");
-        	}
-    		
-    		// 权限值
-    		if(session.getAttribute("permision") != null){
-    			permision = (Integer)session.getAttribute("permision");
-        	}
-    		
-    	} else {
-    		response.sendRedirect("index.jsp");
-    	}
-    %>
-
 <div class="nav-top">
     <div class="container">
       <nav id="navbar" class="navbar navbar-default" role="navigation">
@@ -56,30 +32,22 @@
               <li><a href="searchList.do" title="搜索约会">搜索约会</a></li>
               <li><a href="messageShow.do" title="消息管理">消息管理</a></li>
               <li><a href="info.do" title="个人资料">个人资料</a></li>
-              <%
-             	if(permision < 3){
-             %>
               <li><a href="storeAdminList.do" title="前往 后台管理">后台管理</a></li>
-              <% }%>
-           
-      
             </ul>
      
-  <ul class="an" style="margin-top: 10px;">
-</span>
-</form>
-</ul>
+  <ul class="an" style="margin-top: 10px;"></ul>
      
-  <ul class="an"><!--搜索按钮--></li>
-</form>
-
-
-</ul>
+  <ul class="an"><!--搜索按钮--></ul>
 <ul class="nav navbar-nav navbar-right">
-			<li style="margin-top: 10px;"><%= username %></li>
+			<li style="margin-top: 10px;">
+				<c:choose>
+					<c:when test="${user.username != null}">${user.username}</c:when>
+					<c:otherwise>${user.email}</c:otherwise>
+				</c:choose>
+			</li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="img/img.jpg"></span><b class="caret"></b></a>
+                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="${user.picture}"></span><b class="caret"></b></a>
                 <ul class="dropdown-menu clearfix">
                   
                   <li><a href="logout.do" title="退出登录">注销</a></li>
@@ -129,67 +97,65 @@
     <div class="container">
       <h1 class="mb40"><small class="pull-right"></small></h1>
         <div class="panel-group settingbar-panel mb120" id="accordion">
-<%
-	for(int i=0;i<appointments.size();i++){
-%>
+        
+		<c:forEach var="appointment" items="appointments" >
           <div class="panel panel-default" style="margin-left:15%;margin-right:15%;">
             <div class="panel-heading">
               <h4 class="panel-title clearfix">
-                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= i %>" >
-                  <%= appointments.get(i).getTime() %>&nbsp;&nbsp;
-                  <%= appointments.get(i).getGenderString() %>&nbsp;&nbsp;
-                  <%= appointments.get(i).getSubstanceToString() %>&nbsp;&nbsp;
-                  <%= appointments.get(i).getUser().getUsername() %>
+                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse${appointment.id}" >
+                  ${appointment.time}&nbsp;&nbsp;
+                  ${appointment.gender}&nbsp;&nbsp;
+                  ${appointment.substance}&nbsp;&nbsp;
+                  ${appointment.user.username}
 				<span class="pull-right">展开<span class="glyphicon glyphicon-chevron-down"></span></span>
                 </a>
                 <div id="lab_name" class="panel-info"></div>
               </h4>
             </div>
-            <div id="collapse<%= i %>" class="panel-collapse collapse">
+            <div id="collapse${appointment.id}" class="panel-collapse collapse">
               <div class="panel-body form-horizontal">
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">约会时间</label>
                     <div class="col-sm-4">
-                      <%= appointments.get(i).getTime() %>
+                      ${appointment.time}
                     </div>
                   </div>
                    <div class="form-group">
                     <label for="" class="col-sm-2 control-label">发起者</label>
                     <div class="col-sm-4">
-                     <%= appointments.get(i).getUser().getUsername() %>
+                     ${appointment.user.username}
                     </div>
                   </div>
                     <div class="form-group">
                     <label for="" class="col-sm-2 control-label">约会内容</label>
                     <div class="col-sm-4">
-                      <%= appointments.get(i).getSubstanceToString() %>
+                      ${appointment.substance}
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">类型</label>
                     <div class="col-sm-7">
-                      <%= appointments.get(i).getGenderString() %>
+                      ${appointment.gender}
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">描述</label>
                     <div class="col-sm-4">
-                     <%= appointments.get(i).getDescription() %>
+                     ${appointment.description}
                     </div>
                   </div>
                   
                    <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       
-                      	<button id="" type="button" class="btn btn-primary" onclick="window.location.href='appointmentResponse.do?id=<%= appointments.get(i).getId() %>'">确认约会</button>
+                      	<button id="" type="button" class="btn btn-primary" onclick="window.location.href='appointmentResponse.do?id=${appointment.id}'">确认约会</button>
                      
                     </div>
                   </div>
               </div>
             </div>
           </div>
-          <%} %>
-          
+          </c:forEach>
         </div>
     </div>
   </div>

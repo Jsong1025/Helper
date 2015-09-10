@@ -25,16 +25,9 @@ public class LoginCheckServlet extends HttpServlet implements Serializable {
 		
 		String useradress = request.getParameter("useradress");
 		String password = request.getParameter("password");
-		
-		UserService service = new UserService();
-		User user = service.login(useradress, password);
-		
-		ResponseMsg msg = null;
-		if (user == null) {
-			msg = new ResponseMsg(false, "用户名或密码错误");
-		} else {
-			msg = new ResponseMsg(true, "登陆成功");
-		}
+		System.out.println(useradress);
+		UserService service = new UserService(request,response);
+		ResponseMsg msg = service.loginCheck(useradress, password);
 		out.print(msg);
 	}
 	

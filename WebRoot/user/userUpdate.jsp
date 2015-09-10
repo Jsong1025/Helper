@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -9,12 +10,6 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
-
-<%
-	ArrayList<Role> roles = (ArrayList<Role>)request.getAttribute("roles");
-	User user = (User)request.getAttribute("user");
-%>
-
    <style type="text/css">
     code {
       padding: 0px 4px;
@@ -78,14 +73,14 @@
 										<div class="control-group">											
 											<label class="control-label" for="email">邮箱</label>
 											<div class="controls">
-												<input type="text" class="input-large" disabled id="email" name="email" value="<%= user.getEmail() %>" />
+												<input type="text" class="input-large" disabled id="email" name="email" value="${user.email}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 
 										<div class="control-group">											
 											<label class="control-label" for="username">用户名</label>
 											<div class="controls">
-												<input type="text" class="input-medium" id="username" name="username" value="<%= user.getUsername() %>"/>
+												<input type="text" class="input-medium" id="username" name="username" value="${user.username}"/>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -93,7 +88,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="password">密码</label>
 											<div class="controls">
-												<input type="password" class="input-large" id="password" name="password" value="<%= user.getPassword() %>" />
+												<input type="password" class="input-large" id="password" name="password" value="${user.password}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -101,11 +96,16 @@
 											<label class="control-label" for="role">角色</label>
 											<div class="controls">
 												<select name="role">
-												<%
-													for (int i = 0; i < roles.size(); i++) {
-												%>
-													<option name="role" <%if(roles.get(i).getId() == user.getRoleId()){ %>selected<%} %> value="<%= roles.get(i).getId() %>"><%= roles.get(i).getName() %></option>
-												<%}	%>
+												<c:forEach var="role" items="roles">
+													<c:choose>
+														<c:when test="${role.id == user.roleId}">
+															<option name="role" selected  value="${role.id}">${role.name}</option>
+														</c:when>
+														<c:otherwise>
+															<option name="role" value="${role.id}">${role.name}</option>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
 												</select>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
@@ -113,7 +113,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="name">真实姓名</label>
 											<div class="controls">
-												<input type="text" class="input-medium" id="name" name="name" value="<%= user.getName() %>" />
+												<input type="text" class="input-medium" id="name" name="name" value="${user.name}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -121,27 +121,30 @@
 										<div class="control-group">											
 											<label class="control-label" for="sex">性别</label>
 											<div class="controls">
-												<% if(user.getSex() == 'M'){ %>
-												<input type="radio" class="input-medium" id="sex" name="sex" value="M" checked />男&nbsp;&nbsp;&nbsp;&nbsp;
-												<input type="radio" class="input-medium" id="sex" name="sex" value="F" />女
-												<%} else{ %>
-												<input type="radio" class="input-medium" id="sex" name="sex" value="M" />男&nbsp;&nbsp;&nbsp;&nbsp;
-												<input type="radio" class="input-medium" id="sex" name="sex" value="F" checked />女
-												<%} %>
+												<c:choose>
+													<c:when test="${user.sex == 'M'}">
+														<input type="radio" class="input-medium" id="sex" name="sex" value="M" checked />男&nbsp;&nbsp;&nbsp;&nbsp;
+														<input type="radio" class="input-medium" id="sex" name="sex" value="F" />女
+													</c:when>
+													<c:otherwise>
+														<input type="radio" class="input-medium" id="sex" name="sex" value="M" />男&nbsp;&nbsp;&nbsp;&nbsp;
+														<input type="radio" class="input-medium" id="sex" name="sex" value="F" checked />女
+													</c:otherwise>
+												</c:choose>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										<div class="control-group">											
 											<label class="control-label" for="age">年龄</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="age" id="age" value="<%= user.getAge() %>" />
+												<input type="text" class="input-medium" name="age" id="age" value="${user.age}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 
 										<div class="control-group">											
 											<label class="control-label" for="tel">联系方式</label>
 											<div class="controls">
-												<input type="text" class="input-large" name="tel" id="tel" value="<%= user.getTel() %>" />
+												<input type="text" class="input-large" name="tel" id="tel" value="${user.tel}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 											
@@ -149,21 +152,21 @@
 											<div class="control-group">											
 											<label class="control-label" for="QQ">QQ</label>
 											<div class="controls">
-												<input type="text" class="input-large"  id="QQ" name="QQ" value="<%= user.getQQ() %>" />
+												<input type="text" class="input-large"  id="QQ" name="QQ" value="${user.QQ}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 
 										<div class="control-group">											
 											<label class="control-label" for="location">居住地</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="location" id="location" value="<%= user.getLocation() %>" />
+												<input type="text" class="input-medium" name="location" id="location" value="${user.location}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 
 										<div class="control-group">											
 											<label class="control-label" for="description">自我介绍</label>
 											<div class="controls">
-												<input type="text" class="input-large"  id="description" name="description" value="<%= user.getDescription() %>" />
+												<input type="text" class="input-large"  id="description" name="description" value="${user.description}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 

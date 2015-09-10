@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -10,12 +11,6 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
-
-<%
-	ArrayList<Store> stores = (ArrayList<Store>)request.getAttribute("stores");
-	Meal meal = (Meal)request.getAttribute("meal");
-%>
-
    <style type="text/css">
     code {
       padding: 0px 4px;
@@ -68,20 +63,16 @@
 							</div> <!-- /widget-header -->
 									
 							<div class="widget-content">
-								
-								
-								
 								<div class="tabbable">
-
 							<div class="tab-content">
 								<div class="tab-pane active" id="1">
-								<form id="edit-profile" class="form-horizontal" action="mealUpdate.do?id=<%= meal.getId() %>" method="post">
+								<form id="edit-profile" class="form-horizontal" action="mealUpdate.do?id=${meal.id}" method="post">
 									<fieldset>
 										
 										<div class="control-group">											
 											<label class="control-label" for="name">产品名称</label>
 											<div class="controls">
-												<input type="text" class="input-medium" id="name" name="name" value="<%= meal.getName() %>"/>
+												<input type="text" class="input-medium" id="name" name="name" value="${meal.name}"/>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -89,7 +80,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="startTime">开始时间</label>
 											<div class="controls">
-												<input type="date" class="input-medium" name="startTime" id="startTime" value="<%= meal.getStartTime() %>" />
+												<input type="date" class="input-medium" name="startTime" id="startTime" value="${meal.startTime}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -97,7 +88,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="endTime">结束时间</label>
 											<div class="controls">
-												<input type="date" class="input-medium" name="endTime" id="endTime" value="<%= meal.getEndTime() %>" />
+												<input type="date" class="input-medium" name="endTime" id="endTime" value="${meal.endTime}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -105,21 +96,21 @@
 										<div class="control-group">											
 											<label class="control-label" for="num">数量</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="num" id="num" value="<%= meal.getNum() %>" />
+												<input type="text" class="input-medium" name="num" id="num" value="${meal.num}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										<div class="control-group">											
 											<label class="control-label" for="price">价格</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="price" id="price" value="<%= meal.getPrice() %>" />
+												<input type="text" class="input-medium" name="price" id="price" value="${meal.price}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 
 										<div class="control-group">											
 											<label class="control-label" for="priferemential">基本介绍</label>
 											<div class="controls">
-												<input type="text" class="input-large" name="priferemential" id="priferemential" value="<%= meal.getPriferemential() %>" />
+												<input type="text" class="input-large" name="priferemential" id="priferemential" value="${meal.priferemential}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 
@@ -127,9 +118,16 @@
 											<label class="control-label" for="introduce">所属商家</label>
 											<div class="controls">
 												<select name="store">
-												<% for(int i = 0; i<stores.size(); i++){ %>
-													<option value=<%= stores.get(i).getId() %> <% if(meal.getStoreId() == stores.get(i).getId()){  %>selected<%} %> ><%= stores.get(i).getName() %></option>
-												<%} %>
+												<c:forEach var="store" items="sotres" >
+													<c:choose>
+														<c:when test="${meal.storeId == store.id} ">
+															<option id="${store.id}" selected >${store.name}</option>
+														</c:when>
+														<c:otherwise>
+															<option id="${store.id}" >${store.name}</option>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
 												</select>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->

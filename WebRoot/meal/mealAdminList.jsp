@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -12,13 +13,7 @@
   <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/DT_bootstrap.css" rel="stylesheet" media="screen">
-
-<%
-	ArrayList<Meal> meals = (ArrayList<Meal>)request.getAttribute("meals");
-%>
-
-
-
+        
    <style type="text/css">
     code {
       padding: 0px 4px;
@@ -73,23 +68,21 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for(int i = 0 ; i < meals.size() ; i++) {
-									%>
+									<c:forEach var="meal" items="meals">
 									<tr class="odd gradeX">
-										<td><%= meals.get(i).getName() %></td>
-										<td><%= meals.get(i).getStartTime() %></td>
-										<td><%= meals.get(i).getEndTime() %></td>
-										<td><%= meals.get(i).getNum() %></td>
-										<td><%= meals.get(i).getPrice() %></td>
-										<td><%= meals.get(i).getPriferemential() %></td>
-										<td><%= meals.get(i).getStore() %></td>
+										<td>${meal.name}</td>
+										<td>${meal.startTime}</td>
+										<td>${meal.endTime}</td>
+										<td>${meal.num}</td>
+										<td>${meal.price}</td>
+										<td>${meal.priferemential}</td>
+										<td>${meal.store}</td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="window.location.href='mealUpdateShow.do?id=<%= meals.get(i).getId() %>'">修改</button> 
-											<button class="btn-min" type="button" onclick="window.location.href='mealDelete.do?id=<%= meals.get(i).getId() %>'">删除</button>
+											<button class="btn-min" type="button" onclick="window.location.href='mealUpdateShow.do?id=${meal.id}'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='mealDelete.do?id=${meal.id}'">删除</button>
 										</td>
 									</tr>   
-									<%} %>
+									</c:forEach>
 								</tbody>
 							</table>
                         </div>

@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -12,11 +13,6 @@
   <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/DT_bootstrap.css" rel="stylesheet" media="screen">
-
-<%
-	ArrayList<Store> stores = (ArrayList<Store>)request.getAttribute("stores");
-%>
-
 
    <style type="text/css">
     code {
@@ -70,21 +66,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for(int i = 0 ; i < stores.size() ; i++) {
-									%>
+									<c:forEach var="store" items="stores" >
 									<tr class="odd gradeX">
-										<td><%= stores.get(i).getName() %></td>
-										<td><%= stores.get(i).getAddress() %></td>
-										<td><%= stores.get(i).getTel() %></td>
-										<td><%= stores.get(i).getType() %></td>
-										<td><%= stores.get(i).getIntroduce() %></td>
+										<td>${store.name}</td>
+										<td>${store.adress}</td>
+										<td>${store.tel}</td>
+										<td>${store.type}</td>
+										<td>${store.introduce}</td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="window.location.href='storeInfoShow.do?id=<%= stores.get(i).getId() %>'">修改</button> 
-											<button class="btn-min" type="button" onclick="window.location.href='storeDelete.do?id=<%= stores.get(i).getId() %>'">删除</button>
+											<button class="btn-min" type="button" onclick="window.location.href='storeInfoShow.do?id=${store.id}'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='storeDelete.do?id=${store.id}'">删除</button>
 										</td>
 									</tr>   
-									<%} %>
+									</c:forEach>
 								</tbody>
 							</table>
                         </div>

@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -9,11 +10,6 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
-
-<%
-	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
-	ArrayList<Meal> meals = (ArrayList<Meal>)request.getAttribute("meals");
-%>
 
    <style type="text/css">
     code {
@@ -95,9 +91,9 @@
 											<label class="control-label" for="user">发起用户</label>
 											<div class="controls">
 												<select name="user">
-												<% for(int i=0; i<users.size();i++){ %>
-													<option value="<%= users.get(i).getId() %>"><%= users.get(i).getName() %></option>
-												<%} %>
+												<c:forEach var="user" items="users">
+													<option value="${user.id}">${user.name}</option>
+												</c:forEach>
 												</select>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
@@ -106,9 +102,9 @@
 											<label class="control-label" for="otherUser">接受用户</label>
 											<div class="controls">
 												<select name="otherUser">
-													<% for(int i=0; i<users.size();i++){ %>
-													<option value="<%= users.get(i).getId() %>"><%= users.get(i).getName() %></option>
-												<%} %>
+													<c:forEach var="user" items="users">
+														<option value="${user.id}">${user.name}</option>
+													</c:forEach>
 												</select>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
@@ -137,9 +133,9 @@
 											<label class="control-label" for="meal">套餐</label>
 											<div class="controls">
 												<select name="meal">
-													<% for(int i=0; i<meals.size();i++){ %>
-													<option value="<%= meals.get(i).getId() %>"><%= meals.get(i).getName() %></option>
-												<%} %>
+													<c:forEach var="meal" items="meals">
+														<option value="${meal.id}">${meal.name}</option>
+													</c:forEach>
 												</select>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->

@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -11,11 +12,6 @@
   <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/DT_bootstrap.css" rel="stylesheet" media="screen">
-
-
-<%
-	ArrayList<User> users = (ArrayList<User>)request.getAttribute("users");
-%>
 
    <style type="text/css">
     code {
@@ -73,25 +69,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for(int i = 0 ; i < users.size() ; i++) {
-									%>
+									<c:forEach var="u" items="users" >
 									<tr class="odd gradeX">
-										<td><%= users.get(i).getUsername() %></td>
-										<td><%= users.get(i).getName() %></td>
-										<td><%= users.get(i).getSex() %></td>
-										<td><%= users.get(i).getAge() %></td>
-										<td><%= users.get(i).getTel() %></td>
-										<td><%= users.get(i).getEmail() %></td>
-										<td><%= users.get(i).getQQ() %></td>
-										<td><%= users.get(i).getLocation() %></td>
-										<td><%= users.get(i).getRole() %></td>
+										<td>${u.username}</td>
+										<td>${u.name}</td>
+										<td>${u.sex}</td>
+										<td>${u.age}</td>
+										<td>${u.tel}</td>
+										<td>${u.email}</td>
+										<td>${u.QQ}</td>
+										<td>${u.location}</td>
+										<td>${u.role}</td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="window.location.href='userUpdateShow.do?id=<%= users.get(i).getId() %>'">修改</button> 
-											<button class="btn-min" type="button" onclick="window.location.href='userDelete.do?id=<%= users.get(i).getId() %>'">删除</button>
+											<button class="btn-min" type="button" onclick="window.location.href='userUpdateShow.do?id=${u.id}'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='userDelete.do?id=${u.id}'">删除</button>
 										</td>
 									</tr>   
-									<%} %>
+									</c:forEach>
 								</tbody>
 							</table>
                         </div>

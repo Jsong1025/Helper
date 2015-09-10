@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -9,11 +10,6 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
-
-<%
-	ArrayList<Role> roles = (ArrayList<Role>)request.getAttribute("roles");
-%>
-
    <style type="text/css">
     code {
       padding: 0px 4px;
@@ -100,11 +96,9 @@
 											<label class="control-label" for="role">角色</label>
 											<div class="controls">
 												<select name="role">
-												<%
-													for (int i = 0; i < roles.size(); i++) {
-												%>
-													<option name="role" value="<%= roles.get(i).getId() %>"><%= roles.get(i).getName() %></option>
-												<%} %>
+												<c:forEach var="role" items="roles" >
+													<option name="role" value="${role.id}">${role.name}</option>
+												</c:forEach>
 												</select>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->

@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -12,11 +13,6 @@
   <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/DT_bootstrap.css" rel="stylesheet" media="screen">
-
-<%
-	ArrayList<Appointment> appointments = (ArrayList<Appointment>)request.getAttribute("appointments");
-%>
-
 
    <style type="text/css">
     code {
@@ -73,27 +69,33 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-										for(int i = 0 ; i < appointments.size() ; i++) {
-									%>
+									<c:forEach var="appointment" items="appointmens" >
 									<tr class="odd gradeX">
-										<td><%= appointments.get(i).getStartTime() %></td>
-										<td><%= appointments.get(i).getTime() %></td>
-										<td><%= appointments.get(i).getUser().getUsername() %></td>
-										<td><%if(appointments.get(i).getOtherUser() != null){ %><%= appointments.get(i).getOtherUser().getUsername() %><%} %></td>
-										<td><%= appointments.get(i).getGender() %></td>
-										<td><%= appointments.get(i).getSubstanceToString() %></td>
-										<td><%= appointments.get(i).getMeal() %></td>
-										<td><%= appointments.get(i).getDescription() %></td>
+										<td>${appointment.startTime}</td>
+										<td>${appointment.time}</td>
+										<td>${appointment.user.username}</td>
+										<td>
+											<c:choose>
+												<c:when test="${appointment.otherUser != null}">
+													${appointment.otherUser.username}
+												</c:when>
+											</c:choose>
+										</td>
+										<td>${appointment.user.gender}</td>
+										<td>${appointment.user.substance}</td>
+										<td>${appointment.user.meal}</td>
+										<td>${appointment.user.description}</td>
 										<td class="center">
-											<button class="btn-min" type="button" onclick="window.location.href='appointmentUpdateShow.do?id=<%= appointments.get(i).getId() %>'">修改</button> 
-											<button class="btn-min" type="button" onclick="window.location.href='appointmentDelete.do?id=<%= appointments.get(i).getId() %>'">删除</button>
-											<%if(appointments.get(i).isResponse() && !appointments.get(i).isExamine() ) {%>
-											<button class="btn-min" type="button" onclick="window.location.href='appointmentExamine.do?id=<%= appointments.get(i).getId() %>'">审核</button>
-											<%} %>
+											<button class="btn-min" type="button" onclick="window.location.href='appointmentUpdateShow.do?id=${appointment.id}'">修改</button> 
+											<button class="btn-min" type="button" onclick="window.location.href='appointmentDelete.do?id=${appointment.id}'">删除</button>
+											<c:choose>
+												<c:when test="${appointment.response && appointment.examine}">
+											<button class="btn-min" type="button" onclick="window.location.href='appointmentExamine.do?id=${appointment.id}'">审核</button>
+												</c:when>
+											</c:choose>
 										</td>
 									</tr>   
-									<% } %>
+									</c:forEach>
 								</tbody>
 							</table>
                         </div>

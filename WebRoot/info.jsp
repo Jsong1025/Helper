@@ -1,5 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.User" pageEncoding="utf-8"%>
-<%@page import="com.helper.dao.UserDao"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -40,33 +40,6 @@
   </head>
   <body>
 
- <%
-    	int permision = 5;
-    	String username = "";
-    	String email = (String)session.getAttribute("email");
-    	UserDao dao = new UserDao();
-		User user = dao.findInfoByEmail(email);
-    	if(session != null ){
-    		// 获取用户名
-    		if(session.getAttribute("username") != null){
-        		username = (String)session.getAttribute("username");
-        	} else if(session.getAttribute("email") != null){
-        		username = (String)session.getAttribute("email");
-        	} else {
-        		response.sendRedirect("index.jsp");
-        	}
-    		
-    		// 权限值
-    		if(session.getAttribute("permision") != null){
-    			permision = (Integer)session.getAttribute("permision");
-        	}
-    		user =(User)request.getAttribute("info");
-    		
-    	} else {
-    		response.sendRedirect("index.jsp");
-    	}
-    %>
-  
 <div class="nav-top">
     <div class="container">
       <nav id="navbar" class="navbar navbar-default" role="navigation">
@@ -87,20 +60,20 @@
               <li><a href="searchList.do" title="前往 搜索约会">搜索约会</a></li>
               <li><a href="messageShow.do" title="前往 消息管理">消息管理</a></li>
               <li><a class="visible-md visible-lg" href="info.do" title="前往 个人设置">个人设置</a></li>
-             <%
-             	if(permision < 3){
-             %>
               <li><a href="storeAdminList.do" title="前往 后台管理">后台管理</a></li>
-              <% }%>
-           
             </ul>
           
           
           <ul class="nav navbar-nav navbar-right">
-			<li style="margin-top: 10px;"><%= username %></li>
+			<li style="margin-top: 10px;">
+				<c:choose>
+					<c:when test="${user.username != null}">${user.username}</c:when>
+					<c:otherwise>${user.email}</c:otherwise>
+				</c:choose>
+			</li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="<%= user.getPicture() %>"></span><b class="caret"></b></a>
+                  <span class="avatar avatar40 pull-left"><img class="img-circle img-responsive" src="${user.picture}"></span><b class="caret"></b></a>
                 <ul class="dropdown-menu clearfix">
                   
                   <li><a href="logout.do" title="退出登录">注销</a></li>
@@ -134,33 +107,32 @@
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">真实姓名</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" id="name" name="name" value="<%=user.getName() %>">
+                      <input type="text" class="form-control" id="name" name="name" value="${user.name}">
                     </div>
                   </div>
                     <div class="form-group">
                     <label for="" class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-4">
-                      <%
-                      	if(user.getSex() == 'M'){
-                      %>
-                      <input type=radio name=sex value='F' >女&nbsp &nbsp <input type=radio name=sex value='M' checked >男
-                      <%
-                      } else{
-                      %>
-                      <input type=radio name=sex value='F' checked >女&nbsp &nbsp <input type=radio name=sex value='M' >男
-                      <%} %>
+                    <c:choose>
+                    	<c:when test="${user.sex == 'M'}">
+                    		<input type=radio name=sex value='F' >女&nbsp &nbsp <input type=radio name=sex value='M' checked >男
+                    	</c:when>
+                    	<c:otherwise>
+		                     <input type=radio name=sex value='F' checked >女&nbsp &nbsp <input type=radio name=sex value='M' >男
+                    	</c:otherwise>
+                    </c:choose>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">个人介绍</label>
                     <div class="col-sm-7">
-                      <textarea class="form-control" rows="4" id="description" name="description"><%=user.getDescription() %></textarea>
+                      <textarea class="form-control" rows="4" id="description" name="description">${user.description}</textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">居住地</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" placeholder="填写城市名称，多个以”,“隔开 "id="location"  name="location" value="<%=user.getLocation() %>">
+                      <input type="text" class="form-control" placeholder="填写城市名称，多个以”,“隔开 "id="location"  name="location" value="${user.Location}">
                     </div>
                   </div>
                   <div class="form-group">
@@ -179,7 +151,7 @@
                                         头像<span class="pull-right">展开<span class="glyphicon glyphicon-chevron-down"></span></span>
                 </a>
               </h4>
-              <div class="panel-info"><span class="avatar"><img id="head_s" src="<%= user.getPicture() %>" /></span></div>
+              <div class="panel-info"><span class="avatar"><img id="head_s" src="${user.picture}" /></span></div>
             </div>
             <form id="info2" action="infoUpdate.do?type=2" method = "post">
             <div id="collapseTwo" class="panel-collapse collapse">
@@ -188,7 +160,7 @@
                     <div class="form-group">
                       <div class="col-sm-4 text-right">
                         <span class="avatar avatar150">
-                          <img id="head_b" src="<%= user.getPicture() %>" class="img-circle img-responsive">
+                          <img id="head_b" src="${user.picture}" class="img-circle img-responsive">
                         </span>
                       </div>
                       <div class="col-sm-8">
@@ -222,7 +194,7 @@
                   <div class="form-group">
                     <label for="" class="col-sm-2 control-label">当前用户名</label>
                     <div class="col-sm-4">
-                      <p id="p_mail" class="form-control-static"><%=user.getUsername() %></p>
+                      <p id="p_mail" class="form-control-static">${user.username}</p>
                     </div>
                   </div>
                   <div class="form-group">

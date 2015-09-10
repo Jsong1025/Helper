@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -10,10 +11,6 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
-
-<%
-	Store store = (Store)request.getAttribute("store");
-%>
 
    <style type="text/css">
     code {
@@ -80,7 +77,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="name">商家名称</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="name" id="name" value="<%= store.getName() %>"/>
+												<input type="text" class="input-medium" name="name" id="name" value="${store.name}"/>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -88,7 +85,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="address">商家地址</label>
 											<div class="controls">
-												<input type="text" class="input-large" name="address" id="address" value="<%= store.getAddress() %>" />
+												<input type="text" class="input-large" name="address" id="address" value="${store.adress}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -96,7 +93,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="tel">联系方式</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="tel" id="tel" value="<%= store.getTel() %>" />
+												<input type="text" class="input-medium" name="tel" id="tel" value="${store.tel}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -104,14 +101,14 @@
 										<div class="control-group">											
 											<label class="control-label" for="type">商家类型</label>
 											<div class="controls">
-												<input type="text" class="input-medium" name="type" id="type" value="<%= store.getType() %>" />
+												<input type="text" class="input-medium" name="type" id="type" value="${store.type}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
 										<div class="control-group">											
 											<label class="control-label" for="introduce">基本介绍</label>
 											<div class="controls">
-												<input type="text" class="input-large" name="introduce"  id="introduce" value="<%= store.getIntroduce() %>" />
+												<input type="text" class="input-large" name="introduce"  id="introduce" value="${store.introduce}" />
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 											

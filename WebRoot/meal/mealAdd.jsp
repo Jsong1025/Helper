@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*,com.helper.entity.*" pageEncoding="utf-8"%>
+﻿<%@ page pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
  <head>
@@ -10,11 +11,6 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/adminia.css" rel="stylesheet" /> 
-
-<%
-	ArrayList<Store> stores = (ArrayList<Store>)request.getAttribute("stores");
-%>
-
    <style type="text/css">
     code {
       padding: 0px 4px;
@@ -126,9 +122,9 @@
 											<label class="control-label" for="introduce">所属商家</label>
 											<div class="controls">
 												<select name="store">
-												<% for(int i = 0; i<stores.size(); i++){ %>
-													<option value=<%= stores.get(i).getId() %>><%= stores.get(i).getName() %></option>
-												<%} %>
+												<c:forEach var="store" items="${stores}" >
+													<option value=${store.id}>${store.name}</option>
+												</c:forEach>
 												</select>
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->

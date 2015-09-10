@@ -23,15 +23,8 @@ public class LoginServlet extends HttpServlet {
 		String useradress = request.getParameter("useradress");
 		String password = request.getParameter("password");
 		
-		UserService service = new UserService();
-		User user = service.login(useradress, password);
-		HttpSession session = request.getSession();
-		if (user != null) {
-			session.setAttribute("user", user);
-			response.sendRedirect("home.html");
-		} else {
-			response.sendRedirect("login.html");
-		}
+		UserService service = new UserService(request,response);
+		response.sendRedirect(service.login(useradress, password));
 		
 	}
 
